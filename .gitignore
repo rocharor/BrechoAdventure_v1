@@ -4,4 +4,4 @@ composer.lock
 .project
 .buildpath
 .settings/
-App/Sistema/config/mysql.ini
+*.ini

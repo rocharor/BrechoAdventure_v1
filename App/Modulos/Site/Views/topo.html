@@ -1,0 +1,139 @@
+<!-- BARRA DE MENU -->
+<div class="menu">
+    <div class='topo_esquerdo'>
+        <a href="{$smarty.const._PUBLIC_}">
+            <img src="{$smarty.const._PUBLIC_}/imagens/logo.jpg" alt="Brecho Aventure" class='img_logo'>
+        </a>
+        <span class='nome_site'>BRECHÓ ADVENTURE</span>
+    </div>
+
+    <div class="topo_direito">
+        {if $logado eq 0}
+        <button class="btn btn-primary btn-login">Login</button>
+        <button class="btn btn-success btn-cadastro">Cadastre-se</button>
+        {else}
+        <span class="btn-group">
+            <a class="dropdown-toggle box" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{$smarty.const._PUBLIC_}/imagens/cadastro/{$nome_imagem}" alt="Brecho Aventure" title="Minha conta" class="imagem_login img-circle">
+                <div class="mask img-circle" align='center'><span class="">Minha <br />Conta<span></div>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{$smarty.const._PUBLIC_}/Perfil/">Perfil</a></li>
+                <li><a href="{$smarty.const._PUBLIC_}/MeusProdutos/">Meus anuncios</a></li>
+                <li><a href="{$smarty.const._PUBLIC_}/MeusFavoritos/">Favoritos</a></li>
+            </ul>
+        </span>
+
+        <a href="{$smarty.const._PUBLIC_}/CadastroProduto/" class="btn btn-warning">Inserir Produtos</a>
+        <!--<a href="{$smarty.const._PUBLIC_}/Login/deslogar/" class="btn btn-danger">Sair</a>-->
+        <a class="btn btn-danger act-deslogar">Sair</a>
+        {/if}
+    </div>
+</div>
+
+<img src="{$smarty.const._PUBLIC_}/imagens/banner.jpg" width="100%" />
+<!--<ul class="nav nav-tabs" align='center'>
+    <li style="width: 33%;" role="menu" id='home'     class='{$active_1}'><a href="{$smarty.const._PUBLIC_}/home/">Home</a></li>
+    <li style="width: 33%;" role="menu" id='produtos' class='{$active_2}' disabled><a href="{$smarty.const._PUBLIC_}/produto/">Produtos</a></li>
+    <li style="width: 34%;" role="menu" id='contato'  class='{$active_3}'><a href="{$smarty.const._PUBLIC_}/contato/">Contato</a></li>
+</ul> -->
+<div class='section' id='crosscol'><div class='widget PageList' data-version='1' id='PageList98'>
+    <div class='art-nav-inner'>
+        <ul class='art-hmenu'>
+            <li><a class='{$active_1}' href="{$smarty.const._PUBLIC_}/">Home</a></li>
+            <li><a class='{$active_2}' href="{$smarty.const._PUBLIC_}/produto/">Produtos</a></li>
+            <li><a class='{$active_3}' href="{$smarty.const._PUBLIC_}/contato/">Contato</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+
+<!-- MODAL -->
+<!--Modal Login-->
+<div class="modal fade" id='login'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Login <img src="{$smarty.const._PUBLIC_}/imagens/logo.jpg" alt="Brecho Aventure" width="15%"></h4>
+            </div>
+            <div class="modal-body">
+            	<span class='msg_login'></span>
+           		<label>Email: <input type="text"class="form-control" id="email_login" style="width: 300px;"  /></label>
+               	<label>Senha: <input type="password" class="form-control" id="senha_login" style="width: 300px;" /></label>
+               	<div><small><i><a class='act-esqueci-senha btn-esqueci-senha'>Esqueci a senha</a></i></small></div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary act-login">Logar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal esqueci_senha-->
+<div class="modal fade" id='esqueci_senha'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2>Esqueci a senha</h2>
+            </div>
+
+            <div class="modal-body">
+                <label>
+                    Informe seu email de cadastro: <input type="text" class="form-control" id = 'email_reenviar_senha' style="width: 300px;" />
+                </label>
+                <img src="{$smarty.const._PUBLIC_}/imagens/carregando.gif" width="50" class="hide carregando" />
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary act-reenviar-senha">Reenviar senha</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Cadastro-->
+<div class="modal fade" id='cadastro'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Cadastro <img src="{$smarty.const._PUBLIC_}/imagens/logo.jpg" alt="Brecho Aventure" width="15%"></h4>
+            </div>
+
+			<form action="{$smarty.const._PUBLIC_}/login/" method="post" name="form">
+	            <div class="modal-body">
+	                <label>Nome: <input type="text" id='nome_cad' class="form-control" style="width: 300px;"  /></label><br>
+	                <label>Apelido: <input type="text" id='apelido_cad' class="form-control" style="width: 300px;"  /></label><br>
+	                <label>Email: <input type="text" id='email_cad' class="form-control" style="width: 300px;" /></label><br>
+	                <label>senha: <input type="password" id='senha1_cad' class="form-control" style="width: 150px;" /></label>
+	                <label>Confimar senha: <input type="password" id='senha2_cad' class="form-control" style="width: 150px;" /></label>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+	                <button type="button" class="btn btn-primary act-cadastro">Cadastrar</button>
+	            </div>
+            </form>
+       </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var url_login = "{$smarty.const._PUBLIC_}/login/";
+	var url_deslogar = "{$smarty.const._PUBLIC_}/Login/deslogar/";
+	var url_cadastro = "{$smarty.const._PUBLIC_}/cadastro/";
+</script>
+
+
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/login.js"></script>
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/cadastro.js"></script>
+
+

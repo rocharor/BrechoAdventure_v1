@@ -1,0 +1,85 @@
+<h1 class="text-danger">PERFIL</h1>
+<div>
+    <div align="left">
+        <img src="{$smarty.const._PUBLIC_}/imagens/cadastro/{$nome_imagem}" alt="brechoAdventure" class="img_perfil" /><br>
+        <small><a class="act-alter-foto">Alterar foto de perfil</a></small>
+        <br>
+        <button class="btn btn-success hide act-enviar-imagem">Salvar foto</button>&nbsp;&nbsp;<b><small class='nm_imagem'></small></b>
+
+        <input type="file" class="hide" id='foto_upd' onchange="altera_imagem()">
+    </div>
+    <br>
+
+    <table class="table table-striped">
+        <tr>
+            <td><label>Nome: </label> </td>
+            <td><input type="text" id='nome_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.nome}" /></td>
+        </tr>
+        <tr>
+            <td> <label>Email: </label> </td>
+            <td><input type="text" id='email_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.email}" /></td>
+        </tr>
+        <tr>
+            <td> <label>Data de nascimeto:</label> </td>
+            <td><input type="text" id='dt_nascimento_upd' class="form-control" style="width: 100px;" value="{$dadosUsuario.dt_nascimento}" /></td>
+        </tr>
+        <tr>
+            <td><label>CEP: </label> </td>
+            <td><input type="text" id='cep_upd' class="form-control" style="width: 100px;" value="{$dadosUsuario.cep}" onblur="buscaCEP(this.value)"/></td>
+        </tr>
+        <tr>
+            <td><label>Endere&ccedil;o: </label> </td>
+            <td><input type="text" id='endereco_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.endereco}" /></td>
+        </tr>
+        <tr>
+            <td><label>Numero: </label> </td>
+            <td><input type="text" id='numero_upd' class="form-control" style="width: 100px;" value="{$dadosUsuario.numero}" /></td>
+        </tr>
+        <tr>
+            <td><label>Complemento: </label> </td>
+            <td><input type="text" id='complemento_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.complemento}" /></td>
+        </tr>
+        <tr>
+            <td><label>Bairro: </label> </td>
+            <td><input type="text" id='bairro_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.bairro}" /></td>
+        </tr>
+        <tr>
+            <td><label>Cidade: </label> </td>
+            <td><input type="text" id='cidade_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.cidade}" /></td>
+        </tr>
+        <tr>
+            <td><label>UF: </label> </td>
+            <td>
+                <select class="form-control" id='uf_upd' style="width: 100px;">
+                    {foreach from=$estados item=desc}
+                        {if $dadosUsuario.uf eq $desc}
+                            <option id="{$sigla}" selected="selected">{$desc}</option>
+                        {else}
+                            <option id="{$sigla}">{$desc}</option>
+                        {/if}
+
+                    {/foreach}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Telefone Fixo: </label> </td>
+            <td><input type="text" id='tel_upd' class="form-control" style="width: 150px;" value="{$dadosUsuario.telefone_fixo}" /></td>
+        </tr>
+        <tr>
+            <td><label>Telefone Cel: </label> </td>
+            <td><input type="text" id='cel_upd' class="form-control" style="width: 150px;" value="{$dadosUsuario.telefone_cel}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><button type="button" class="btn btn-primary act-update">Salvar</button></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript" language="javascript" src="{$smarty.const._PUBLIC_}/libs/jquery/jquery.maskedinput.min.js"></script>
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/minhaConta/perfil.js"></script>
+
+<script>
+    var urlAlterarFoto= "{$smarty.const._PUBLIC_}/Perfil/updateFoto/";
+    var urlPerfil= "{$smarty.const._PUBLIC_}/Perfil/updatePerfil/";
+</script>

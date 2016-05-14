@@ -1,0 +1,21 @@
+<div align="center">
+    <h1 class="text-warning">CONTATO</h1>
+    {$msg}
+    <form action="{$smarty.const._PUBLIC_}/contato/" method="POST" name="form" id="form"  >
+        <label>Nome:</label>  <br> <input class="form-control" type="text" name="nome" id="nome">
+        <label>Email:</label> <br> <input class="form-control" type="text" name="email" id="email">
+        <label>Tipo:</label>  <br>
+        <select class="form-control" name="tipo" id="tipo">
+            <option value='1'>Duvídas</option>
+            <option>Reclamações</option>
+            <option>Sugestões</option>
+        </select><br><br>
+        <label>Mensagem:</label>
+        <textarea class="form-control" name="mensagem" id="mensagem" rows="5"></textarea><br>
+
+        <input type="button" value="Enviar" class="btn btn-success btn-enviar">
+    </form>
+</div>
+
+
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/contato.js"></script>

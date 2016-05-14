@@ -1,0 +1,11 @@
+.rodape{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #2F4F4F;
+    background-color: #FFD700;
+    font-family: colibri;
+    font-size: 12px;
+    padding: 8px;
+    text-align: center;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Brechó Adventure</title>
+        <link rel="shortcut icon" href="{$smarty.const._PUBLIC_}/imagens/favicon.ico" type="image/x-icon" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Ricardo Rocha"/>
+        <meta name="copyright" content="Ricardo Rocha"/>
+        <meta name="e-mail" content="rocharor@gmail.com"/>
+        <meta name="language" content="pt-br"/>
+        <meta name="keywords" content="Brecho Adventure"/>
+
+        <!-- Includes gerais-->
+        <script type="text/javascript" language="javascript" src="{$smarty.const._PUBLIC_}/libs/jquery/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" language="javascript" src="{$smarty.const._PUBLIC_}/libs/bootstrap/js/bootstrap.js"></script>
+        <link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/libs/bootstrap/css/bootstrap.css" />
+
+        <link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/css/topo.css" />
+        <link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/css/rodape.css" />
+        <link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/css/padrao.css" />
+    </head>
+    <body>
+        <div class="geral">
+            <div>{include file="topo.html"}</div>
+            <br />
+            <div class="container" style="border: solid 0px;">
+                {include file="$pagina_main"}
+            </div>
+            <br /><br /><br />
+            <div>{include file="rodape.html"}</div>
+        </div>
+
+    </body>
+</html>

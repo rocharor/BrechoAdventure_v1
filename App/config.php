@@ -3,6 +3,14 @@
     use Rocharor\Sistema\Conexao;
     use Rocharor\Sistema\Sessao;
 
+    /**
+     * Display de erros
+     * 0 => não mostra
+     * 1 => mostra
+     */
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    
     if($_SERVER['HTTP_HOST'] == 'localhost'){
         $caminho = '/BrechoAdventure/Public';
     }else{
@@ -23,15 +31,6 @@
     define('CONTROLLERS_MC',  INC_ROOT.'/App/Modulos/MinhaConta/Controllers/');
     define('VIEWS_MC', INC_ROOT.'/App/Modulos/MinhaConta/Views/');
     define('MODELS_MC',  INC_ROOT.'/App/Modulos/MinhaConta/Models/');
-
-
-    /**
-     * Display de erros
-     * 0 => não mostra
-     * 1 => mostra
-     */
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
 
     $conn = new Conexao(_CONFIG_.'mysql.ini');
     $conn = $conn ->open();

@@ -1,6 +1,6 @@
 host=localhost
 port=3306
-db=?
+db=brecho_adventure
 user=?
 pass='?'
 type=mysql

@@ -9,11 +9,12 @@
     $host = $dados['host'];
     $user = $dados['user'];
     $pass = $dados['pass'];
+    $db = $dados['db'];
     
     $con = mysqli_connect($host, $user, $pass) or
     die('Não foi possível conectar');
 
-    $query_database = "CREATE DATABASE brecho_adventure";
+    $query_database = "CREATE DATABASE " . $db;
     if(mysqli_query($con,$query_database)){
         echo "Banco de dados criado \n\r";
     }

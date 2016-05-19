@@ -4,15 +4,31 @@ namespace Rocharor\Site\Controllers;
 use Rocharor\Sistema\Sessao;
 use Rocharor\Sistema\Controller;
 use Rocharor\Site\Models\ProdutoModel;
+use Rocharor\Site\Models\CadastroModel;
 
 class CadastroProduto extends Controller
 {
 
     public function indexAction()
     {
+        $usuario_id = Sessao::pegaSessao('logado');
+        
+        $autorizado = true;
+        
+        if($usuario_id){
+            $objCadastro = new CadastroModel();
+            $dadosUsuario = $objCadastro->getUsuario(['id'=>$usuario_id]);            
+            
+            if($dadosUsuario[0]['telefone_cel'] == ''){
+                $autorizado = false;
+            }
+            
+        }
+                
         $variaveis = [
             'pagina_main' => 'cadastroProduto.html',
-            'msg' => ''
+            'msg' => '',
+            'autorizado'=>$autorizado
         ];
         
         $this->view('main', $variaveis);
@@ -26,7 +42,7 @@ class CadastroProduto extends Controller
         $categoria = $_POST['categoria_produto'];
         $descricao = $_POST['desc_produto'];
         $tipo = $_POST['tipo_produto'];
-        $valor = $_POST['valor_produto'];
+        $valor = str_replace(['R$ ','.',','], ['','','.'], $_POST['valor_produto']);
         
         $fotos = [];
         if ($_FILES['foto1']['name'] != '') {
@@ -63,7 +79,8 @@ class CadastroProduto extends Controller
             }
         $variaveis = [
             'pagina_main' => 'cadastroProduto.html',
-            'msg' => $msg
+            'msg' => $msg,
+            'autorizado' => true
         ];
         
         $this->view('main', $variaveis);

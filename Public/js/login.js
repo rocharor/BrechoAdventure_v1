@@ -52,7 +52,7 @@ $('.act-deslogar').click(function(e){
         url: url_deslogar,
         type: 'POST',
         success: function(retorno){
-           window.location.reload();
+        	window.open(url_home,'_self');
         },
         error: function(retorno){
             alert('Erro no sistema! cod-02')

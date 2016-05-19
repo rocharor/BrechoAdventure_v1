@@ -66,6 +66,7 @@ $('.act-update').click(function(e){
     e.preventDefault()
 
     var nome          = $('#nome_upd').val();
+    var apelido          = $('#apelido_upd').val();
     var email         = $('#email_upd').val();
     var dt_nascimento = $('#dt_nascimento_upd').val();
     var endereco      = $('#endereco_upd').val();
@@ -80,18 +81,41 @@ $('.act-update').click(function(e){
 
     var erro = false;
 
-    /*if(nome == ''){
+    if(nome == ''){
         $('#nome_cad').parent().addClass('has-error');
         alert('Campo nome é obrigatório');
         erro = true;
         return false;
     }
+    
     if(email == ''){
         $('#email_cad').parent().addClass('has-error');
         alert('Campo email é obrigatório');
         erro = true;
         return false;
     }
+    
+    if(tel_fixo == ''){
+        $('#tel_cad').parent().addClass('has-error');
+        alert('Campo "Telefone fixo" é obrigatório');
+        erro = true;
+        return false;
+    }
+    
+    if(tel_cel == ''){
+        $('#cel_cad').parent().addClass('has-error');
+        alert('Campo "Telefone cel" é obrigatório');
+        erro = true;
+        return false;
+    }
+    
+    /*if(apelido == ''){
+        $('#apelido_upd').parent().addClass('has-error');
+        alert('Campo apelido é obrigatório');
+        erro = true;
+        return false;
+    }
+    
     if(endereco == ''){
         $('#endereco_cad').parent().addClass('has-error');
         alert('Campo endereço é obrigatório');
@@ -127,19 +151,7 @@ $('.act-update').click(function(e){
         alert('Campo cep é obrigatório');
         erro = true;
         return false;
-    }
-    if(tel_fixo == ''){
-        $('#tel_cad').parent().addClass('has-error');
-        alert('Campo "Telefone fixo" é obrigatório');
-        erro = true;
-        return false;
-    }
-    if(tel_cel == ''){
-        $('#cel_cad').parent().addClass('has-error');
-        alert('Campo "Telefone cel" é obrigatório');
-        erro = true;
-        return false;
-    }
+    }    
 
     if(senha1 == '' || senha2 == ''){
         alert('Campo senha é obrigatório');
@@ -154,6 +166,7 @@ $('.act-update').click(function(e){
 
     if(!erro){
         var dados = {'nome':nome,
+        			 'apelido':apelido,
                      'email':email,
                      'dt_nascimento':dt_nascimento,
                      'endereco':endereco,

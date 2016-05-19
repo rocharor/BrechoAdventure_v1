@@ -22,23 +22,20 @@ $('.act-cadastro').click(function(e){
         erro = true;
         return false;
     }
-    if(apelido == ''){
-        $('#apelido_cad').parent().addClass('has-error');
-        alert('Campo apelido é obrigatório');
-        erro = true;
-        return false;
-    }
+    
     if(email == ''){
         $('#email_cad').parent().addClass('has-error');
         alert('Campo email é obrigatório');
         erro = true;
         return false;
     }
+    
     if(senha1 == '' || senha2 == ''){
         alert('Campo senha é obrigatório');
         erro = true;
         return false;
     }
+    
     if(senha1 != senha2 ){
         alert('Os campos de senha não estão iguais');
         erro = true;

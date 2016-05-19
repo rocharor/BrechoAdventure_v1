@@ -12,11 +12,15 @@
 
     <table class="table table-striped">
         <tr>
-            <td><label>Nome: </label> </td>
+            <td><label>Nome: <span class='text-danger'>*</span></label> </td>
             <td><input type="text" id='nome_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.nome}" /></td>
         </tr>
         <tr>
-            <td> <label>Email: </label> </td>
+            <td><label>Apelido: </label> </td>
+            <td><input type="text" id='apelido_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.apelido}" /></td>
+        </tr>
+        <tr>
+            <td> <label>Email: <span class='text-danger'>*</span></label> </td>
             <td><input type="text" id='email_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.email}" /></td>
         </tr>
         <tr>
@@ -63,11 +67,11 @@
             </td>
         </tr>
         <tr>
-            <td><label>Telefone Fixo: </label> </td>
+            <td><label>Telefone Fixo: <span class='text-danger'>*</span></label> </td>
             <td><input type="text" id='tel_upd' class="form-control" style="width: 150px;" value="{$dadosUsuario.telefone_fixo}" /></td>
         </tr>
         <tr>
-            <td><label>Telefone Cel: </label> </td>
+            <td><label>Telefone Cel: <span class='text-danger'>*</span></label> </td>
             <td><input type="text" id='cel_upd' class="form-control" style="width: 150px;" value="{$dadosUsuario.telefone_cel}" /></td>
         </tr>
         <tr>

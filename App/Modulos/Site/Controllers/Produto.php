@@ -35,6 +35,7 @@ class Produto extends Controller
         $produtos = $this->objProdutoModel->getprodutos(9);
 
         $favoritos = [];
+        $usuario_id = '';
         if(Sessao::pegaSessao('logado')){
             $usuario_id = Sessao::pegaSessao('logado');
             $favoritos = $this->objFavoritoModel->getFavoritos($usuario_id);

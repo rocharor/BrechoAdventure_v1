@@ -26,19 +26,19 @@
     "usuarios"=>
     "CREATE TABLE `usuarios` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
-      `nome` varbinary(255) DEFAULT NULL,
-      `email` varchar(255) DEFAULT NULL,
+      `nome` varchar(255) DEFAULT NULL,
+      `email` varchar(100) DEFAULT NULL,
       `apelido` varchar(100) DEFAULT NULL,
       `dt_nascimento` date DEFAULT NULL,
       `endereco` varchar(255) DEFAULT NULL,
       `numero` varchar(10) DEFAULT NULL,
-      `complemento` varchar(255) DEFAULT NULL,
-      `bairro` varchar(255) DEFAULT NULL,
-      `cidade` varchar(255) DEFAULT NULL,
+      `complemento` varchar(150) DEFAULT NULL,
+      `bairro` varchar(150) DEFAULT NULL,
+      `cidade` varchar(150) DEFAULT NULL,
       `uf` varchar(2) DEFAULT NULL,
       `cep` varchar(9) DEFAULT NULL,
-      `telefone_fixo` varchar(255) DEFAULT NULL,
-      `telefone_cel` varchar(255) DEFAULT NULL,
+      `telefone_fixo` varchar(20) DEFAULT NULL,
+      `telefone_cel` varchar(20) DEFAULT NULL,
       `nome_imagem` varchar(255) DEFAULT NULL,
       `senha_ext` varchar(255) DEFAULT NULL,
       `senha_md5` varchar(255) DEFAULT NULL,
@@ -53,7 +53,7 @@
       `nome` varchar(100) DEFAULT NULL,
       `email` varchar(100) DEFAULT NULL,
       `tipo` varchar(100) DEFAULT NULL,
-      `mensagem` varchar(255) DEFAULT NULL,
+      `mensagem` text,
       `status_resposta` int(11) DEFAULT '0',
       `data_mensagem` datetime DEFAULT NULL,
       PRIMARY KEY (`id`)
@@ -88,7 +88,7 @@
     ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8"
     ];
 
-    mysqli_select_db($con, "brecho_adventure");
+    mysqli_select_db($con, $db);
 
     foreach($query_tabelas as $nm_tabela=>$query){
         if(mysqli_query($con,$query)){

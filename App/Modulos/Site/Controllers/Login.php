@@ -33,8 +33,7 @@ class Login extends Controller {
 
     public function deslogarAction() {
         Sessao::setaSessao(array('logado'=> 0,'nome_imagem'=> ''));
-
+        
         die();
-        //header("location: /");
     }
 }

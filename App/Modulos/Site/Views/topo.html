@@ -110,11 +110,11 @@
 
 			<form action="{$smarty.const._PUBLIC_}/login/" method="post" name="form">
 	            <div class="modal-body">
-	                <label>Nome: <input type="text" id='nome_cad' class="form-control" style="width: 300px;"  /></label><br>
+	                <label><span class='text-danger'>*</span> Nome: <input type="text" id='nome_cad' class="form-control" style="width: 300px;"  /></label><br>
 	                <label>Apelido: <input type="text" id='apelido_cad' class="form-control" style="width: 300px;"  /></label><br>
-	                <label>Email: <input type="text" id='email_cad' class="form-control" style="width: 300px;" /></label><br>
-	                <label>senha: <input type="password" id='senha1_cad' class="form-control" style="width: 150px;" /></label>
-	                <label>Confimar senha: <input type="password" id='senha2_cad' class="form-control" style="width: 150px;" /></label>
+	                <label><span class='text-danger'>*</span>  Email: <input type="text" id='email_cad' class="form-control" style="width: 300px;" /></label><br>
+	                <label><span class='text-danger'>*</span> Senha: <input type="password" id='senha1_cad' class="form-control" style="width: 150px;" /></label>
+	                <label><span class='text-danger'>*</span> Confimar senha: <input type="password" id='senha2_cad' class="form-control" style="width: 150px;" /></label>
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -130,6 +130,7 @@
     var url_login = "{$smarty.const._PUBLIC_}/login/";
 	var url_deslogar = "{$smarty.const._PUBLIC_}/Login/deslogar/";
 	var url_cadastro = "{$smarty.const._PUBLIC_}/cadastro/";
+	var url_home = "{$smarty.const._PUBLIC_}/";
 </script>
 
 

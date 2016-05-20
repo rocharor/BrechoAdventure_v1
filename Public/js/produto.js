@@ -13,9 +13,19 @@ $('.act-descricao').click(function(e){
         dataType: 'json',
         type: 'POST',
         data: {'produto_id': produto_id},
-        success: function(retorno){
-
-            $('.produto_titulo').html(retorno.titulo)
+        success: function(retorno){  
+			var fotos = retorno.nm_imagem.split('|');
+			$('.produto_fotos').html('');
+			for(var i in fotos){
+				if(i == 0){
+					$('.produto_fotos').append("<div class='item active '><img src="+url_home+"imagens/produtos/"+fotos[i]+".jpg alt='' style='width:100%; height:400px'></div>")
+				}else{
+					$('.produto_fotos').append("<div class='item'><img src="+url_home+"imagens/produtos/"+fotos[i]+".jpg alt='' style='width:100%; height:400px'></div>")
+				}
+			}
+        	
+        	
+        	$('.produto_titulo').html(retorno.titulo)
             $('.produto_descricao').html(retorno.descricao)
             $('.produto_estado').html(retorno.estado)
             $('.produto_valor').html('R$ '+retorno.valor)

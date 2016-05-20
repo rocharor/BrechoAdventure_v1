@@ -54,7 +54,11 @@ class CadastroProduto extends Controller
         if ($_FILES['foto3']['name'] != '') {
             $fotos[] = $_FILES['foto3'];
         }
-        
+        /**/
+        echo "<pre>";
+        var_dump($fotos);
+        echo "</pre>";
+        die();
         if (count($fotos) == 0) {
             $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Necessário escolher pelo menos 1 foto</div>';
         } else 

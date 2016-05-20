@@ -67,9 +67,8 @@
             <div class="modal-body" >
                 <h2 align="center"><span id='titulo'></span></h2>
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" id='fotos' role="listbox">
-                        <!--IMAGENS-->
-                        <div class='item active'><img src='{$smarty.const._PUBLIC_}/imagens/404.jpg' alt='' width="100%"></div>
+                    <div class="carousel-inner produto_fotos" id='fotos' role="listbox">
+                        <!-- IMAGENS -->                        
                     </div>
 
                     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -102,6 +101,7 @@
 <script type="text/javascript">
     var url_descricao = "{$smarty.const._PUBLIC_}/Produto/getDescricaoProduto/";
 	var url_favorito = "{$smarty.const._PUBLIC_}/favorito/setFavorito/";
+	var url_home = "{$smarty.const._PUBLIC_}/";
 </script>
 
 <script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/produto.js"></script>

@@ -8,6 +8,7 @@
     use Rocharor\MinhaConta\Controllers\Perfil;
     use Rocharor\MinhaConta\Controllers\MeusProdutos;
     use Rocharor\MinhaConta\Controllers\MeusFavoritos;
+    use Rocharor\Site\Controllers\Favorito;
     
     $app = new Silex\Application();
     
@@ -116,6 +117,12 @@
     $app->post('/Produto/getDescricaoProduto/', function () {
         $objContato = new Produto();
         $objContato->getDescricaoProdutoAction();
+        return false;
+    });
+    
+    $app->post('/favorito/setFavorito/', function () {
+        $objFavorito = new Favorito();
+        $objFavorito->setFavoritoAction();
         return false;
     });
         

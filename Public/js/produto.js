@@ -18,9 +18,9 @@ $('.act-descricao').click(function(e){
 			$('.produto_fotos').html('');
 			for(var i in fotos){
 				if(i == 0){
-					$('.produto_fotos').append("<div class='item active '><img src="+url_home+"imagens/produtos/"+fotos[i]+".jpg alt='' style='width:100%; height:400px'></div>")
+					$('.produto_fotos').append("<div class='item active '><img src="+url_home+"imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>")
 				}else{
-					$('.produto_fotos').append("<div class='item'><img src="+url_home+"imagens/produtos/"+fotos[i]+".jpg alt='' style='width:100%; height:400px'></div>")
+					$('.produto_fotos').append("<div class='item'><img src="+url_home+"imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>")
 				}
 			}
         	

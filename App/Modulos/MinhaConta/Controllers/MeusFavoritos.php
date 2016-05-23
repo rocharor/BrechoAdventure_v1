@@ -6,10 +6,17 @@
 
     class MeusFavoritos extends Controller
     {
-        public function indexAction()
+        public $model;
+        
+        public function __construct()
         {
-            $variaveis = ['pagina_main' => VIEWS_MC.'favoritos.html'];
-
+            $this->model = new MeusFavoritosModel();
+        }
+        
+        public function indexAction()
+        {            
+            $this->model->getFavoritos();
+            $variaveis = ['pagina_main' => VIEWS_MC.'meusFavoritos.html'];
             $this->view('main',$variaveis);
         }
 

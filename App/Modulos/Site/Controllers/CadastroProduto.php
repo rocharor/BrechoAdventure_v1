@@ -54,11 +54,7 @@ class CadastroProduto extends Controller
         if ($_FILES['foto3']['name'] != '') {
             $fotos[] = $_FILES['foto3'];
         }
-        /**/
-        echo "<pre>";
-        var_dump($fotos);
-        echo "</pre>";
-        die();
+    
         if (count($fotos) == 0) {
             $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Necessário escolher pelo menos 1 foto</div>';
         } else 
@@ -66,7 +62,9 @@ class CadastroProduto extends Controller
                 $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Uma ou mais fotos estão com formato não permitido</div>';
             } else {        
                 foreach ($fotos as $key=>$foto) {
-                    $foto_nome = $usuario_id . '_' . $key . '_' .date('d-m-Y_h:i:s');           
+                    $arrNomeFoto = explode('.',$foto['name']);
+                    $extencao = end($arrNomeFoto);                   
+                    $foto_nome = $usuario_id . '_' . $key . '_' .date('d-m-Y_h:i:s') . '.' . $extencao;           
                     move_uploaded_file($foto['tmp_name'], _IMAGENS_ . 'produtos/' . $foto_nome);
                     $nome_fotos[] = $foto_nome;
                 }

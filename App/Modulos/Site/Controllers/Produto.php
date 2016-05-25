@@ -4,27 +4,30 @@ namespace Rocharor\Site\Controllers;
 
 use Rocharor\Sistema\Controller;
 use Rocharor\Site\Models\ProdutoModel;
-use Rocharor\Site\Models\FavoritoModel;
+use Rocharor\MinhaConta\Models\MeusFavoritosModel;
 use Rocharor\Sistema\Sessao;
 
 
 class Produto extends Controller
 {
     private $objProdutoModel;
-    private $objFavoritoModel;
+    private $objMeusFavoritosModel;
     private $params;
 
     public function __construct($params = false)
     {
         $objProdutoModel = new ProdutoModel();
-        $this->objProdutoModel = $objProdutoModel;
-
-        $objFavoritoModel = new FavoritoModel();
-        $this->objFavoritoModel = $objFavoritoModel;
+        $this->objProdutoModel = $objProdutoModel;     
 
         if ($params) {
             $this->params = $params;
         }
+        
+        if(Sessao::pegaSessao('logado')){
+            $objMeusFavoritos = new MeusFavoritosModel();
+            $this->objMeusFavoritosModel = $objMeusFavoritos;
+        }
+        
     }
 
     /**
@@ -38,7 +41,7 @@ class Produto extends Controller
         $usuario_id = '';
         if(Sessao::pegaSessao('logado')){
             $usuario_id = Sessao::pegaSessao('logado');
-            $favoritos = $this->objFavoritoModel->getFavoritos($usuario_id);
+            $favoritos = $this->objMeusFavoritosModel->getFavoritos($usuario_id);
         }
 
         foreach($produtos as $key=>$produto){

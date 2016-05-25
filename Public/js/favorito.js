@@ -34,3 +34,66 @@ $('.act-favorito-deslogado').click(function(){
    alert('Necessário estar logado para favoritar.');
 });
 
+$('.act-excluir-favorito').click(function(e){
+	e.preventDefault();
+	if(confirm('Deseja realmente excluir este item dos favoritos?')){	
+		
+		var produto_id = $(this).attr('data-produto-id');
+		
+		$.ajax({
+	        url: url_favorito,
+	        dataType: 'json',
+	        type: 'POST',
+	        data: {'status': 0,
+	               'produto_id':produto_id},
+	        success: function(retorno){
+	        	window.location.reload();
+	        },
+	        error: function(retorno){
+	            alert('Erro no sistema! cod-02')
+	        }
+	    });	
+	}
+	
+});
+
+$('.act-ver-favorito').click(function(e){
+    e.preventDefault();
+
+    var produto_id = $(this).attr('data-produto-id');
+
+    $.ajax({
+        url: url_descricao,
+        dataType: 'json',
+        type: 'POST',
+        data: {'produto_id': produto_id},
+        success: function(retorno){  
+			var fotos = retorno.nm_imagem.split('|');
+			$('.produto_fotos').html('');
+			for(var i in fotos){
+				if(i == 0){
+					$('.produto_fotos').append("<div class='item active '><img src="+url_home+"imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>")
+				}else{
+					$('.produto_fotos').append("<div class='item'><img src="+url_home+"imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>")
+				}
+			}        	
+        	
+        	$('.produto_titulo').html(retorno.titulo)
+            $('.produto_descricao').html(retorno.descricao)
+            $('.produto_estado').html(retorno.estado)
+            $('.produto_valor').html('R$ '+retorno.valor)
+
+            $('.produto_nome').html(retorno.nome)
+            $('.produto_email').html(retorno.email)
+            $('.produto_telefone').html(retorno.fixo+" / "+retorno.cel)
+
+            $('#modal_descricao_favorito').modal();
+            
+        },
+        error: function(retorno){
+            alert('Erro no sistema! cod-02')
+        }
+    })
+});
+
+

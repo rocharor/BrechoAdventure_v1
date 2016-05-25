@@ -49,28 +49,4 @@ $('.act-descricao').click(function(e){
 
 
 
-/**
-* Atualiza produtos
-*/
-var atualizaAnuncios = function(categoria){
-    var filtros = $('.chk_filtro');
-    window.location.href = '/brechoAdventure/site/produtos/'+categoria;
-
-    addCarregando();
-    setTimeout (
-        function (){
-           removeCarregando();
-        },
-    500);
-
-    /*$.ajax({
-        url:'/brechoadventure/site/produtos/',
-        type:'POST',
-        data:{'dados':categoria,
-        'act':'filtro'},
-        success:function(){
-
-        }
-    })*/
-}
 

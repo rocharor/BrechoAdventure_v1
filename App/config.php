@@ -22,7 +22,7 @@
     define('INC_ROOT',str_replace('\\','/',dirname(__DIR__)));
     define('_PUBLIC_',$caminho);
     define('_CONFIG_',INC_ROOT.'/App/Sistema/config/');
-    define('_IMAGENS_',INC_ROOT.'/Public/imagens/');
+    define('_IMAGENS_',$caminho.'/imagens');
 
     define('CONTROLLERS',  INC_ROOT.'/App/Modulos/Site/Controllers/');
     define('VIEWS', INC_ROOT.'/App/Modulos/Site/Views/');

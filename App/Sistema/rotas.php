@@ -120,9 +120,9 @@
         return false;
     });
     
-    $app->post('/favorito/setFavorito/', function () {
-        $objFavorito = new Favorito();
-        $objFavorito->setFavoritoAction();
+    $app->post('/MeusFavoritos/setFavorito/', function () {
+        $objMeusFavorito = new MeusFavoritos();
+        $objMeusFavorito ->setFavoritoAction();
         return false;
     });
         

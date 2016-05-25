@@ -1,26 +1,29 @@
 <h1 class="text-danger">FAVORITOS</h1>
-
-<table class="table table-striped">
-    <tr>
-        <td align="center" style="width: 300px;"><b>Titulo</b></td>
-        <td align="center" style="width: 520px;"><b>Descrição</b></td>
-        <td align="center"><b>Valor</b></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    {foreach from=$favoritos item=favorito}
-        {assign var=imagem value="|"|explode:$favorito.nm_imagem}
-        <tr>
-            <td>{$favorito.titulo}</td>
-            <td>{$favorito.descricao}</td>
-            <td>R$ {$favorito.valor}</td>
-            <td><img src="{$smarty.const._IMAGENS_}/produtos/{$imagem.0}" width="60px" height="60px"/></td>
-            <td><a class="btn btn-success act-ver-favorito" data-produto-id="{$favorito.produto_id}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-            <td><a class="btn btn-danger act-excluir-favorito" data-produto-id="{$favorito.produto_id}"><span class="glyphicon glyphicon-trash"></span></a></td>
-        </tr>
-    {/foreach}
-</table>
+{if $favoritos|@count eq 0}
+     <div class="well" align="center"><b><i>Voc&ecirc; n&atilde;o possui nenhum favorito cadastrados</i></b></div>
+{else}
+	<table class="table table-striped">
+	    <tr>
+	        <td align="center" style="width: 300px;"><b>Titulo</b></td>
+	        <td align="center" style="width: 520px;"><b>Descrição</b></td>
+	        <td align="center"><b>Valor</b></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	    </tr>
+	    {foreach from=$favoritos item=favorito}
+	        {assign var=imagem value="|"|explode:$favorito.nm_imagem}
+	        <tr>
+	            <td>{$favorito.titulo}</td>
+	            <td>{$favorito.descricao}</td>
+	            <td>R$ {$favorito.valor}</td>
+	            <td><img src="{$smarty.const._IMAGENS_}/produtos/{$imagem.0}" width="60px" height="60px"/></td>
+	            <td><a class="btn btn-success act-ver-favorito" data-produto-id="{$favorito.produto_id}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+	            <td><a class="btn btn-danger act-excluir-favorito" data-produto-id="{$favorito.produto_id}"><span class="glyphicon glyphicon-trash"></span></a></td>
+	        </tr>
+	    {/foreach}
+	</table>
+{/if}
 
 <!--Modal descricao-->
 <div class="modal fade" id='modal_descricao_favorito'>
@@ -69,4 +72,4 @@
     var url_descricao = "{$smarty.const._PUBLIC_}/Produto/getDescricaoProduto/";
 </script>
 
-<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/favorito.js"></script>
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/minhaConta/meusFavorito.js"></script>

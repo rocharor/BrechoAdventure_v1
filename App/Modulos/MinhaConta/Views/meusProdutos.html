@@ -1,28 +1,28 @@
 <h1 class="text-danger">MEUS ANUNCIOS</h1>
 <div class="row">
-    {if $meusAnuncios|@count eq 0}
-        <div class="well" align="center"><b><i>Voc&ecirc; n&atilde;o possui an&uacute;ncios cadastrados</i></b></div>
+    {if $meusProdutos|@count eq 0}
+        <div class="well" align="center"><b><i>Voc&ecirc; n&atilde;o possui produtos cadastrados</i></b></div>
     {else}
         {counter assign=i start=0 print=false}
-        {foreach from=$meusAnuncios item=anuncio}
+        {foreach from=$meusProdutos item=produto}
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" style="border: solid 0px;">
                 <div style="width: 300px; height: 20px;">
-                    {if $anuncio.status eq 0}
+                    {if $produto.status eq 0}
                         <span class="label label-danger">Produto exclu&iacute;do</span>
                     {else}
-                        Data de cadastro: <b>{$anuncio.data_cadastro}</b>
+                        Data de cadastro: <b>{$produto.data_cadastro}</b>
                     {/if}
                 </div>
                 <div style="width: 300px; height: 280px; position: relative;">
-                    {if $anuncio.img_principal eq ''}
-                        <img src="{$link}{$anuncio.caminho_imagem}/padrao.gif" style="width: 90%; height: 90%;">
+                    {if $produto.img_principal eq ''}
+                        <img src="{$smarty.const._PUBLIC_}/imagens/produtos/padrao.gif" style="width: 90%; height: 90%;">
                     {else}
-                        <img src="{$link}{$anuncio.caminho_imagem}{$anuncio.img_principal}" style="width: 90%; height: 90%;">
+                        <img src="{$smarty.const._PUBLIC_}/imagens/produtos/{$produto.img_principal}" style="width: 90%; height: 90%;">
                     {/if}
                 </div>
                 <div>
-                    <button class="btn btn-success act-editar-anuncio" data-id="{$anuncio.id}">Editar</button>
-                    <button class="btn btn-danger act-excluir-anuncio" data-id="{$anuncio.id}">Excluir</button>
+                    <button class="btn btn-success act-editar-anuncio" data-id="{$produto.id}">Editar</button>
+                    <button class="btn btn-danger act-excluir-anuncio" data-id="{$produto.id}">Excluir</button>
                 </div>
             </div>
             {counter}

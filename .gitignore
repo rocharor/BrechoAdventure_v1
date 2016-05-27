@@ -1,6 +1,6 @@
 vendor/
 cadastro/
-!cadastro/padrao.jpg
+!padrao.jpg
 composer.lock
 .project
 .buildpath

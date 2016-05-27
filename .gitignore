@@ -1,5 +1,6 @@
 vendor/
 cadastro/
+produtos/
 composer.lock
 .project
 .buildpath

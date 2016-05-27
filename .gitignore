@@ -1,6 +1,5 @@
 vendor/
-imagens/cadastro/*
-imagens/produtos/*
+/Public/imagens/cadastro/*
 composer.lock
 .project
 .buildpath

@@ -87,5 +87,15 @@ class ProdutoModel {
             return false;
         }
     }
+    
+    public function getCategoriasProduto(){
+        global $conn;
+    
+        $sql = "SELECT cp.id, cp.categoria FROM categoria_produto cp";               
+    
+        $arrCategorias = $conn->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
+    
+        return $arrCategorias;
+    }
 
 }

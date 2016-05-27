@@ -1,3 +1,40 @@
+$('.act-excluir-produto').click(function(e){
+
+    var produto_id = $(this).attr('data-produto-id');
+
+    if(confirm('Deseja realmente excluir este produto?')){
+        $.ajax({
+        	url: url_deletar,
+            type:'POST',
+            dataType:'json',
+            data:{'produto_id':produto_id},
+            success:function(retorno){
+                if(retorno.sucesso == true){
+                    alert(retorno.msg);
+                    window.location.reload();
+                }else{
+                    alert(retorno.mensagem);
+                }
+            },
+            error:function(){
+                alert('Erro no sistema! cod-G1');
+            }
+        })
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 $('.act-editar-anuncio').click(function(e){
     e.preventDefault();
@@ -50,29 +87,7 @@ $('.act-editar-anuncio').click(function(e){
     })
 });
 
-$('.act-excluir-anuncio').click(function(e){
 
-    var id = $(this).data('id');
-    if(confirm('Deseja realmente excluir este anúncio?')){
-        $.ajax({url:'',
-            type:'POST',
-            dataType:'json',
-            data:{'act':'exclui_anuncio',
-                  'id':id},
-            success:function(retorno){
-                if(retorno.sucesso == true){
-                    alert(retorno.mensagem);
-                    window.location.reload();
-                }else{
-                    alert(retorno.mensagem);
-                }
-            },
-            error:function(){
-                alert('Erro no sistema! cod-G1');
-            }
-        })
-    }
-});
 
 $('.act-salvar-alteracao').click(function(e){
     e.preventDefault();

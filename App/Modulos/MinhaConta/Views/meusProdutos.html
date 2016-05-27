@@ -1,4 +1,4 @@
-<h1 class="text-danger">MEUS ANUNCIOS</h1>
+<h1 class="text-danger">MEUS PRODUTOS</h1>
 <div class="row">
     {if $meusProdutos|@count eq 0}
         <div class="well" align="center"><b><i>Voc&ecirc; n&atilde;o possui produtos cadastrados</i></b></div>
@@ -21,8 +21,8 @@
                     {/if}
                 </div>
                 <div>
-                    <button class="btn btn-success act-editar-anuncio" data-id="{$produto.id}">Editar</button>
-                    <button class="btn btn-danger act-excluir-anuncio" data-id="{$produto.id}">Excluir</button>
+                    <a href="{$smarty.const._PUBLIC_}/MeusProdutos/meusProdutosEditar/produto/{$produto.id}" class="btn btn-success" data-produto-id="{$produto.id}">Editar</a>
+                    <button class="btn btn-danger act-excluir-produto" data-produto-id="{$produto.id}">Excluir</button>
                 </div>
             </div>
             {counter}
@@ -33,65 +33,9 @@
     {/if}
 </div>
 
-<!--Modal Editar-->
-<div class="modal fade" id='update_produto'>
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <div class="modal-header" style="background-color: #fedd7a;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4><b>Dados do produto</b></h4>
-            </div>
-
-            <div class="modal-body" style="background-color: #F3BC55;">
-                <img src="{$link}imagens/carregando.gif" width="50" class="carregando" /> <br>
-                <label>Titulo:</label><input type="text" class="form-control" id='titulo_produto_upd' style="width: 400px;" />
-                <label>Categoria:</label>
-                    <select class="form-control" id="categoria_produto_upd" style="width: 400px;">
-                        <option>Mochila</option>
-                        <option>Cantil</option>
-                    </select>
-                <label>Descrição:</label><br><textarea id="desc_produto_upd" class="form-control" rows="5" style="width: 400px;"></textarea> <br>
-                <table>
-                    <tr>
-                        <td colspan="2"><label>Tipo de Produto:</label></td>
-                    </tr>
-                    <tr>
-                        <td align="center">Novo:</label></td>
-                        <td><input type="radio" id="Novo_upd" name="tipo_produto_upd" value="novo"><br></td>
-                    </tr>
-                    <tr>
-                        <td align="center">Usado:</td>
-                        <td><input type="radio" id="Usado_upd" name="tipo_produto_upd" value="usado"><br><br></td>
-                    </tr>
-                    <tr class="inputs">
-                    </tr>
-                </table>
-
-                <label>Fotos: </label>
-                <div class="fotos"></div>
-                <!--
-                <input type="file" class="form-control" id='foto1' style="width: 400px;" />
-                <input type="file" class="form-control" id='foto2' style="width: 400px;" />
-                <input type="file" class="form-control" id='foto3' style="width: 400px;" />-->
-
-                <label>Preço:</label><input type="text" class="form-control" id='valor_produto_upd' maxlength="10" style="width: 400px;" />
-
-            </div>
-
-            <div class="modal-footer" style="background-color: #fedd7a;">
-                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.reload()">Fechar</button>
-                <button type="button" class="btn btn-primary act-salvar-alteracao" data-id=''>Salvar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-{literal}
 <script>
-    $("#valor_produto_upd").maskMoney({prefix:'R$ ',thousands:'.',decimal:','});
+	var url_deletar = "{$smarty.const._PUBLIC_}/MeusProdutos/deletarProduto/";
 </script>
-{/literal}
 
-<script type="text/javascript" src="{$link}js/minhaConta/meusAnuncios.js"></script>
 
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/minhaConta/meusProdutos.js"></script>

@@ -15,9 +15,9 @@
 	            <div>
 	                <label>Categoria:</label>
 	                <select class="form-control" name="categoria_produto" style="width: 400px;">
-	                    <option></option>
-	                    <option>Mochila</option>
-	                    <option>Cantil</option>
+	                    {foreach from=$arrCategorias item=categoria}
+			            		<option value='{$categoria.id}'>{$categoria.categoria}</option>
+			            {/foreach}
 	                </select>
 	            </div>
 	            <br>

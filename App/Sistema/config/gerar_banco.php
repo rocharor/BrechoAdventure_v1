@@ -45,7 +45,7 @@
       `data_cadastro` datetime DEFAULT NULL,
       `data_alteracao` datetime DEFAULT NULL,
       PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8",
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8",
 
     "mensagens"=>
     "CREATE TABLE `mensagens` (
@@ -57,7 +57,7 @@
       `status_resposta` int(11) DEFAULT '0',
       `data_mensagem` datetime DEFAULT NULL,
       PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8",
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8",
 
     "produtos"=>
     "CREATE TABLE `produtos` (
@@ -74,7 +74,7 @@
       `data_exclusao` datetime DEFAULT NULL,
       `status` int(11) DEFAULT NULL,
       PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8",
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8",
 
     "favoritos"=>
     "CREATE TABLE `favoritos` (
@@ -85,7 +85,18 @@
       `data_cadastro` datetime DEFAULT NULL,
       `data_exclusao` datetime DEFAULT NULL,
       PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8"
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8",
+        
+    "categoria_produto"=>
+    "CREATE TABLE `categoria_produto` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `categoria` varchar(100) DEFAULT NULL,  
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8",
+        
+    "Inserts"=>
+    "INSERT INTO categoria_produto (categoria) VALUES ('Aquatico'),('Camping'),('Ciclismo'),('Fitnes'),('Trilha & Trekking'),('Escalada');"
+        
     ];
 
     mysqli_select_db($con, $db);

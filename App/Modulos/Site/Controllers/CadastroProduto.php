@@ -12,9 +12,10 @@ class CadastroProduto extends Controller
     public function indexAction()
     {
         $usuario_id = Sessao::pegaSessao('logado');
+        $objProduto = new ProdutoModel();
+        $arrCategorias = $objProduto->getCategoriasProduto();
         
-        $autorizado = true;
-        
+        $autorizado = true;        
         if($usuario_id){
             $objCadastro = new CadastroModel();
             $dadosUsuario = $objCadastro->getUsuario(['id'=>$usuario_id]);            
@@ -28,7 +29,8 @@ class CadastroProduto extends Controller
         $variaveis = [
             'pagina_main' => 'cadastroProduto.html',
             'msg' => '',
-            'autorizado'=>$autorizado
+            'autorizado'=>$autorizado,
+            'arrCategorias'=>$arrCategorias
         ];
         
         $this->view('main', $variaveis);
@@ -79,10 +81,15 @@ class CadastroProduto extends Controller
                     $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Erro ao inserir produto</div>';
                 }
             }
+            
+        $objProduto = new ProdutoModel();
+        $arrCategorias = $objProduto->getCategoriasProduto();
+        
         $variaveis = [
             'pagina_main' => 'cadastroProduto.html',
             'msg' => $msg,
-            'autorizado' => true
+            'autorizado' => true,
+            'arrCategorias'=>$arrCategorias
         ];
         
         $this->view('main', $variaveis);

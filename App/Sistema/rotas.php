@@ -125,6 +125,19 @@
         $objMeusFavorito ->setFavoritoAction();
         return false;
     });
+
+    $app->post('/MeusProdutos/deletarProduto/', function () {   
+        $objMeusProdutos = new MeusProdutos();
+        $objMeusProdutos->deletarProdutoAction();
+        return false;
+    });
+    
         
+    $app->get('/MeusProdutos/meusProdutosEditar/produto/{produto_id}/', function ($produto_id) {   
+        $objMeusProdutos = new MeusProdutos();
+        $objMeusProdutos->meusProdutosEditarAction($produto_id);
+        return false;
+    });
+    
     
     $app->run();

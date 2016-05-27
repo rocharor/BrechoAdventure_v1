@@ -2,19 +2,15 @@
 
     use Rocharor\Sistema\Conexao;
     use Rocharor\Sistema\Sessao;
-
-    /**
-     * Display de erros
-     * 0 => não mostra
-     * 1 => mostra
-     */
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    
+ 
     if($_SERVER['HTTP_HOST'] == 'localhost'){
-        $caminho = '/BrechoAdventure/Public';
+        $caminho = '/BrechoAdventure/Public';        
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);        
     }else{
         $caminho = '';
+        error_reporting(E_ALL);
+        ini_set('display_errors', 0);
     }
 
     Sessao::abrirSessao();
@@ -22,7 +18,7 @@
     define('INC_ROOT',str_replace('\\','/',dirname(__DIR__)));
     define('_PUBLIC_',$caminho);
     define('_CONFIG_',INC_ROOT.'/App/Sistema/config/');
-    define('_IMAGENS_',$caminho.'/imagens');
+    define('_IMAGENS_',INC_ROOT.'/Public/imagens/');
 
     define('CONTROLLERS',  INC_ROOT.'/App/Modulos/Site/Controllers/');
     define('VIEWS', INC_ROOT.'/App/Modulos/Site/Views/');

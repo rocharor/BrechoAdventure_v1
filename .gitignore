@@ -1,4 +1,7 @@
 vendor/
+Public/imagens/cadastro/*
+Public/imagens/produtos/*
+!padrao.jpg
 composer.lock
 .project
 .buildpath

@@ -29,7 +29,7 @@ $('.act-excluir-produto').click(function(e){
 
 
 
-
+$("#valor_produto_update").maskMoney({prefix:'R$ ',thousands:'.',decimal:','});
 
 
 

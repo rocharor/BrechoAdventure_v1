@@ -10,7 +10,8 @@ class MeusProdutosModel {
 
         $usuario_id = (int)$usuario_id;
 
-        $sql = "SELECT * FROM produtos WHERE usuario_id = {$usuario_id} ORDER BY id DESC";
+        $sql = "SELECT * FROM produtos WHERE usuario_id = {$usuario_id} ORDER BY status DESC, id DESC ";
+   
 
         $arrProdutos = array();
         $rs = $conn->query($sql);

@@ -17,7 +17,7 @@
 	            <td>{$favorito.titulo}</td>
 	            <td>{$favorito.descricao}</td>
 	            <td>R$ {$favorito.valor}</td>
-	            <td><img src="{$smarty.const._IMAGENS_}produtos/{$imagem.0}" width="60px" height="60px"/></td>
+                <td><img src="{$smarty.const._PUBLIC_}/imagens/produtos/{$imagem.0}" width="60px" height="60px"/></td>
 	            <td><a class="btn btn-success act-ver-favorito" data-produto-id="{$favorito.produto_id}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 	            <td><a class="btn btn-danger act-excluir-favorito" data-produto-id="{$favorito.produto_id}"><span class="glyphicon glyphicon-trash"></span></a></td>
 	        </tr>
@@ -37,7 +37,7 @@
                 <h2 align="center"><span id='titulo'></span></h2>
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner produto_fotos" id='fotos' role="listbox">
-                        <!-- IMAGENS -->                        
+                        <!-- IMAGENS -->
                     </div>
 
                     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

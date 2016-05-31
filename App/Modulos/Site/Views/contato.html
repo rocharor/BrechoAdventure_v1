@@ -1,6 +1,9 @@
 <div align="center">
     <h1 class="text-warning">CONTATO</h1>
     {$msg}
+
+    <img src="{$smarty.const._PUBLIC_}/imagens/carregando.gif" class="hide carregando" />
+
     <form action="{$smarty.const._PUBLIC_}/contato/" method="POST" name="form" id="form"  >
         <label>Nome:</label>  <br> <input class="form-control" type="text" name="nome" id="nome">
         <label>Email:</label> <br> <input class="form-control" type="text" name="email" id="email">
@@ -13,7 +16,7 @@
         <label>Mensagem:</label>
         <textarea class="form-control" name="mensagem" id="mensagem" rows="5"></textarea><br>
 
-        <input type="button" value="Enviar" class="btn btn-success btn-enviar">
+        <input type="button" value="Enviar" class="btn btn-success btn-contato btn-enviar">
     </form>
 </div>
 

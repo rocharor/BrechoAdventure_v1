@@ -14,38 +14,38 @@ class CadastroProduto extends Controller
         $usuario_id = Sessao::pegaSessao('logado');
         $objProduto = new ProdutoModel();
         $arrCategorias = $objProduto->getCategoriasProduto();
-        
-        $autorizado = true;        
+
+        $autorizado = true;
         if($usuario_id){
             $objCadastro = new CadastroModel();
-            $dadosUsuario = $objCadastro->getUsuario(['id'=>$usuario_id]);            
-            
+            $dadosUsuario = $objCadastro->getUsuario(['id'=>$usuario_id]);
+
             if($dadosUsuario[0]['telefone_cel'] == ''){
                 $autorizado = false;
             }
-            
+
         }
-                
+
         $variaveis = [
             'pagina_main' => 'cadastroProduto.html',
             'msg' => '',
             'autorizado'=>$autorizado,
             'arrCategorias'=>$arrCategorias
         ];
-        
+
         $this->view('main', $variaveis);
     }
 
     public function cadastrarAction()
     {
         $usuario_id = Sessao::pegaSessao('logado');
-        
+
         $titulo = $_POST['titulo_produto'];
         $categoria = $_POST['categoria_produto'];
         $descricao = $_POST['desc_produto'];
         $tipo = $_POST['tipo_produto'];
         $valor = str_replace(['R$ ','.',','], ['','','.'], $_POST['valor_produto']);
-        
+
         $fotos = [];
         if ($_FILES['foto1']['name'] != '') {
             $fotos[] = $_FILES['foto1'];
@@ -56,42 +56,42 @@ class CadastroProduto extends Controller
         if ($_FILES['foto3']['name'] != '') {
             $fotos[] = $_FILES['foto3'];
         }
-    
+
         if (count($fotos) == 0) {
             $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Necessário escolher pelo menos 1 foto</div>';
-        } else 
+        } else
             if (! $this->validaExtImagem($fotos)) {
                 $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Uma ou mais fotos estão com formato não permitido</div>';
-            } else {        
+            } else {
                 foreach ($fotos as $key=>$foto) {
                     $arrNomeFoto = explode('.',$foto['name']);
-                    $extencao = end($arrNomeFoto);                   
-                    $foto_nome = $usuario_id . '_' . $key . '_' .date('d-m-Y_h:i:s') . '.' . $extencao;           
+                    $extencao = end($arrNomeFoto);
+                    $foto_nome = $usuario_id . '_' . $key . '_' .date('d-m-Y_h_i_s') . '.' . $extencao;
                     move_uploaded_file($foto['tmp_name'], _IMAGENS_ . 'produtos/' . $foto_nome);
                     $nome_fotos[] = $foto_nome;
                 }
                 $nome_fotos = implode('|', $nome_fotos);
-                
+
                 $produtoModel = new ProdutoModel();
-                $retorno = $produtoModel->setProduto($titulo, $categoria, $descricao, $tipo, $valor, $nome_fotos);
-                
+                $retorno = $produtoModel->setProduto($usuario_id,$titulo, $categoria, $descricao, $tipo, $valor, $nome_fotos);
+
                 if ($retorno) {
                     $msg = '<div class="alert alert-success" align="center" style="width: 400px;">Produto inserido com sucesso</div>';
                 } else {
                     $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Erro ao inserir produto</div>';
                 }
             }
-            
+
         $objProduto = new ProdutoModel();
         $arrCategorias = $objProduto->getCategoriasProduto();
-        
+
         $variaveis = [
             'pagina_main' => 'cadastroProduto.html',
             'msg' => $msg,
             'autorizado' => true,
             'arrCategorias'=>$arrCategorias
         ];
-        
+
         $this->view('main', $variaveis);
     }
 }

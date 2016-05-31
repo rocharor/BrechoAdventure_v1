@@ -63,22 +63,13 @@ class ProdutoModel {
         return $arrProduto;
     }
 
-    public function setProduto($titulo,$categoria,$descricao,$tipo,$valor,$nome_fotos)
+    public function setProduto($usuario_id,$titulo,$categoria,$descricao,$tipo,$valor,$nome_fotos)
     {
         global $conn;
 
-        /*$titulo = $_POST['titulo_produto'];
-        $categoria = $_POST['categoria_produto'];
-        $descricao = $_POST['desc_produto'];
-        $tipo = $_POST['tipo_produto'];
-         $foto1 = $_FILES['foto1'];
-        $foto2 = $_FILES['foto2'];
-        $foto3 = $_FILES['foto3'];
-        $valor = $_POST['valor_produto'];
-        */
         $sql = "INSERT INTO produtos (usuario_id,categoria,titulo,descricao,valor,estado,nm_imagem,data_cadastro,status) VALUES (:usuario_id,:categoria,:titulo,:descricao,:valor,:estado,:nm_imagem,NOW(),1)";
 
-        $param = [':usuario_id'=>1,':categoria'=>$categoria,':titulo'=>$titulo,':descricao'=>$descricao,':valor'=>$valor,':estado'=>$tipo,':nm_imagem'=>$nome_fotos];
+        $param = [':usuario_id'=>$usuario_id,':categoria'=>$categoria,':titulo'=>$titulo,':descricao'=>$descricao,':valor'=>$valor,':estado'=>$tipo,':nm_imagem'=>$nome_fotos];
 
         $rs = $conn->prepare($sql);
         if($rs->execute($param)){
@@ -87,14 +78,14 @@ class ProdutoModel {
             return false;
         }
     }
-    
+
     public function getCategoriasProduto(){
         global $conn;
-    
-        $sql = "SELECT cp.id, cp.categoria FROM categoria_produto cp";               
-    
+
+        $sql = "SELECT cp.id, cp.categoria FROM categoria_produto cp";
+
         $arrCategorias = $conn->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
-    
+
         return $arrCategorias;
     }
 

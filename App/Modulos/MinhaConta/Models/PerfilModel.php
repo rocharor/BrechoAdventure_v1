@@ -13,8 +13,8 @@ class PerfilModel {
         global $conn;
 
         if($foto){
-            $sql = "UPDATE usuarios SET nome_imagem = :nm_arq, data_alteracao = NOW() WHERE id = {$user_id}";
-            $param = array(':nm_arq'=>$dados['nm_arq']);
+            $sql = "UPDATE usuarios SET nome_imagem = :nm_foto, data_alteracao = NOW() WHERE id = {$user_id}";
+            $param = array(':nm_foto'=>$foto);
 
             $rs = $conn->prepare($sql);
         }else{

@@ -9,9 +9,9 @@
     use Rocharor\MinhaConta\Controllers\MeusProdutos;
     use Rocharor\MinhaConta\Controllers\MeusFavoritos;
     use Rocharor\Site\Controllers\Favorito;
-    
+
     $app = new Silex\Application();
-    
+    $app['debug'] = true;
     // ======================
     // Links Menu
     // ======================
@@ -20,19 +20,19 @@
         $objHome->indexAction();
         return false;
     });
-    
+
     $app->get('/produto/', function () {
         $objContato = new Produto();
         $objContato->indexAction();
         return false;
     });
-    
+
     $app->get('/contato/', function () {
         $objContato = new Contato();
         $objContato->indexAction();
         return false;
     });
-    
+
     // ======================
     // Topo
     // ======================
@@ -41,103 +41,108 @@
         $objLogin->indexAction();
         return false;
     });
-    
+
     $app->post('/Login/deslogar/', function () {
         $objLogin = new Login();
         $objLogin->deslogarAction();
         return false;
     });
-    
+
     $app->post('/cadastro/', function () {
         $objLogin = new Cadastro();
         $objLogin->indexAction();
         return false;
     });
-    
+
     $app->get('/CadastroProduto/', function () {
         $objLogin = new CadastroProduto();
         $objLogin->indexAction();
         return false;
     });
-    
+
     $app->get('/Perfil/', function () {
         $objLogin = new Perfil();
         $objLogin->indexAction();
         return false;
     });
-    
+
     $app->get('/MeusProdutos/', function () {
         $objLogin = new MeusProdutos();
         $objLogin->indexAction();
         return false;
     });
-    
+
     $app->get('/MeusFavoritos/', function () {
         $objLogin = new MeusFavoritos();
         $objLogin->indexAction();
         return false;
     });
-    
+
     // ======================
     // Ações paginas
     // ======================
-    
+
     $app->post('/CadastroProduto/cadastrar/', function () {
         $objLogin = new CadastroProduto();
         $objLogin->cadastrarAction();
         return false;
     });
-    
+
     $app->get('/produto/todosProdutos/pg/{pg_num}/', function ($pg_num) {
         $objLogin = new Produto($pg_num);
         $objLogin->todosProdutosAction();
         return false;
     });
-    
+
     $app->post('/contato/', function () {
         $objContato = new Contato();
         $objContato->indexAction();
         return false;
     });
-    
-    
+
+
     $app->post('/Perfil/updateFoto/', function () {
         $objContato = new Perfil();
         $objContato->updateFotoAction();
         return false;
     });
-    
+
     $app->post('/Perfil/updatePerfil/', function () {
         $objContato = new Perfil();
         $objContato->updatePerfilAction();
         return false;
     });
-    
-    
+
+
     $app->post('/Produto/getDescricaoProduto/', function () {
         $objContato = new Produto();
         $objContato->getDescricaoProdutoAction();
         return false;
     });
-    
+
     $app->post('/MeusFavoritos/setFavorito/', function () {
         $objMeusFavorito = new MeusFavoritos();
         $objMeusFavorito ->setFavoritoAction();
         return false;
     });
 
-    $app->post('/MeusProdutos/deletarProduto/', function () {   
+    $app->post('/MeusProdutos/deletarProduto/', function () {
         $objMeusProdutos = new MeusProdutos();
         $objMeusProdutos->deletarProdutoAction();
         return false;
     });
-    
-        
-    $app->get('/MeusProdutos/meusProdutosEditar/produto/{produto_id}/', function ($produto_id) {   
+
+
+    $app->get('/MeusProdutos/meusProdutosEditar/produto/{produto_id}/', function ($produto_id) {
         $objMeusProdutos = new MeusProdutos();
         $objMeusProdutos->meusProdutosEditarAction($produto_id);
         return false;
     });
-    
-    
+
+    $app->error(function(){
+        $objHome = new Home();
+        $objHome->erroAction();
+        return false;
+    });
+
     $app->run();

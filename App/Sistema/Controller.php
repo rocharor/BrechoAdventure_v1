@@ -4,14 +4,10 @@ namespace Rocharor\Sistema;
 
 use Rocharor\Sistema\Sessao;
 
-class Controller {
-
-    public function __construct() {
-        global $start;
-        //$this->parametros = $start->getParametros();
-    }
-
-    public function view($arquivo = null, $variaveis = array()) {
+abstract class Controller
+{
+    public function view($arquivo = null, $variaveis = array())
+    {
         global $start, $smarty;
 
         if (is_null($arquivo)) {
@@ -30,14 +26,19 @@ class Controller {
             $smarty->assign('logado', Sessao::pegaSessao('logado'));
             $smarty->assign('nome_imagem', Sessao::pegaSessao('nome_imagem'));
 
-            $smarty->display('main.html');
+            if($arquivo == '404'){
+                $smarty->display('404.html');
+            }else{
+                $smarty->display('main.html');
+            }
+
         } else {
             $start->erro(404);
         }
     }
 
-    public function validaExtImagem($arquivo_file){
-
+    public function validaExtImagem($arquivo_file)
+    {
         $extencoes = array('jpg','png','gif');
 
         foreach($arquivo_file as $file){

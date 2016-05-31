@@ -45,36 +45,39 @@
          <input type="text" class="form-control" id="valor_produto_update" value="{$descProduto.valor}" maxlength="10" style="width: 400px;" />
      </div>
      <br>
-     
-		{assign var=arrImagem value="|"|explode:$descProduto.nm_imagem}
-		{assign var=countImagem value=$arrImagem|count}
-		
-		{foreach from=$arrImagem item=imagem}
-			<div class="col-md-4">
-				<div style="width: 250px; height: 250px;">
-					<a class="btn btn-danger"  style="position: absolute;">EXCLUIR</a>
-					<img class="img-thumbnail" src="{$smarty.const._PUBLIC_}/imagens/produtos/{$imagem}" alt="" style="width: 100%; height: 100%;">				
-				</div>
-			</div>		
-		{/foreach}
+     	{assign var=countImagem value=0}
+		{if $descProduto.nm_imagem neq ""}
+			{assign var=arrImagem value="|"|explode:$descProduto.nm_imagem}
+			{assign var=countImagem value=$arrImagem|count}
+	
+			{foreach from=$arrImagem item=imagem}
+				<div class="col-md-4">
+					<div style="width: 250px; height: 250px;">
+						<a class="btn btn-danger act-excluir-foto" data-foto="{$imagem}" data-produto-id="{$produto_id}"  style="position: absolute;">EXCLUIR</a>
+						<img class="img-thumbnail" src="{$smarty.const._PUBLIC_}/imagens/produtos/{$imagem}" alt="" style="width: 100%; height: 100%;">				
+					</div>
+				</div>		
+			{/foreach}
+		{/if}
 		
 	<br style="clear: both;"><br>	
 	{if $countImagem neq 3}
 		<div style="border: solid 0px;">
 			<label>Fotos: </label><small>(Obrigatório no mínimo 1 foto)</small>
 			{for $foo=$countImagem to 2}
-				{$foo}<input type="file" class="form-control" name='foto{$foo}' style="width: 400px;" />				
+				<input type="file" class="form-control" name='foto{$foo}' style="width: 400px;" />				
 			{/for}
 		</div>
 	{/if}  
 	
 	<br />
-    <button type="button" class="btn btn-primary act-alterar-produto"> Salvar alteração </button>
+    <button type="button" class="btn btn-primary act-alterar-produto" data-produto-id="{$produto_id}"> Salvar alteração </button>
  </form>
 
 
-<script>
-	var url_deletar = "{$smarty.const._PUBLIC_}/MeusProdutos/deletarProduto/";
+<script>	
+	var url_deletar_foto = "{$smarty.const._PUBLIC_}/MeusProdutos/deletarFoto/";
+	var url_alterar_produto = "{$smarty.const._PUBLIC_}/MeusProdutos/alterarProduto/";
 </script>
 
 <script type="text/javascript" language="javascript" src="{$smarty.const._PUBLIC_}/libs/jquery/jquery.maskMoney.min.js"></script>

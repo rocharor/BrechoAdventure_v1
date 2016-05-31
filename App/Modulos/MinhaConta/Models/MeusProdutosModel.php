@@ -39,4 +39,22 @@ class MeusProdutosModel {
         }
         
     }
+    
+    public function deletarFotoProduto($produto_id,$nm_imagem)
+    {
+        global $conn;
+    
+        $sql = "UPDATE produtos SET nm_imagem = :nm_imagem WHERE id = :produto_id";
+    
+        $parametros = [':produto_id'=>$produto_id,':nm_imagem'=>$nm_imagem];
+    
+        $rs = $conn->prepare($sql);
+    
+        if($rs->execute($parametros)){
+            return true;
+        }else{
+            return false;
+        }
+    
+    }
 }

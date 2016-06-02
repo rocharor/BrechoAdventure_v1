@@ -23,7 +23,7 @@ $('.act-excluir-produto').click(function(e){
     }
 });
 
-$("#valor_produto_update").maskMoney({prefix:'R$ ',thousands:'.',decimal:','});
+
 
 $('.act-excluir-foto').click(function(){
 	
@@ -52,8 +52,6 @@ $('.act-excluir-foto').click(function(){
 
 
 
-
-
 $('.act-alterar-produto').click(function(e){
     e.preventDefault();
 
@@ -63,67 +61,38 @@ $('.act-alterar-produto').click(function(e){
     var descricao = $('#desc_produto_update').val();
     var estado    = $("input[name='tipo_produto_update']:checked").val()
     var valor     = $('#valor_produto_update').val();    
-
-    var erro = false;
-
+    
+    var $form = $('[name=formEditarProduto]');
+    
     
     if(titulo == ''){
         $('#titulo_produto_update').parent().addClass('has-error');
         alert('Campo titulo é obrigatório');
-        erro = true;
         return false;
     }
     if(categoria == ''){
         $('#categoria_produto_update').parent().addClass('has-error');
         alert('Campo categoria é obrigatório');
-        erro = true;
         return false;
     }
     if(descricao == ''){
         $('#desc_produto_update').parent().addClass('has-error');
         alert('Campo descricao é obrigatório');
-        erro = true;
         return false;
     }
     if(estado == ''){
         $("input[name='tipo_produto_update']").parent().addClass('has-error');
         alert('Campo estado é obrigatório');
-        erro = true;
         return false;
     }
     if(valor == ''){
         $('#valor_produto_update').parent().addClass('has-error');
         alert('Campo valor é obrigatório');
-        erro = true;
         return false;
     }  
-    
 
-    if(!erro){
-
-        $.ajax({url:url_alterar_produto,
-            type:'POST',
-            dataType:'json',
-            data:{'produto_id':produto_id,
-                  'titulo':titulo,
-                  'categoria':categoria,
-                  'descricao':descricao,
-                  'estado':estado,
-                  'valor':valor
-                },
-            success:function(retorno){
-                 if(retorno.sucesso == true){
-                    alert(retorno.mensagem);
-                    window.location.reload();
-                }else{
-                    alert(retorno.mensagem);
-                }
-            },
-            error:function(){
-                alert('Erro no sistema!');
-            }
-        })
-    }
+    $form.submit();
 });
 
 
+$("#valor_produto_update").maskMoney({prefix:'R$ ',thousands:'.',decimal:','});

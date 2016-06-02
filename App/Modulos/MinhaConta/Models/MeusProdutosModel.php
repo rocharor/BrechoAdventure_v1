@@ -54,7 +54,37 @@ class MeusProdutosModel {
             return true;
         }else{
             return false;
-        }
+        }    
+    }
     
+    public function alterarProduto($titulo,$categoria,$descricao,$estado,$valor,$nome_fotos,$produto_id){
+        global $conn;
+        
+        $sql = "UPDATE produtos 
+                SET titulo = :titulo 
+                AND categoria = :categoria
+                AND descricao = :descricao
+                AND estado = :estado
+                AND valor = :valor                
+                AND nm_imagem = :nm_imagem
+                WHERE id = :produto_id";
+        
+        $parametros = [ ':titulo'=>$titulo,
+                        ':categoria'=>$categoria,
+                        ':descricao'=>$descricao,
+                        ':estado'=>$estado,
+                        ':valor'=>$valor,
+                        'nm_imagem'=>$nome_fotos,
+                        ':produto_id'=>$produto_id           
+        ];
+        
+        $rs = $conn->prepare($sql);
+        
+        if($rs->execute($parametros)){
+            return true;
+        }else{
+            return false;
+        }       
+        
     }
 }

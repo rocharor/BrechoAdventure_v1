@@ -1,15 +1,15 @@
 <h1 class="text-danger">EDITAR PRODUTO</h1>
-
-<form action="{$smarty.const._PUBLIC_}/CadastroProduto/cadastrar/" method="post" name="form" enctype="multipart/form-data">
+{$msg}
+<form action="{$smarty.const._PUBLIC_}/MeusProdutos/alterarProduto/produto/{$produto_id}/" method="post" name="formEditarProduto" enctype="multipart/form-data">
      <div>
          <label>Titulo:</label>
-         <input type="text" class="form-control" id='titulo_produto_update' value="{$descProduto.titulo}" style="width: 400px;" />
+         <input type="text" class="form-control" name='titulo_produto_update' id='titulo_produto_update' value="{$descProduto.titulo}" style="width: 400px;" />
      </div>
      <br>
 
      <div>
          <label>Categoria:</label>
-         <select class="form-control" id="categoria_produto_update" style="width: 400px;">             
+         <select class="form-control" name="categoria_produto_update" id="categoria_produto_update" style="width: 400px;">             
              {foreach from=$arrCategorias item=categoria}
              	{if $categoria.id eq $descProduto.categoria}
              		<option value='{$categoria.id}' selected="selected">{$categoria.categoria}</option>
@@ -23,7 +23,7 @@
 
      <div>
          <label>Descrição:</label>
-         <textarea id="desc_produto_update" class="form-control" rows="5" style="width: 400px;">{$descProduto.descricao}</textarea>
+         <textarea name="desc_produto_update" id="desc_produto_update" class="form-control" rows="5" style="width: 400px;">{$descProduto.descricao}</textarea>
      </div>
      <br>
 
@@ -42,7 +42,7 @@
      
      <div>
          <label>Preço:</label>
-         <input type="text" class="form-control" id="valor_produto_update" value="{$descProduto.valor}" maxlength="10" style="width: 400px;" />
+         <input type="text" class="form-control" name="valor_produto_update" id="valor_produto_update" value="{$descProduto.valor}" maxlength="10" style="width: 400px;" />
      </div>
      <br>
      	{assign var=countImagem value=0}
@@ -71,7 +71,7 @@
 	{/if}  
 	
 	<br />
-    <button type="button" class="btn btn-primary act-alterar-produto" data-produto-id="{$produto_id}"> Salvar alteração </button>
+    <button type="button" class="btn btn-primary act-alterar-produto" data-produto-id="{$produto_id}"> Salvar alteração </button>    
  </form>
 
 

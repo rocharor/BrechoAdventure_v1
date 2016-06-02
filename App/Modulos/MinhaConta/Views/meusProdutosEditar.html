@@ -9,14 +9,14 @@
 
      <div>
          <label>Categoria:</label>
-         <select class="form-control" name="categoria_produto_update" id="categoria_produto_update" style="width: 400px;">             
+         <select class="form-control" name="categoria_produto_update" id="categoria_produto_update" style="width: 400px;">
              {foreach from=$arrCategorias item=categoria}
              	{if $categoria.id eq $descProduto.categoria}
              		<option value='{$categoria.id}' selected="selected">{$categoria.categoria}</option>
              	{else}
              		<option value='{$categoria.id}'>{$categoria.categoria}</option>
              	{/if}
-             {/foreach}             
+             {/foreach}
          </select>
      </div>
      <br>
@@ -29,53 +29,53 @@
 
      <div>
          <label>Tipo de Produto:</label><br>
-         {if $descProduto.estado eq 'novo'}
+         {if $descProduto.estado eq 'Novo'}
 	         <label><input type="radio" class="tipo_produto" name="tipo_produto_update" value="novo" checked="checked"> - Novo:</label><br>
 	         <label><input type="radio" class="tipo_produto" name="tipo_produto_update" value="usado"> - Usado:</label>
          {else}
          	 <label><input type="radio" class="tipo_produto" name="tipo_produto_update" value="novo"> - Novo:</label><br>
 	         <label><input type="radio" class="tipo_produto" name="tipo_produto_update" value="usado" checked="checked"> - Usado:</label>
          {/if}
-	         
+
      </div>
      <br>
-     
+
      <div>
          <label>Preço:</label>
-         <input type="text" class="form-control" name="valor_produto_update" id="valor_produto_update" value="{$descProduto.valor}" maxlength="10" style="width: 400px;" />
+         <input type="text" class="form-control" name="valor_produto_update" id="valor_produto_update" value="R$ {$descProduto.valor}" maxlength="10" style="width: 400px;" />
      </div>
      <br>
      	{assign var=countImagem value=0}
 		{if $descProduto.nm_imagem neq ""}
 			{assign var=arrImagem value="|"|explode:$descProduto.nm_imagem}
 			{assign var=countImagem value=$arrImagem|count}
-	
+
 			{foreach from=$arrImagem item=imagem}
 				<div class="col-md-4">
 					<div style="width: 250px; height: 250px;">
 						<a class="btn btn-danger act-excluir-foto" data-foto="{$imagem}" data-produto-id="{$produto_id}"  style="position: absolute;">EXCLUIR</a>
-						<img class="img-thumbnail" src="{$smarty.const._PUBLIC_}/imagens/produtos/{$imagem}" alt="" style="width: 100%; height: 100%;">				
+						<img class="img-thumbnail" src="{$smarty.const._PUBLIC_}/imagens/produtos/{$imagem}" alt="" style="width: 100%; height: 100%;">
 					</div>
-				</div>		
+				</div>
 			{/foreach}
 		{/if}
-		
-	<br style="clear: both;"><br>	
+
+	<br style="clear: both;"><br>
 	{if $countImagem neq 3}
 		<div style="border: solid 0px;">
 			<label>Fotos: </label><small>(Obrigatório no mínimo 1 foto)</small>
 			{for $foo=$countImagem to 2}
-				<input type="file" class="form-control" name='foto{$foo}' style="width: 400px;" />				
+				<input type="file" class="form-control" name='foto{$foo}' style="width: 400px;" />
 			{/for}
 		</div>
-	{/if}  
-	
+	{/if}
+
 	<br />
-    <button type="button" class="btn btn-primary act-alterar-produto" data-produto-id="{$produto_id}"> Salvar alteração </button>    
+    <button type="button" class="btn btn-primary act-alterar-produto" data-produto-id="{$produto_id}"> Salvar alteração </button>
  </form>
 
 
-<script>	
+<script>
 	var url_deletar_foto = "{$smarty.const._PUBLIC_}/MeusProdutos/deletarFoto/";
 	var url_alterar_produto = "{$smarty.const._PUBLIC_}/MeusProdutos/alterarProduto/";
 </script>

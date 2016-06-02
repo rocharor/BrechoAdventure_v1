@@ -105,18 +105,19 @@ $app->post('/MeusProdutos/deletarFoto/', function () {
     $objMeusProdutos->deletarFotoAction();
     return false;
 });
-    
+
 $app->get('/MeusProdutos/meusProdutosEditar/produto/{produto_id}', function ($produto_id) {
     $objMeusProdutos = new MeusProdutos();
     $objMeusProdutos->meusProdutosEditarAction($produto_id);
     return false;
-});  
+});
 
 $app->post('/MeusProdutos/alterarProduto/produto/{produto_id}/', function ($produto_id) {
-    $objMeusProdutos = new MeusProdutos();    
+    $objMeusProdutos = new MeusProdutos();
     $objMeusProdutos->alterarProdutoAction($produto_id);
     return false;
 });
+
 // ======================
 // MEUS FAVORITOS
 // ======================

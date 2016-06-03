@@ -6,11 +6,31 @@ use Rocharor\Sistema\Sessao;
 
 abstract class Controller
 {
-    public function view($arquivo = null, $variaveis = array())
+    public function view($arquivo, $variaveis = array())
     {
-        global $start, $smarty;
+        global $smarty;
 
-        if (is_null($arquivo)) {
+        if(file_exists(VIEWS . $arquivo . '.html')){
+            $view = VIEWS . $arquivo . '.html';
+        }elseif(file_exists(VIEWS_MC . $arquivo . '.html')){
+            $view = VIEWS_MC . $arquivo . '.html';
+        }else{
+            $view = VIEWS . '404.html';
+        }
+      
+        foreach ( $variaveis as $nomeVar => $valorVar ) {
+            $smarty->assign($nomeVar, $valorVar);
+        }
+        $smarty->assign('pagina_main', $view);
+        $smarty->assign('logado', Sessao::pegaSessao('logado'));
+        $smarty->assign('nome_imagem', Sessao::pegaSessao('nome_imagem'));
+        
+        $smarty->display('main.html');     
+        
+        /* 
+         //global $start, $smarty;
+         
+         if (is_null($arquivo)) {
             $controller = strtolower(str_replace('Controller', '', $start->getController()));
             $action = strtolower(str_replace('Action', '', $start->getAction()));
             $view = VIEWS . $controller . '/' . $action . '.html';
@@ -34,22 +54,6 @@ abstract class Controller
 
         } else {
             $start->erro(404);
-        }
-    }
-
-    public function validaExtImagem($arquivo_file)
-    {
-        $extencoes = array('jpg','png','gif');
-
-        foreach($arquivo_file as $file){
-            $ext = explode('.',$file['name']);
-            $ext = end($ext);
-
-            if(!in_array($ext,$extencoes)){
-               return false;
-            }
-        }
-
-        return true;
-    }
+        } */
+    }    
 }

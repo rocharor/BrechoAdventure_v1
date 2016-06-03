@@ -3,6 +3,7 @@
 
     use Rocharor\Sistema\Controller;
     use Rocharor\Sistema\Sessao;
+    use Rocharor\Sistema\Padrao;
     use Rocharor\Site\Models\CadastroModel;
     use Rocharor\MinhaConta\Models\PerfilModel;
 
@@ -59,8 +60,8 @@
         {
             $arquivo_file = $_FILES['arquivo'];
 
-            if($this->validaExtImagem([$arquivo_file])){
-
+            //if($this->validaExtImagem([$arquivo_file])){
+            if(Padrao::validaExtImagem([$arquivo_file])){
                 $usuario_id = Sessao::pegaSessao('logado');
 
                 $arrNomeFoto = explode('.',$arquivo_file['name']);

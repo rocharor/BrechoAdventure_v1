@@ -2,6 +2,7 @@
 namespace Rocharor\Site\Controllers;
 
 use Rocharor\Sistema\Sessao;
+use Rocharor\Sistema\Padrao;
 use Rocharor\Sistema\Controller;
 use Rocharor\Site\Models\ProdutoModel;
 use Rocharor\Site\Models\CadastroModel;
@@ -60,7 +61,8 @@ class CadastroProduto extends Controller
         if (count($fotos) == 0) {
             $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Necessário escolher pelo menos 1 foto</div>';
         } else
-            if (! $this->validaExtImagem($fotos)) {
+            //if (! $this->validaExtImagem($fotos)) {
+            if (! Padrao::validaExtImagem($fotos)) {
                 $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Uma ou mais fotos estão com formato não permitido</div>';
             } else {
                 foreach ($fotos as $key=>$foto) {

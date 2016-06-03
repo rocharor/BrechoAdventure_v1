@@ -7,12 +7,11 @@
 
         public function indexAction()
         {
-            $variaveis = ['pagina_main' => 'index.html',
-                          'active_1'=>'active',
+            $variaveis = ['active_1'=>'active',
                           'frase'=>'Prefiro carregar o peso de uma mochila nas costas do que o da consciência de não ter conhecido o mundo...'
             ];
 
-            $this->view('main',$variaveis);
+            $this->view('index',$variaveis);
         }
 
         public function erroAction()

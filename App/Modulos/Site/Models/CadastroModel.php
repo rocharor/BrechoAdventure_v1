@@ -2,7 +2,9 @@
 
 namespace Rocharor\Site\Models;
 
-class CadastroModel {
+use Rocharor\Condominio\Sistema\Model;
+
+class CadastroModel extends Model{
 
     public function setUsuario($nome, $apelido, $email, $senha)
     {

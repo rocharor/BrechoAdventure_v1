@@ -1,23 +1,35 @@
 <?php
-    namespace Rocharor\Site\Controllers;
+namespace Rocharor\Site\Controllers;
 
-    use Rocharor\Sistema\Controller;
+use Rocharor\Sistema\Controller;
+use Rocharor\Site\Models\HomeModel;
 
-    class Home extends Controller{
+class Home extends Controller
+{
 
-        public function indexAction()
-        {
-            $variaveis = ['active_1'=>'active',
-                          'frase'=>'Prefiro carregar o peso de uma mochila nas costas do que o da consciência de não ter conhecido o mundo...'
-            ];
-
-            $this->view('index',$variaveis);
-        }
-
-        public function erroAction()
-        {
-            $variaveis = [];
-
-            $this->view('404',$variaveis);
-        }
+    private $model;
+    
+    public function __construct()
+    {
+        $this->model = new HomeModel;
     }
+
+    public function indexAction()
+    {
+        $arrFrases = $this->model->buscar('frases');
+  
+        $variaveis = [
+            'active_1' => 'active',
+            'arrFrases' => $arrFrases[rand(0,(count($arrFrases)-1))]
+        ];
+        
+        $this->view('index', $variaveis);
+    }
+
+    public function erroAction()
+    {
+        $variaveis = [];
+        
+        $this->view('404', $variaveis);
+    }
+}

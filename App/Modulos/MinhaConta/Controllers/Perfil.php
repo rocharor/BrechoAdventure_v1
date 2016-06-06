@@ -25,9 +25,11 @@
             $cadastroModel = new CadastroModel();
             $dadosUsuario = $cadastroModel->getUsuario(['id'=>$usuario_id]);
 
-            $variaveis = ['pagina_main' => VIEWS_MC.'perfil.html','dadosUsuario'=>$dadosUsuario[0]];
+            $variaveis = [
+                'dadosUsuario'=>$dadosUsuario[0]
+            ];
 
-            $this->view('main',$variaveis);
+            $this->view('perfil',$variaveis);
         }
 
         public function updatePerfilAction()

@@ -1,7 +1,7 @@
 <?php
-namespace Rocharor\Condominio\Sistema;
+namespace Rocharor\Sistema;
 
-class Model
+abstract class Model
 {    
     /*
      * private $db = null;
@@ -46,13 +46,13 @@ class Model
             $order .= " ORDER BY " . key($arrOrder[0]) . ' ' . value($arrOrder[0]);
         }
         
-        $sql = "SELECT * FROM $tabela WHERE $where  $order";        
+        $sql = "SELECT * FROM $tabela WHERE $where  $order";
         $rs = $this->conn->query($sql);        
         
         if ($tudo) {
-            return $rs->fetchAll(PDO::FETCH_ASSOC);
+            return $rs->fetchAll(\PDO::FETCH_ASSOC);
         } else {
-            return $rs->fetch(PDO::FETCH_ASSOC);
+            return $rs->fetch(\PDO::FETCH_ASSOC);
         }
     }
     

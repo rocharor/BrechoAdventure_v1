@@ -28,13 +28,12 @@ class CadastroProduto extends Controller
         }
 
         $variaveis = [
-            'pagina_main' => 'cadastroProduto.html',
             'msg' => '',
             'autorizado'=>$autorizado,
             'arrCategorias'=>$arrCategorias
         ];
 
-        $this->view('main', $variaveis);
+        $this->view('cadastroProduto', $variaveis);
     }
 
     public function cadastrarAction()
@@ -88,12 +87,11 @@ class CadastroProduto extends Controller
         $arrCategorias = $objProduto->getCategoriasProduto();
 
         $variaveis = [
-            'pagina_main' => 'cadastroProduto.html',
             'msg' => $msg,
             'autorizado' => true,
             'arrCategorias'=>$arrCategorias
         ];
 
-        $this->view('main', $variaveis);
+        $this->view('cadastroProduto', $variaveis);
     }
 }

@@ -28,11 +28,11 @@
                 $meusProdutos[$key]['img_principal'] = $fotos[0];
             }
 
-            $variaveis = ['pagina_main' => VIEWS_MC.'meusProdutos.html',
-                          'meusProdutos'=>$meusProdutos
+            $variaveis = [
+                'meusProdutos'=>$meusProdutos
             ];
 
-            $this->view('main',$variaveis);
+            $this->view('meusProdutos',$variaveis);
         }
 
         public function meusProdutosEditarAction($produto_id)
@@ -43,14 +43,13 @@
             $arrCategorias = $objProduto->getCategoriasProduto();
 
             $variaveis = [
-                'pagina_main' => VIEWS_MC.'meusProdutosEditar.html',
                 'descProduto'=>$descProduto,
                 'arrCategorias'=>$arrCategorias,
                 'produto_id'=>$produto_id,
                 'msg' => '',
             ];
 
-            $this->view('main',$variaveis);
+            $this->view('meusProdutosEditar',$variaveis);
         }
 
         public function deletarProdutoAction()
@@ -144,14 +143,13 @@
             $arrCategorias = $objProduto->getCategoriasProduto();
 
             $variaveis = [
-                'pagina_main' => VIEWS_MC.'meusProdutosEditar.html',
                 'descProduto'=>$descProduto,
                 'arrCategorias'=>$arrCategorias,
                 'produto_id'=>$produto_id,
                 'msg' => $msg,
             ];
 
-            $this->view('main', $variaveis);
+            $this->view('meusProdutosEditar', $variaveis);
 
         }
 

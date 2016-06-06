@@ -17,17 +17,17 @@ class Produto extends Controller
     public function __construct($params = false)
     {
         $objProdutoModel = new ProdutoModel();
-        $this->objProdutoModel = $objProdutoModel;     
+        $this->objProdutoModel = $objProdutoModel;
 
         if ($params) {
             $this->params = $params;
         }
-        
+
         if(Sessao::pegaSessao('logado')){
             $objMeusFavoritos = new MeusFavoritosModel();
             $this->objMeusFavoritosModel = $objMeusFavoritos;
         }
-        
+
     }
 
     /**
@@ -54,10 +54,14 @@ class Produto extends Controller
             }
         }
 
-        $variaveis = ['pagina_main'=>'produtos.html','produtos'=>$produtos,'favoritos'=>$favoritos,'active_2'=>'active','usuario_id'=>$usuario_id ];
+        $variaveis = [
+            'produtos'=>$produtos,
+            'favoritos'=>$favoritos,
+            'active_2'=>'active',
+            'usuario_id'=>$usuario_id
+        ];
 
-
-        $this->view('main', $variaveis);
+        $this->view('produtos', $variaveis);
     }
 
     /**
@@ -84,7 +88,7 @@ class Produto extends Controller
         $favoritos = [];
         if(Sessao::pegaSessao('logado')){
             $user_id = Sessao::pegaSessao('logado');
-            $favoritos = $this->objFavoritoModel->getFavoritos($user_id);
+            $favoritos = $this->objMeusFavoritosModel->getFavoritos($user_id);
         }
 
         foreach($produtos as $key=>$produto){
@@ -95,9 +99,9 @@ class Produto extends Controller
             }
         }
 
-        $variaveis = ['pagina_main'=>'todosProdutos.html','produtos'=>$produtos,'active_2'=>'active','pg'=>$this->params,'paginacao'=>$paginacao ];
+        $variaveis = ['produtos'=>$produtos,'active_2'=>'active','pg'=>$this->params,'paginacao'=>$paginacao ];
 
-        $this->view('main', $variaveis);
+        $this->view('todosProdutos', $variaveis);
     }
 
     /**

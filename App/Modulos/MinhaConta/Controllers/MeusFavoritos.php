@@ -27,8 +27,11 @@
                 $arrFavoritos[$key]['produto_id'] = $produto_id;
             }
 
-            $variaveis = ['pagina_main' => VIEWS_MC.'meusFavoritos.html', 'favoritos'=>$arrFavoritos];
-            $this->view('main',$variaveis);
+            $variaveis = [
+                'favoritos'=>$arrFavoritos
+            ];
+
+            $this->view('meusFavoritos',$variaveis);
         }
 
         public function setFavoritoAction()

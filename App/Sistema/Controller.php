@@ -6,7 +6,7 @@ use Rocharor\Sistema\Sessao;
 
 abstract class Controller
 {
-    public function view($arquivo, $variaveis = array())
+    public function view($arquivo, $variaveis = [])
     {
         global $smarty;
 

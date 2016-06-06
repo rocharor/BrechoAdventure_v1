@@ -12,8 +12,12 @@
             if(!empty($_POST)){
                 $this->salvaMensagemAction($_POST);
             }else{
-                $variaveis = ['pagina_main' => 'contato.html','active_3'=>'active','msg'=>''];
-                $this->view('main',$variaveis);
+                $variaveis = [
+                    'active_3'=>'active',
+                    'msg'=>''
+                ];
+
+                $this->view('contato',$variaveis);
             }
         }
 
@@ -33,9 +37,12 @@
                $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Erro ao enviar a mensagem</div>';
             }
 
-            $variaveis = ['pagina_main' => 'contato.html','active_3'=>'active','msg'=>$msg];
+            $variaveis = [
+                'active_3'=>'active',
+                'msg'=>$msg
+            ];
 
-            $this->view('main',$variaveis);
+            $this->view('contato',$variaveis);
         }
 
         /**

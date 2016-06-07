@@ -1,76 +1,3 @@
-
-$('.act-login').click(function(e){
-    e.preventDefault()
-
-    var email = $('#email_login').val();
-    var senha = $('#senha_login').val();
-
-    if(email == ''){
-        $('#email_login').parent().addClass('has-error');
-        alert('Campo email é obrigatório');
-        return false;
-    }
-
-    if(senha == ''){
-        $('#senha_login').parent().addClass('has-error');
-        alert('Campo senha é obrigatório');
-        return false;
-    }
-
-    var dados = {'email':email,'senha':senha};
-
-    $.ajax({
-        url: '/brechoAdventure/site/topo/',
-        dataType: 'json',
-        type: 'POST',
-        data: {'act': 'login',
-               'dados':dados},
-        success: function(retorno){
-            if(retorno.sucesso == true){
-                alert(retorno.mensagem);
-                $('.form-control').val('');
-                $('#login').modal('hide');
-                window.location.reload();
-            }
-            else
-                alert(retorno.mensagem +' cod-01')
-        },
-        error: function(retorno){
-            alert('Erro no sistema! cod-02')
-        }
-    })
-});
-
-$('.act-reenviar-senha').click(function(e){
-    e.preventDefault();
-
-    var email = $('#email_reenviar_senha').val();
-    var dados = {'email':email};
-    $('.carregando').removeClass('hide');
-
-    $.ajax({
-        url: '/brechoAdventure/site/topo/',
-        dataType: 'json',
-        type: 'POST',
-        data: {'act': 'esqueci_senha',
-               'dados': dados},
-        success: function(retorno){
-            if(retorno.sucesso == true){
-                alert(retorno.mensagem);
-                $('.form-control').val('');
-                $('#esqueci_senha').modal('hide');
-                window.location.reload();
-            }
-            else
-                alert(retorno.mensagem);
-                $('.carregando').addClass('hide');
-        },
-        error: function(retorno){
-            alert('Erro no sistema! cod-G1')
-        }
-    })
-});
-
 $('.act-cadastro').click(function(e){
     e.preventDefault();
 
@@ -237,26 +164,6 @@ $('.act-cadastro').click(function(e){
 
 });
 
-$('.act-logoff').click(function(e){
-    e.preventDefault();
-
-    $.ajax({
-        url: '/brechoAdventure/site/topo/',
-        type: 'POST',
-        dataType: 'json',
-        data: {'act': 'logoff'},
-        success: function(retorno){
-            if(retorno.sucesso == true){
-                alert(retorno.mensagem);
-                window.location.href = '/brechoAdventure/site/';
-            }
-        },
-        error: function(retorno){
-            alert('Erro no sistema! cod-g1')
-        }
-    });
-
-});
 
 $('.act-salvar-produto').click(function(e){
     e.preventDefault();

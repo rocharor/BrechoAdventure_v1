@@ -48,34 +48,7 @@ $('.act-cadastrar-produto').click(function(e){
     }
 
     $form.submit();
-
-    /*$.ajax({
-        url: url_cadastro_produto,
-        dataType: 'json',
-        type: 'POST',
-        data: {titulo: titulo,
-               categoria: categoria,
-               descricao: descricao,
-               tipo: tipo,
-               valor: valor,
-               foto1: foto1,
-               foto2: foto2,
-               foto3: foto3
-        },
-        success: function(retorno){
-            if(retorno.sucesso == true){
-                alert(retorno.msg);
-                //$('.form-control').val('');
-                //$('#login').modal('hide');
-                window.location.reload();
-            }else{
-                alert(retorno.msg);
-            }
-        },
-        error: function(retorno){
-            alert('Erro no sistema! cod-02')
-        }
-    })*/
+        
 });
 
 $("#valor_produto").maskMoney({prefix:'R$ ',thousands:'.',decimal:','});

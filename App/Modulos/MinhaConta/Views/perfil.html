@@ -24,7 +24,7 @@
             <td><input type="text" id='email_upd' class="form-control" style="width: 300px;" value="{$dadosUsuario.email}" /></td>
         </tr>
         <tr>
-            <td> <label>Data de nascimeto:</label> </td>
+            <td> <label>Data de nascimeto: <span class='text-danger'>*</span></label> </td>
             <td><input type="text" id='dt_nascimento_upd' class="form-control" style="width: 100px;" value="{$dadosUsuario.dt_nascimento}" /></td>
         </tr>
         <tr>
@@ -80,10 +80,5 @@
     </table>
 </div>
 
-<script type="text/javascript" language="javascript" src="{$smarty.const._PUBLIC_}/libs/jquery/jquery.maskedinput.min.js"></script>
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/libs/jquery/jquery.maskedinput.min.js"></script>
 <script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/minhaConta/perfil.js"></script>
-
-<script>
-    var urlAlterarFoto= "{$smarty.const._PUBLIC_}/Perfil/updateFoto/";
-    var urlPerfil= "{$smarty.const._PUBLIC_}/Perfil/updatePerfil/";
-</script>

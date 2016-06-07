@@ -1,5 +1,6 @@
 <h1 class="text-danger">EDITAR PRODUTO</h1>
 {$msg}
+<!-- <form action="{$smarty.const._PUBLIC_}/MeusProdutos/alterarProduto/produto/{$produto_id}/" method="post" name="formEditarProduto" enctype="multipart/form-data"> -->
 <form action="{$smarty.const._PUBLIC_}/MeusProdutos/alterarProduto/produto/{$produto_id}/" method="post" name="formEditarProduto" enctype="multipart/form-data">
      <div>
          <label>Titulo:</label>
@@ -74,11 +75,5 @@
     <button type="button" class="btn btn-primary act-alterar-produto" data-produto-id="{$produto_id}"> Salvar alteração </button>
  </form>
 
-
-<script>
-	var url_deletar_foto = "{$smarty.const._PUBLIC_}/MeusProdutos/deletarFoto/";
-	var url_alterar_produto = "{$smarty.const._PUBLIC_}/MeusProdutos/alterarProduto/";
-</script>
-
-<script type="text/javascript" language="javascript" src="{$smarty.const._PUBLIC_}/libs/jquery/jquery.maskMoney.min.js"></script>
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/libs/jquery/jquery.maskMoney.min.js"></script>
 <script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/minhaConta/meusProdutos.js"></script>

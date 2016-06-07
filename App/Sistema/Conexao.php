@@ -38,7 +38,7 @@
 
             switch($this->type) {
                 case 'mysql':
-                    $conn = new \PDO('mysql:host=' . $this->host . '; port=' . $this->port . '; dbname=' . $this->name, $this->user, $this->pass ,     array(
+                    $conn = new \PDO('mysql:host=' . $this->host . '; port=' . $this->port . '; dbname=' . $this->name, $this->user, $this->pass , array(
                         \PDO::ATTR_PERSISTENT => true ,
                         \PDO::ATTR_TIMEOUT => 30,
                         ));

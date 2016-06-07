@@ -14,10 +14,6 @@ $app = new Silex\Application();
 $app['debug'] = true;
 
 // ======================
-// Links Menu
-// ======================
-
-// ======================
 // HOME
 // ======================
 $app->get('/', function () {
@@ -25,6 +21,7 @@ $app->get('/', function () {
     $objHome->indexAction();
     return false;
 });
+
 // ======================
 // PRODUTOS
 // ======================
@@ -45,6 +42,7 @@ $app->post('/Produto/getDescricaoProduto/', function () {
     $objContato->getDescricaoProdutoAction();
     return false;
 });
+
 // ======================
 // CONTATO
 // ======================
@@ -59,6 +57,7 @@ $app->post('/contato/', function () {
     $objContato->indexAction();
     return false;
 });
+
 // ======================
 // PERFIL
 // ======================
@@ -79,6 +78,7 @@ $app->post('/Perfil/updatePerfil/', function () {
     $objContato->updatePerfilAction();
     return false;
 });
+
 // ======================
 // MEUS PRODUTOS
 // ======================
@@ -130,7 +130,7 @@ $app->get('/MeusFavoritos/', function () {
 // ======================
 // CADASTRO DE PRODUTOS
 // ======================
-$app->get('/CadastroProduto/', function () {
+$app->get('/CadastroProduto/', function () {    
     $objLogin = new CadastroProduto();
     $objLogin->indexAction();
     return false;
@@ -182,5 +182,5 @@ $app->error(function () {
     $objHome->erroAction();
     return false;
 });
-
+    
 $app->run();

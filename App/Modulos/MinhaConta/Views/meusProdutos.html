@@ -20,10 +20,12 @@
                         <img src="{$smarty.const._PUBLIC_}/imagens/produtos/{$produto.img_principal}" style="width: 90%; height: 90%;">
                     {/if}
                 </div>
+                {if $produto.status eq 1}
                 <div>
                     <a href="{$smarty.const._PUBLIC_}/MeusProdutos/meusProdutosEditar/produto/{$produto.id}" class="btn btn-success" data-produto-id="{$produto.id}">Editar</a>
                     <button class="btn btn-danger act-excluir-produto" data-produto-id="{$produto.id}">Excluir</button>
                 </div>
+                {/if}
             </div>
             {counter}
             {if $i is  div by 3}
@@ -32,10 +34,5 @@
         {/foreach}
     {/if}
 </div>
-
-<script>
-	var url_deletar = "{$smarty.const._PUBLIC_}/MeusProdutos/deletarProduto/";
-</script>
-
 
 <script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/minhaConta/meusProdutos.js"></script>

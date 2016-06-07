@@ -1,40 +1,48 @@
 <?php
-
 namespace Rocharor\Site\Models;
 
-use Rocharor\Condominio\Sistema\Model;
+use Rocharor\Sistema\Model;
 
-class CadastroModel extends Model{
+class CadastroModel extends Model
+{
 
     public function setUsuario($nome, $apelido, $email, $senha)
     {
-        global $conn;
-
         $nome = trim($nome);
         $apelido = trim($apelido);
         $email = trim($email);
         $senha = trim($senha);
         $nome_imagem = 'padrao.jpg';
-
+        
         $sql = "INSERT INTO usuarios (nome,apelido,email,nome_imagem,senha_ext,senha_md5,data_cadastro) VALUES (:nome,:apelido,:email,:nome_imagem,:senha_ext,:senha_md5,NOW())";
-
-        $param = [':nome'=> $nome,':apelido'=> $apelido,':email'=> $email,':nome_imagem'=>$nome_imagem,':senha_ext'=> $senha,':senha_md5'=> md5($senha)];
-
-        $rs = $conn->prepare($sql);
-        if($rs->execute($param)){
-            return ['id'=>$conn->lastInsertId(),'nome_imagem'=>'padrao.jpg'];
-        }else{
+        
+        $param = [
+            ':nome' => $nome,
+            ':apelido' => $apelido,
+            ':email' => $email,
+            ':nome_imagem' => $nome_imagem,
+            ':senha_ext' => $senha,
+            ':senha_md5' => md5($senha)
+        ];
+        
+        $rs = $this->conn->prepare($sql);
+        if ($rs->execute($param)) {
+            return [
+                'id' => $this->conn->lastInsertId(),
+                'nome_imagem' => 'padrao.jpg'
+            ];
+        } else {
             return false;
         }
     }
 
     /**
      *
-     * @param string $param = Array contendo nome do campo e valor;
+     * @param string $param
+     *            = Array contendo nome do campo e valor;
      */
-    public function getUsuario($param=false){
-        global $conn;
-
+    public function getUsuario($param = false)
+    {
         $sql = "SELECT id,
                     nome,
                     apelido,
@@ -51,23 +59,20 @@ class CadastroModel extends Model{
                     telefone_cel,
                     nome_imagem
                 FROM usuarios WHERE 1 ";
-        if($param){
+        if ($param) {
             $where = "";
-            foreach($param as $key=>$value){
-                $where .= " AND ".$key." = '".$value."'";
+            foreach ($param as $key => $value) {
+                $where .= " AND " . $key . " = '" . $value . "'";
             }
             $sql .= $where;
         }
-
-        $rs = $conn->query($sql);
+        
+        $rs = $this->conn->query($sql);
         $arrUsuario = [];
-        while($row = $rs->fetch(\PDO::FETCH_ASSOC)){
+        while ($row = $rs->fetch(\PDO::FETCH_ASSOC)) {
             $arrUsuario[] = $row;
         }
-
+        
         return $arrUsuario;
-
-
     }
-
 }

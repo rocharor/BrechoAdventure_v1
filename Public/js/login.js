@@ -26,14 +26,13 @@ $('.act-login').click(function(e){
         return false;
     }
     $.ajax({
-        url: url_login,
+        url: url+'/login/',
         dataType: 'json',
         type: 'POST',
         data: {'email': email,
                'senha':senha},
         success: function(retorno){
             if(retorno.sucesso == true){
-                alert(retorno.msg);
                 window.location.reload();
             }else{
             	$('.msg_login').append("<b style='color:#f00'>"+retorno.msg+"</b><br />");
@@ -49,10 +48,10 @@ $('.act-deslogar').click(function(e){
     e.preventDefault()
 
     $.ajax({
-        url: url_deslogar,
+        url: url+'/Login/deslogar/',
         type: 'POST',
         success: function(retorno){
-        	window.open(url_home,'_self');
+        	window.open(url+'/','_self');
         },
         error: function(retorno){
             alert('Erro no sistema! cod-02')

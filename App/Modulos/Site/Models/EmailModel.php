@@ -1,18 +1,22 @@
 <?php
 namespace Rocharor\Site\Models;
 
-class EmailModel{
+class EmailModel
+{
 
-    private $host = "smtp.gmail.com"; // servidor SMTP
+    private $host = "smtp.gmail.com";
+
     private $debug = 0;
+
     private $mail;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->mail = new \PHPMailer();
         $this->mail->CharSet = "utf-8";
         $this->mail->WordWrap = 50;
         $this->mail->IsHTML(true);
-        $this->mail->IsSMTP ();
+        $this->mail->IsSMTP();
         $this->mail->SMTPDebug = $this->debug;
         $this->mail->SMTPAuth = true;
         $this->mail->SMTPSecure = 'tls';
@@ -20,66 +24,59 @@ class EmailModel{
         $this->mail->Port = 587;
         $this->mail->Username = 'brechoAdventure@gmail.com';
         $this->mail->Password = 'rghdirkeakjfzvdh';
-        $this->mail->SetFrom ('brechoAdventure@gmail.com', 'Brecho Adventure');
-        $this->mail->AddReplyTo ("noreplay@brechoAdventure.com", "Brecho Adventure");
+        $this->mail->SetFrom('brechoAdventure@gmail.com', 'Brecho Adventure');
+        $this->mail->AddReplyTo("noreplay@brechoAdventure.com", "Brecho Adventure");
     }
 
-    public function sendEmail($email,$assunto,$corpo){
+    public function sendEmail($email, $assunto, $corpo)
+    {
         $mail = $this->mail;
         $mail->Subject = $assunto;
         $mail->Body = $corpo;
         $mail->AddAddress($email);
-
-        if($mail->Send())
+        
+        if ($mail->Send())
             return true;
         else
-            return
-        false;
+            return false;
     }
-
-
-
 
     /**
-    * Método para recuperar senha
-    *
-    * @param mixed $dados_user
-    */
-    public function recuperarSenha($dados_user){
+     * Método para recuperar senha
+     *
+     * @param mixed $dados_user            
+     */
+    public function recuperarSenha($dados_user)
+    {
         global $smarty;
-
+        
         $mail = $this->mail;
-        $smarty->assign ( "nome", $dados_user['nome']);
-        $smarty->assign ( "email", $dados_user['email']);
-        $smarty->assign ( "senha_ext", $dados_user['senha_ext']);
-        $smarty->assign ( "data_cadastro", $dados_user['data_cadastro']);
-
-
+        $smarty->assign("nome", $dados_user['nome']);
+        $smarty->assign("email", $dados_user['email']);
+        $smarty->assign("senha_ext", $dados_user['senha_ext']);
+        $smarty->assign("data_cadastro", $dados_user['data_cadastro']);
+        
         $mail->Subject = "Recuperação de senha";
-        /*$mail->Body    = "<p>Olá {$dados_user['nome']}, segue abaixo os dados de acesso:</p> <br />
-                          <p>Email: {$dados_user['email']}</p>
-                          <p>Senha: {$dados_user['senha_ext']}</p>
-                          <p>Data de cadastro:  {$dados_user['data_cadastro']}</p>" ;*/
-
-        $html = $smarty->fetch ("email/recuperarSenha.html");
-        $mail->MsgHTML ( $html );
-
+        
+        $html = $smarty->fetch("email/recuperarSenha.html");
+        $mail->MsgHTML($html);
+        
         $mail->AddAddress($dados_user['email']);
-
-        if($mail->Send())
+        
+        if ($mail->Send())
             return true;
         else
-            return
-         false;
+            return false;
     }
 
-    public function respAutomaticaContato($nome,$email){
+    public function respAutomaticaContato($nome, $email)
+    {
         global $smarty;
-
+        
         $mail = $this->mail;
         $mail->Subject = "Resposta automatica";
-
-         $mail->Body    = " <!DOCTYPE html>
+        
+        $mail->Body = " <!DOCTYPE html>
                             <html lang='pt-BR'>
                                 <head>
                                     <meta charset='UTF-8'>
@@ -103,17 +100,13 @@ class EmailModel{
                                         </tr>
                                     </table>
                                 </body>
-                            </html>" ;
-        //$smarty->assign ( "nome", $nome);
-        //$html = $smarty->fetch ( "email/respContato.html");
-        //$mail->MsgHTML ( $html );
-
+                            </html>";
+        
         $mail->AddAddress($email);
-
-        if($mail->Send())
+        
+        if ($mail->Send())
             return true;
         else
-            return
-         false;
+            return false;
     }
 }

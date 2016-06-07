@@ -36,7 +36,7 @@ $('.act-enviar-imagem').click(function(e){
     form_data.append('arquivo',$foto);
     form_data.append('act','update_foto');
     $.ajax({
-        url: urlAlterarFoto,
+        url: url+'/Perfil/updateFoto/',
         type: 'post',
         dataType: 'json',
         processData: false,
@@ -57,7 +57,6 @@ $('.act-enviar-imagem').click(function(e){
     })
 })
 
-/* ==================================================== */
 
 /**
 * Salva dados do formulario
@@ -82,87 +81,33 @@ $('.act-update').click(function(e){
     var erro = false;
 
     if(nome == ''){
-        $('#nome_cad').parent().addClass('has-error');
+        $('#nome_upd').parent().addClass('has-error');
         alert('Campo nome é obrigatório');
         erro = true;
         return false;
     }
     
     if(email == ''){
-        $('#email_cad').parent().addClass('has-error');
+        $('#email_upd').parent().addClass('has-error');
         alert('Campo email é obrigatório');
         erro = true;
         return false;
     }
     
-    if(tel_fixo == ''){
-        $('#tel_cad').parent().addClass('has-error');
-        alert('Campo "Telefone fixo" é obrigatório');
+    if(dt_nascimento == ''){
+        $('#dt_nascimento_upd').parent().addClass('has-error');
+        alert('Campo "Data de nascimento" é obrigatório');
         erro = true;
         return false;
     }
     
-    if(tel_cel == ''){
-        $('#cel_cad').parent().addClass('has-error');
-        alert('Campo "Telefone cel" é obrigatório');
+    if(tel_fixo == '' && tel_cel == ''){
+        $('#tel_upd').parent().addClass('has-error');
+        $('#cel_upd').parent().addClass('has-error');
+        alert('Necessário pelo menos 1 número de telefone');
         erro = true;
         return false;
     }
-    
-    /*if(apelido == ''){
-        $('#apelido_upd').parent().addClass('has-error');
-        alert('Campo apelido é obrigatório');
-        erro = true;
-        return false;
-    }
-    
-    if(endereco == ''){
-        $('#endereco_cad').parent().addClass('has-error');
-        alert('Campo endereço é obrigatório');
-        erro = true;
-        return false;
-    }
-    if(numero == ''){
-        $('#numero_cad').parent().addClass('has-error');
-        alert('Campo numero é obrigatório');
-        erro = true;
-        return false;
-    }
-    if(bairro == ''){
-        $('#bairro_cad').parent().addClass('has-error');
-        alert('Campo bairro é obrigatório');
-        erro = true;
-        return false;
-    }
-    if(cidade == ''){
-        $('#cidade_cad').parent().addClass('has-error');
-        alert('Campo cidade é obrigatório');
-        erro = true;
-        return false;
-    }
-    if(uf == ''){
-        $('#uf_cad').parent().addClass('has-error');
-        alert('Campo uf é obrigatório');
-        erro = true;
-        return false;
-    }
-    if(cep == ''){
-        $('#cep_cad').parent().addClass('has-error');
-        alert('Campo cep é obrigatório');
-        erro = true;
-        return false;
-    }    
-
-    if(senha1 == '' || senha2 == ''){
-        alert('Campo senha é obrigatório');
-        erro = true;
-        return false;
-    }
-    if(senha1 != senha2 ){
-        alert('Os campos de senha não estão iguais');
-        erro = true;
-        return false;
-    } */
 
     if(!erro){
         var dados = {'nome':nome,
@@ -180,15 +125,13 @@ $('.act-update').click(function(e){
                      'telefone_cel':tel_cel
                     };
         $.ajax({
-            url: urlPerfil,
+            url: url+'/Perfil/updatePerfil/',
             dataType: 'json',
             type: 'POST',
             data: {'dados': dados},
             success: function(retorno){
                 if(retorno.sucesso == true){
                     alert(retorno.mensagem);
-                    //$('.form-control').val('');
-                    //window.location.reload();
                 }
                 else
                     alert(retorno.mensagem)
@@ -209,22 +152,3 @@ $('#cep_upd').mask('99999-999');
 $('#tel_upd').mask('(99) 9999-9999');
 $('#cel_upd').mask('(99) 99999-9999');
 $('#dt_nascimento_upd').mask('99/99/9999');
-
-var buscaCEP = function(cep){
-
-    cep = cep.replace('-','');
-
-    $.ajax({
-        url:'/brechoAdventure/site/minhaConta/perfil/',
-        dataType:'json',
-        type:'post',
-        data: {'act':'buscaCEP',
-               'dados':cep},
-        success: function(retorno){
-
-        },
-        error: function(retorno){
-
-        }
-    })
-}

@@ -35,7 +35,7 @@
             $this->view('meusProdutos',$variaveis);
         }
 
-        public function meusProdutosEditarAction($produto_id)
+        public function meusProdutosEditarAction($produto_id,$msg='')
         {
 
             $objProduto = new ProdutoModel();
@@ -46,12 +46,71 @@
                 'descProduto'=>$descProduto,
                 'arrCategorias'=>$arrCategorias,
                 'produto_id'=>$produto_id,
-                'msg' => '',
+                'msg' => $msg
             ];
 
             $this->view('meusProdutosEditar',$variaveis);
         }
-
+        
+        public function alterarProdutoAction($produto_id)
+        {
+            $titulo    = $_POST['titulo_produto_update'];
+            $categoria = $_POST['categoria_produto_update'];
+            $descricao = $_POST['desc_produto_update'];
+            $estado    = $_POST['tipo_produto_update'];
+            $valor     = str_replace(['R$ ','.',','], ['','','.'], $_POST['valor_produto_update']);
+            $fotos = [];
+        
+            if (! Padrao::validaExtImagem($fotos)) {
+                $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Uma ou mais fotos estão com formato não permitido</div>';
+            } else {
+        
+                $nome_fotos = [];
+                foreach ($_FILES as $key=>$foto) {
+                    if($foto['name'] == ''){
+                        continue;
+                    }
+                    $arrNomeFoto = explode('.',$foto['name']);
+                    $extencao = end($arrNomeFoto);
+                    $foto_nome = $this->usuario_id . '_' . $key . '_' .date('d-m-Y_h_i_s') . '.' . $extencao;
+                    move_uploaded_file($foto['tmp_name'], _IMAGENS_ . 'produtos/' . $foto_nome);
+                    $nome_fotos[] = $foto_nome;
+                }
+                $objProduto = new ProdutoModel();
+                $arrProduto = $objProduto->getDescricaoProduto($produto_id);
+        
+                $nome_fotos = implode('|', $nome_fotos);
+                if(!empty($nome_fotos)){
+                    if(!empty($arrProduto['nm_imagem'])){
+                        $nome_fotos = $arrProduto['nm_imagem'].'|'.$nome_fotos;
+                    }
+                }
+        
+                $retorno = $this->model->alterarProduto($titulo, $categoria, $descricao, $estado, $valor, $nome_fotos, $produto_id);
+        
+                if ($retorno) {
+                    $msg = '<div class="alert alert-success" align="center" style="width: 400px;">Produto alterado com sucesso</div>';
+                } else {
+                    $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Erro ao alterar produto</div>';
+                }
+            }
+        
+            $objProduto = new ProdutoModel();
+            $descProduto = $objProduto->getDescricaoProduto($produto_id);
+            $arrCategorias = $objProduto->getCategoriasProduto();
+        
+            $this->meusProdutosEditarAction($produto_id,$msg);
+        
+            /* $variaveis = [
+             'descProduto'=>$descProduto,
+             'arrCategorias'=>$arrCategorias,
+             'produto_id'=>$produto_id,
+             'msg' => $msg,
+             ]; */
+        
+            //$this->view('meusProdutosEditar', $variaveis);
+        }
+        
         public function deletarProdutoAction()
         {
             $produto_id = $_POST['produto_id'];
@@ -93,64 +152,5 @@
             die();
 
         }
-
-        public function alterarProdutoAction($produto_id)
-        {
-            $titulo    = $_POST['titulo_produto_update'];
-            $categoria = $_POST['categoria_produto_update'];
-            $descricao = $_POST['desc_produto_update'];
-            $estado    = $_POST['tipo_produto_update'];
-            $valor     = str_replace(['R$ ','.',','], ['','','.'], $_POST['valor_produto_update']);
-            $fotos = [];
-
-            //if (! $this->validaExtImagem($fotos)) {
-            if (! Padrao::validaExtImagem($fotos)) {
-                $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Uma ou mais fotos estão com formato não permitido</div>';
-            } else {
-
-                $nome_fotos = [];
-                foreach ($_FILES as $key=>$foto) {
-                    if($foto['name'] == ''){
-                        continue;
-                    }
-                    $arrNomeFoto = explode('.',$foto['name']);
-                    $extencao = end($arrNomeFoto);
-                    $foto_nome = $this->usuario_id . '_' . $key . '_' .date('d-m-Y_h_i_s') . '.' . $extencao;
-                    move_uploaded_file($foto['tmp_name'], _IMAGENS_ . 'produtos/' . $foto_nome);
-                    $nome_fotos[] = $foto_nome;
-                }
-                $objProduto = new ProdutoModel();
-                $arrProduto = $objProduto->getDescricaoProduto($produto_id);
-
-                $nome_fotos = implode('|', $nome_fotos);
-                if(!empty($nome_fotos)){
-                    if(!empty($arrProduto['nm_imagem'])){
-                        $nome_fotos = $arrProduto['nm_imagem'].'|'.$nome_fotos;
-                    }
-                }
-
-                $retorno = $this->model->alterarProduto($titulo, $categoria, $descricao, $estado, $valor, $nome_fotos, $produto_id);
-
-                if ($retorno) {
-                    $msg = '<div class="alert alert-success" align="center" style="width: 400px;">Produto alterado com sucesso</div>';
-                } else {
-                    $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Erro ao alterar produto</div>';
-                }
-            }
-
-            $objProduto = new ProdutoModel();
-            $descProduto = $objProduto->getDescricaoProduto($produto_id);
-            $arrCategorias = $objProduto->getCategoriasProduto();
-
-            $variaveis = [
-                'descProduto'=>$descProduto,
-                'arrCategorias'=>$arrCategorias,
-                'produto_id'=>$produto_id,
-                'msg' => $msg,
-            ];
-
-            $this->view('meusProdutosEditar', $variaveis);
-
-        }
-
+       
     }

@@ -1,6 +1,8 @@
 <?php
 namespace Rocharor\Sistema;
 
+use Rocharor\Sistema\Conexao;
+
 abstract class Model
 {    
     /*
@@ -17,12 +19,12 @@ abstract class Model
      * }
      */
 
-    private $conn;    
+    protected $conn;    
     
     public function __construct()
-    {
-        global $conn;        
-        $this->conn = $conn; 
+    { 
+        global $conn; 
+        $this->conn = $conn;   
     }
     
     /**
@@ -33,22 +35,22 @@ abstract class Model
      * @param string $tudo = Caso TRUE traz tudo, Caso FALSE traz apenas 1
      * @return Retorna os dados
      */
-    public function buscar($tabela, $arrWhere = [], $arrOrder = [], $tudo = true)
+    public function buscar($tabela, $arrWhere = [], $tudo = true,  $arrOrder = [])
     {
         $where = ' 1 ';
         $order = '';
         
         foreach ($arrWhere as $coluna => $valor) {
-            $where .= " AND $coluna = $valor ";
+            $where .= " AND " . trim($coluna) ." = " .  trim($valor);
         }
         
         if (count($arrOrder) > 0) {
-            $order .= " ORDER BY " . key($arrOrder[0]) . ' ' . value($arrOrder[0]);
+            $order .= " ORDER BY " . trim(key($arrOrder[0])) . ' ' . trim(value($arrOrder[0]));
         }
         
         $sql = "SELECT * FROM $tabela WHERE $where  $order";
         $rs = $this->conn->query($sql);        
-        
+ 
         if ($tudo) {
             return $rs->fetchAll(\PDO::FETCH_ASSOC);
         } else {

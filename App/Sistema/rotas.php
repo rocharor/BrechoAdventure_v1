@@ -9,6 +9,7 @@ use Rocharor\Site\Controllers\Home;
 use Rocharor\Site\Controllers\Login;
 use Rocharor\Site\Controllers\Produto;
 use Rocharor\Admin\Controllers\HomeAdmin;
+use function Silex\value;
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -34,6 +35,12 @@ $app->get('/produto/', function () {
 $app->get('/produto/todosProdutos/pg/{pg_num}/', function ($pg_num) {
     $objLogin = new Produto($pg_num);
     $objLogin->todosProdutosAction();
+    return false;
+});
+
+$app->get('/produto/todosProdutos/categoria/{categorias}/', function ($categorias) use ($app){
+    $objLogin = new Produto(1);
+    $objLogin->todosProdutosAction($categorias);
     return false;
 });
 

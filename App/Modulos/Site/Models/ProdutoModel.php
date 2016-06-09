@@ -9,11 +9,16 @@ class ProdutoModel extends Model
     /**
      * Traz todos anuncios
      */
-    public function getProdutos($limit = false)
+    public function getProdutos($limit = false, $categorias = false)
     {
+        $where = ' status = 1 ';
+        if($categorias){
+            $where .= " AND categoria IN ($categorias) ";
+        }       
+        
         $sql = "SELECT id,usuario_id,categoria,titulo,descricao,valor,estado,nm_imagem,data_cadastro,status
                 FROM produtos
-                WHERE status = 1
+                WHERE {$where}       
                 ORDER BY status DESC, id DESC";
         
         if ($limit) {
@@ -21,7 +26,7 @@ class ProdutoModel extends Model
         }
         
         $produtos = array();
-   
+
         $rs = $this->conn->query($sql);
         while ($row = $rs->fetch(\PDO::FETCH_ASSOC)) {
             $produtos[] = $row;
@@ -86,6 +91,22 @@ class ProdutoModel extends Model
         $sql = "SELECT cp.id, cp.categoria FROM categoria_produto cp";
         
         $arrCategorias = $this->conn->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
+        
+        return $arrCategorias;
+    }
+    
+    public function buscarCategoriaFiltro($param = [])
+    {
+        $sql = "SELECT  cp.id, cp.categoria 
+                FROM produtos p
+                INNER JOIN categoria_produto cp
+                ON (cp.id = p.categoria)
+                GROUP BY cp.id";
+        
+        $rs = $this->conn->query($sql);
+        while($row = $rs->fetch(\PDO::FETCH_ASSOC)){
+            $arrCategorias[$row['id']] = $row['categoria'];
+        }        
         
         return $arrCategorias;
     }

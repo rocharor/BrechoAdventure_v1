@@ -56,11 +56,11 @@ class MeusProdutosModel extends Model
         }
     }
 
-    public function alterarProduto($titulo, $categoria, $descricao, $estado, $valor, $nome_fotos, $produto_id)
+    public function alterarProduto($titulo, $categoria_id, $descricao, $estado, $valor, $nome_fotos, $produto_id)
     {
         $sql = "UPDATE produtos
                 SET titulo = :titulo,
-                categoria = :categoria,
+                categoria_id = :categoria_id,
                 descricao = :descricao,
                 estado = :estado,
                 nm_imagem = :nm_imagem,
@@ -69,7 +69,7 @@ class MeusProdutosModel extends Model
         
         $parametros = [
             ':titulo' => $titulo,
-            ':categoria' => $categoria,
+            ':categoria_id' => $categoria_id,
             ':descricao' => $descricao,
             ':estado' => $estado,
             ':valor' => $valor,

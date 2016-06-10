@@ -13,10 +13,10 @@ class ProdutoModel extends Model
     {
         $where = ' status = 1 ';
         if($categorias){
-            $where .= " AND categoria IN ($categorias) ";
+            $where .= " AND categoria_id IN ($categorias) ";
         }       
         
-        $sql = "SELECT id,usuario_id,categoria,titulo,descricao,valor,estado,nm_imagem,data_cadastro,status
+        $sql = "SELECT id,usuario_id,categoria_id,titulo,descricao,valor,estado,nm_imagem,data_cadastro,status
                 FROM produtos
                 WHERE {$where}       
                 ORDER BY status DESC, id DESC";
@@ -53,7 +53,7 @@ class ProdutoModel extends Model
     {
         $produto_id = (int) $produto_id;
         
-        $sql = "SELECT p.categoria,p.titulo,p.descricao,p.valor,p.estado,p.nm_imagem,u.nome,u.email,u.telefone_fixo as fixo,u.telefone_cel as cel
+        $sql = "SELECT p.categoria_id,p.titulo,p.descricao,p.valor,p.estado,p.nm_imagem,u.nome,u.email,u.telefone_fixo as fixo,u.telefone_cel as cel
                 FROM produtos p
                 inner join usuarios u
                 on (u.id = p.usuario_id)
@@ -64,13 +64,13 @@ class ProdutoModel extends Model
         return $arrProduto;
     }
 
-    public function setProduto($usuario_id, $titulo, $categoria, $descricao, $tipo, $valor, $nome_fotos)
+    public function setProduto($usuario_id, $titulo, $categoria_id, $descricao, $tipo, $valor, $nome_fotos)
     {
-        $sql = "INSERT INTO produtos (usuario_id,categoria,titulo,descricao,valor,estado,nm_imagem,data_cadastro,status) VALUES (:usuario_id,:categoria,:titulo,:descricao,:valor,:estado,:nm_imagem,NOW(),1)";
+        $sql = "INSERT INTO produtos (usuario_id,categoria_id,titulo,descricao,valor,estado,nm_imagem,data_cadastro,status) VALUES (:usuario_id,:categoria_id,:titulo,:descricao,:valor,:estado,:nm_imagem,NOW(),1)";
         
         $param = [
             ':usuario_id' => $usuario_id,
-            ':categoria' => $categoria,
+            ':categoria_id' => $categoria_id,
             ':titulo' => $titulo,
             ':descricao' => $descricao,
             ':valor' => $valor,
@@ -100,7 +100,8 @@ class ProdutoModel extends Model
         $sql = "SELECT  cp.id, cp.categoria 
                 FROM produtos p
                 INNER JOIN categoria_produto cp
-                ON (cp.id = p.categoria)
+                ON (cp.id = p.categoria_id)
+                WHERE p.status = 1
                 GROUP BY cp.id";
         
         $rs = $this->conn->query($sql);

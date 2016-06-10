@@ -93,10 +93,21 @@
       `categoria` varchar(100) DEFAULT NULL,  
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8",
+
+    "frases"=>
+    "CREATE TABLE `frases` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `frase` text,
+      `autor` varchar(255) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1",
+    
         
-    "Inserts"=>
-    "INSERT INTO categoria_produto (categoria) VALUES ('Aquatico'),('Camping'),('Ciclismo'),('Fitnes'),('Trilha & Trekking'),('Escalada');"
+    "Inserts Categorias"=>
+    "INSERT INTO categoria_produto (categoria) VALUES ('Aquatico'),('Camping'),('Ciclismo'),('Fitnes'),('Trilha & Trekking'),('Escalada');",
         
+    "Inserts Frases"=>
+    "INSERT INTO `frases`(`id`,`frase`,`autor`) VALUES (1,'Prefiro carregar o peso de uma mochila nas costas do que o da consciência de não ter conhecido o mundo.','Autor desconhecido'),(2,'A vida começa quando acaba a sua zona de conforto.','Neale Donald Walsch'),(3,'Nós viajamos, não para fugir da vida, mas para a vida não fugir de nós.','Autor desconhecido'),(4,'Uma longa viagem começa com um único passo.','Lao Tsé'),(5,'É graça divina começar bem. Graça maior persistir na caminhada certa. Mas graça das graças é não desistir nunca.','Dom Hélder Câmara'),(6,'Toda grande caminhada começa com um simples passo.','Buda'),(7,'Quando a caminhada fica dura, só os duros continuam caminhando.','Mano Brown');"    
     ];
 
     mysqli_select_db($con, $db);

@@ -22,6 +22,11 @@ $app->get('/', function () {
     $objHome->indexAction();
     return false;
 });
+$app->get('/busca/{busca}/', function ($busca){
+    $objLogin = new Produto(1);
+    $objLogin->getBusca($busca);
+    return false;
+});
 
 // ======================
 // PRODUTOS

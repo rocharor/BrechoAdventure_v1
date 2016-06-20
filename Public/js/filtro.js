@@ -12,4 +12,4 @@ $('.act-filtro').click(function(e) {
 	
 	
 	window.open(url_filtro,'_self');
-})
+});

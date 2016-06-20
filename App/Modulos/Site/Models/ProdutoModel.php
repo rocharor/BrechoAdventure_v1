@@ -97,7 +97,7 @@ class ProdutoModel extends Model
     
     public function buscarCategoriaFiltro($param = [])
     {
-        $sql = "SELECT  cp.id, cp.categoria 
+        $sql = "SELECT  cp.id, cp.categoria,COUNT(1) as 'qtd' 
                 FROM produtos p
                 INNER JOIN categoria_produto cp
                 ON (cp.id = p.categoria_id)
@@ -106,9 +106,22 @@ class ProdutoModel extends Model
         
         $rs = $this->conn->query($sql);
         while($row = $rs->fetch(\PDO::FETCH_ASSOC)){
-            $arrCategorias[$row['id']] = $row['categoria'];
+            $arrCategorias[$row['id']] = $row['categoria'].' ('.$row['qtd'].')';
         }        
         
         return $arrCategorias;
+    }
+    
+    public function buscarFiltroBusca($busca)
+    {
+        $sql = "SELECT * FROM produtos WHERE (titulo LIKE '%{$busca}%' OR descricao LIKE '%{$busca}%') AND STATUS = 1;";
+    
+        $rs = $this->conn->query($sql);
+        $arrProdutos = [];
+        while($row = $rs->fetch(\PDO::FETCH_ASSOC)){
+            $arrProdutos[] = $row;
+        }
+    
+        return $arrProdutos;
     }
 }

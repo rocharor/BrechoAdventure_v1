@@ -16,6 +16,9 @@
 </style>
 
 <div class="row">
+	{if $produtos|count eq 0}
+ 		<div class="well" align="center"><b><i>N&atilde;o foi poss&iacute;vel retornar nenhum produto</i></b></div>
+ 	{else}
 	<div class="col-lg-2">
 	
 		{foreach from=$filtro key=categoria item=arrItens}
@@ -69,6 +72,7 @@
 			{/foreach}
 		</div>
 	</div>
+	{/if}
 
 </div>
 

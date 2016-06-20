@@ -144,6 +144,42 @@ class Produto extends Controller
         
         return $filtro;
     }
+    
+    public function getBusca($busca){
+      
+        $favoritos = [];
+        $usuario_id = '';
+        if(Sessao::pegaSessao('logado')){
+            $usuario_id = Sessao::pegaSessao('logado');
+            $favoritos = $this->objMeusFavoritosModel->getFavoritos($usuario_id);
+        }
+        
+        $produtos = $this->objProdutoModel->buscarFiltroBusca($busca);
+        foreach($produtos as $key=>$produto){
+            $fotos = explode('|',$produto['nm_imagem']);
+            $produtos[$key]['img_principal'] = $fotos[0];
+            if(in_array($produto['id'],$favoritos)){
+                $produtos[$key]['favorito'] = 1;
+            }else{
+                $produtos[$key]['favorito'] = 0;
+            }
+        }
+        
+        $filtro = $this->gerarFiltroAction();
+       
+        $variaveis = [
+            'produtos'=>$produtos,
+            'favoritos'=>$favoritos,
+            'active_2'=>'active',
+            'usuario_id'=>$usuario_id,
+            'pg'=>$this->params,
+            'paginacao'=>'',
+            'filtro'=>$filtro,
+            'arrCategorias'=>[1]
+        ];
+        
+        $this->view('todosProdutos', $variaveis);
+    }
 
 
 }

@@ -4,17 +4,9 @@
         <a href="{$smarty.const._PUBLIC_}">
             <img src="{$smarty.const._PUBLIC_}/imagens/logo.jpg" alt="Brecho Aventure" class='img_logo'>
         </a>
-        <span class='nome_site'>BRECHÓ ADVENTURE</span>
+        <span class='nome_site hidden-xs'>BRECHÓ ADVENTURE</span>
     </div>
-    
-	<div class="input-group" style="position: absolute; width: 300px; left:60%; top: 15px">
-		<input type="text" class="form-control" placeholder="Buscar">
-		<div class="btn-group input-group-btn">
-			<button class="btn btn-primary act-buscar">&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;
-			</button>
-		</div>
-	</div>
-	
+    	
     <div class="topo_direito">
         {if $logado eq 0}
 	        <button class="btn btn-primary btn-login">Login</button>
@@ -38,15 +30,22 @@
     </div>
 </div>
 
+<div class="input-group campo-buscar">
+	<input type="text" class="form-control busca" placeholder="Buscar">
+	<div class="btn-group input-group-btn">
+		<button class="btn btn-primary act-buscar">&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;
+		</button>
+	</div>
+</div>
+
 <img src="{$smarty.const._PUBLIC_}/imagens/banner.jpg" width="100%" />
 
 <div class='section' id='crosscol'><div class='widget PageList' data-version='1' id='PageList98'>
     <div class='art-nav-inner'>
         <ul class='art-hmenu'>
-            <li><a class='{$active_1}' href="{$smarty.const._PUBLIC_}/"><small>Home</small></a></li>
+            <li><a class='{$active_1}' href="{$smarty.const._PUBLIC_}/"><small>Brecho Adventure</small></a></li>
             <li><a class='{$active_2}' href="{$smarty.const._PUBLIC_}/produto/"><small>Produtos</small></a></li>
             <li><a class='{$active_3}' href="{$smarty.const._PUBLIC_}/contato/"><small>Contato</small></a></li>
-            <li><a class='{$active_4}' href="{$smarty.const._PUBLIC_}/contato/"><small>Brecho Adventure</small></a></li>
         </ul>
         
     </div>
@@ -132,3 +131,4 @@
 
 <script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/login.js"></script>
 <script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/cadastro.js"></script>
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/padrao.js"></script>

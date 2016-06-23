@@ -40,7 +40,8 @@
 
 <img src="{$smarty.const._PUBLIC_}/imagens/banner.jpg" width="100%" />
 
-<div class='section' id='crosscol'><div class='widget PageList' data-version='1' id='PageList98'>
+<!-- MENUS -->
+<div class='section hidden-xs' id='crosscol'><div class='widget PageList' data-version='1' id='PageList98'>
     <div class='art-nav-inner'>
         <ul class='art-hmenu'>
             <li><a class='{$active_1}' href="{$smarty.const._PUBLIC_}/"><small>Brecho Adventure</small></a></li>
@@ -50,6 +51,17 @@
         
     </div>
     </div>
+</div>
+
+<div class="dropdown hidden-sm hidden-md hidden-lg">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Menu <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="{$smarty.const._PUBLIC_}/">Brecho Adventure</a></li>
+    <li><a href="{$smarty.const._PUBLIC_}/produto/">Produtos</a></li>
+    <li><a href="{$smarty.const._PUBLIC_}/contato/">Contato</a></li>
+  </ul>
 </div>
 
 <!-- MODAL -->

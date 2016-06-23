@@ -105,6 +105,7 @@ class ProdutoModel extends Model
                 GROUP BY cp.id";
         
         $rs = $this->conn->query($sql);
+        $arrCategorias = [];
         while($row = $rs->fetch(\PDO::FETCH_ASSOC)){
             $arrCategorias[$row['id']] = $row['categoria'].' ('.$row['qtd'].')';
         }        

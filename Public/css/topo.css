@@ -185,8 +185,11 @@ ul.art-hmenu>li>a:hover,
   cursor:pointer;
 }
 
-/*Campo Buscar*/
+/*CAMPO BUSCAR*/
 .campo-buscar{
-	position: absolute; width: 20%; top:80px; right:10px
+	position: absolute; 
+	width: 20%; 
+	top:80px; 
+	right:10px
 }
 

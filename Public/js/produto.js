@@ -16,11 +16,14 @@ $('.act-descricao').click(function(e){
         success: function(retorno){  
 			var fotos = retorno.nm_imagem.split('|');
 			$('.produto_fotos').html('');
+			$('.indicadores').html('');
 			for(var i in fotos){
 				if(i == 0){
 					$('.produto_fotos').append("<div class='item active '><img src="+url+"/imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>")
+					$('.indicadores').append("<li data-target='#carousel-example-generic' data-slide-to='"+i+"' class='active'></li>")
 				}else{
 					$('.produto_fotos').append("<div class='item'><img src="+url+"/imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>")
+					$('.indicadores').append("<li data-target='#carousel-example-generic' data-slide-to='"+i+"' class=''></li>")
 				}
 			}
         	

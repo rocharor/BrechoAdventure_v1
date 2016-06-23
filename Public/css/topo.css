@@ -94,7 +94,6 @@ ul.art-hmenu>li>a.active
     color: #fff;
     text-decoration: none;
 }
-
 ul.art-hmenu>li>a:hover, .desktop ul.art-hmenu>li:hover>a
 {
     background: #FE901B url('https://lh6.googleusercontent.com/-owsRX177IbE/UjZn-TDWdrI/AAAAAAAAEj8/Ffl3wSggATU/s2048/menuhovereditem.png') scroll;
@@ -125,11 +124,9 @@ ul.art-hmenu>li>a:hover,
     padding: 3px;
     position:relative;
 }
-
 .topo_esquerdo{
     float: left;
 }
-
 .topo_direito{
     float:right;
     padding-right: 5px;
@@ -141,7 +138,11 @@ ul.art-hmenu>li>a:hover,
     min-height: 65px;
 
 }
-
+.img_logo_mobile{
+	width: 120px;
+    max-height: 65px;
+    min-height: 65px;
+}
 .nome_site{
     color: #fff;
     font-size: 30px;
@@ -161,11 +162,9 @@ ul.art-hmenu>li>a:hover,
   position:relative;
   display: block;
 }
-
 .box:hover > .mask{
     opacity:0.9;
 }
-
 .mask{
   transition: ease all 0.5s;
   opacity:0;
@@ -174,10 +173,8 @@ ul.art-hmenu>li>a:hover,
   top:0;
   width:100%;
   height:100%;
-  padding-top: 15px;
-  
+  padding-top: 15px;  
 }
-
 .mask > span{
   color:#f00;
   font-weight: bold;
@@ -193,3 +190,12 @@ ul.art-hmenu>li>a:hover,
 	right:10px
 }
 
+/*MENU MOBILE*/
+.menu-mobile{	
+	height: 28px;	
+	background-color:#fedd7a;
+	text-align: center;	
+}
+.menu-mobile button{	
+	background-color:#F3BC55;		
+}

@@ -1,8 +1,9 @@
-<!-- BARRA DE MENU -->
+<!-- BARRA TOPO -->
 <div class="menu">
-    <div class='topo_esquerdo'>
+    <div class='topo_esquerdo '>
         <a href="{$smarty.const._PUBLIC_}">
-            <img src="{$smarty.const._PUBLIC_}/imagens/logo.jpg" alt="Brecho Aventure" class='img_logo'>
+            <img src="{$smarty.const._PUBLIC_}/imagens/logo.jpg" alt="Brecho Aventure" class='img_logo hidden-xs'>
+            <img src="{$smarty.const._PUBLIC_}/imagens/logo.jpg" alt="Brecho Aventure" class='img_logo_mobile hidden-sm hidden-md hidden-lg'>
         </a>
         <span class='nome_site hidden-xs'>BRECHÓ ADVENTURE</span>
     </div>
@@ -30,14 +31,7 @@
     </div>
 </div>
 
-<div class="input-group campo-buscar">
-	<input type="text" class="form-control busca" placeholder="Buscar">
-	<div class="btn-group input-group-btn">
-		<button class="btn btn-primary act-buscar">&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;
-		</button>
-	</div>
-</div>
-
+<!-- IMAGEM FUNDO -->
 <img src="{$smarty.const._PUBLIC_}/imagens/banner.jpg" width="100%" />
 
 <!-- MENUS -->
@@ -53,16 +47,29 @@
     </div>
 </div>
 
-<div class="dropdown hidden-sm hidden-md hidden-lg">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Menu <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="{$smarty.const._PUBLIC_}/">Brecho Adventure</a></li>
-    <li><a href="{$smarty.const._PUBLIC_}/produto/">Produtos</a></li>
-    <li><a href="{$smarty.const._PUBLIC_}/contato/">Contato</a></li>
-  </ul>
+<div class="dropdown menu-mobile hidden-sm hidden-md hidden-lg">
+	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		<span class="glyphicon glyphicon-menu-hamburger"></span>
+	</button>
+	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		<li><a href="{$smarty.const._PUBLIC_}/">Brecho Adventure</a></li>
+		<li><a href="{$smarty.const._PUBLIC_}/produto/">Produtos</a></li>
+		<li><a href="{$smarty.const._PUBLIC_}/contato/">Contato</a></li>
+	</ul>
 </div>
+
+
+<!-- BUSCA -->
+<div class="input-group campo-buscar hidden-xs">
+	<input type="text" class="form-control busca" placeholder="Buscar">
+	<div class="btn-group input-group-btn">
+		<button class="btn btn-primary act-buscar">&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;
+		</button>
+	</div>
+</div>
+
+
+
 
 <!-- MODAL -->
 <!--Modal Login-->

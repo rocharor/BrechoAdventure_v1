@@ -1,17 +1,19 @@
+<link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/css/produto.css" />
+
 <style type="text/css">
 .img-ativo  {
     background-image: url({$smarty.const._PUBLIC_}/imagens/favorito_ativo.jpg);
     background-size: cover;
     width: 20px;
     height: 20px;
-
+	display:block;
 }
 .img-inativo  {
     background-image: url({$smarty.const._PUBLIC_}/imagens/favorito_inativo.jpg);
     background-size: cover;
     width: 20px;
     height: 20px;
-
+    display:block;
 }
 </style>
 <h1 class="text-success" align="center">Ultimos produtos adicionados</h1>
@@ -19,18 +21,18 @@
 <div class="row" >
 	{counter assign=i start=0 print=false}
 	{foreach from=$produtos item=produto}
-        <div class="col-md-4" style="border: solid 0px;" align='center'>
+        <div class="col-md-4 div-produto" align="center">
             <div class="div-favorito-{$produto.id}" data-usuario-id="{$usuario_id}">
                 {if $logado eq 0}
                     <a class="act-favorito-deslogado"><img src="{$smarty.const._PUBLIC_}/imagens/favorito_inativo.jpg" alt="" style="width: 20px;"></a>
                 {else}
                     {if $produto.favorito eq 1}
                         <a class="act-favorito favorito-ativo-{$produto.id}" data-produto-id='{$produto.id}' data-status='0'>
-                            <div class="img-ativo"></div>
+                            <span class="img-ativo"></span>
                         </a>
                     {else}
                         <a class="act-favorito favorito-inativo-{$produto.id}" data-produto-id='{$produto.id}' data-status='1'>
-                            <div class="img-inativo"></div>
+                            <span class="img-inativo"></span>
                         </a>
                     {/if}
                 {/if}
@@ -52,7 +54,9 @@
 </div>
 <br><br>
 
-<a href="{$smarty.const._PUBLIC_}/produto/todosProdutos/pg/1/" class="btn btn-primary" style="width: 100%">VER TODOS</a>
+<div align="center">
+	<a href="{$smarty.const._PUBLIC_}/produto/todosProdutos/pg/1/" class="btn btn-primary" style="width: 50%">VER TODOS</a>
+</div>
 
 
 <!--Modal descricao-->

@@ -1,8 +1,8 @@
 <?php
+namespace Rocharor\Admin\Models;
 
-namespace Rocharor\MinhaConta\Models;
+use Rocharor\Sistema\Model;
 
-class xxx {
-
-    
+class HomeAdminModel extends Model
+{
 }

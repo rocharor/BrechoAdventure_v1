@@ -186,6 +186,13 @@ $app->get('/admin/', function () {
     return false;
 });
 
+$app->get('/admin/produto/{tipo}/', function($tipo) {
+    $objHomeAdmin = new HomeAdmin();
+    $objHomeAdmin->produtoAction($tipo);
+    return false;
+});
+
+
 // ======================
 // ERRO
 // ======================

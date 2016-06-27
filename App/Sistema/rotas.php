@@ -186,6 +186,12 @@ $app->get('/admin/', function () {
     return false;
 });
 
+$app->get('/admin/{tipo}/{valor}/', function ($tipo,$valor) {
+    $objHomeAdmin = new HomeAdmin();
+    $objHomeAdmin->buscaDados($tipo,$valor);
+    return false;
+});
+
 // ======================
 // ERRO
 // ======================

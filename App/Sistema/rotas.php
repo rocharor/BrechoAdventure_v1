@@ -142,7 +142,7 @@ $app->get('/MeusFavoritos/', function () {
 // ======================
 // CADASTRO DE PRODUTOS
 // ======================
-$app->get('/CadastroProduto/', function () {    
+$app->get('/CadastroProduto/', function () {
     $objLogin = new CadastroProduto();
     $objLogin->indexAction();
     return false;
@@ -186,9 +186,9 @@ $app->get('/admin/', function () {
     return false;
 });
 
-$app->get('/admin/produto/{tipo}/', function($tipo) {
+$app->get('/admin/{tipo}/{valor}/', function ($tipo,$valor) {
     $objHomeAdmin = new HomeAdmin();
-    $objHomeAdmin->produtoAction($tipo);
+    $objHomeAdmin->buscaDados($tipo,$valor);
     return false;
 });
 
@@ -201,5 +201,5 @@ $app->error(function () {
     $objHome->erroAction();
     return false;
 });
-    
+
 $app->run();

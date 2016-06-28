@@ -1,29 +1,29 @@
-{if $logadoAdmin eq false}
-	<h1>Login</h1>	
-	<form action="" method="post" name="formProdutos">
-		 <div class="form-group">
-		 	<label style="border: solid 0px;">Usuário
-			 <input type="text" name='login' class='form-control' />
-			</label> 
-		</div>
-		<div class="form-group">
-		 	<label style="border: solid 0px;">Senha
-			 <input type="password" name='senha' class='form-control' />
-			</label> 
-		</div>
-		<button class='btn btn-primary' type="submit">Login</button>
-	</form>
-{else}
+<link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/css/admin.css" />
 
-	<style>
-	table{
-		text-align: center;
-	}
-	.titulo-adm{
-		background-color: #eee;
-		font-weight: bold;
-	}
-	</style>
+{if $logadoAdmin eq false}
+	<div class='form-login'>
+		<h1>Login</h1>
+		<div class='msg-erro'>
+			{$msg}
+		</div>	
+		<form action="" method="post" name="formProdutos">
+			 <div class="form-group">
+			 	<label>
+			 		Usuário
+				 	<input type="text" name='login' class='form-control' required="required" />
+				</label> 
+			</div>
+			<div class="form-group">
+			 	<label>
+			 		Senha
+				 	<input type="password" name='senha' class='form-control' required="required" />
+				</label> 
+			</div>
+			<button class='btn btn-primary' type="submit">Login</button>
+		</form>
+	</div>
+{else}
+	
 	<div class='row'>	
 		<div class='col-md-6'>
 			<table class="table table-hover">
@@ -43,7 +43,7 @@
 						<tr>
 							<td>{$chave}</td>
 							<td>{$produto.qtd}</td>
-							<td><a href='{$smarty.const._PUBLIC_}/admin/produtos/{$produto.status_id}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
+							<td><a href='{$smarty.const._PUBLIC_}/admin/produto/{$produto.status}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
 						</tr>
 					{/foreach}	
 				</tbody>
@@ -67,7 +67,7 @@
 						<tr>
 							<td>{$chave}</td>
 							<td>{$mensagem.qtd}</td>
-							<td><a href='{$smarty.const._PUBLIC_}/admin/mensagem/{$mensagem.tipo_id}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
+							<td><a href='{$smarty.const._PUBLIC_}/admin/mensagem/{$mensagem.tipo}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
 						</tr>
 					{/foreach}
 				</tbody>

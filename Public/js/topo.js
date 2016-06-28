@@ -1,4 +1,4 @@
-$('.act-cadastro').click(function(e){
+/*$('.act-cadastro').click(function(e){
     e.preventDefault();
 
     var nome          = $('#nome_cad').val();
@@ -279,3 +279,4 @@ var removeCarregando = function() {
     400);
 };
 
+*/

@@ -1,7 +1,7 @@
 <?php
 namespace Rocharor\Sistema;
 
-use Rocharor\Sistema\Conexao;
+//use Rocharor\Sistema\Conexao;
 
 abstract class Model
 {    
@@ -39,7 +39,7 @@ abstract class Model
     {
         $where = ' 1 ';
         $order = '';
-        
+       
         foreach ($arrWhere as $coluna => $valor) {
             $where .= " AND " . trim($coluna) ." = " .  trim($valor);
         }
@@ -49,6 +49,7 @@ abstract class Model
         }
         
         $sql = "SELECT * FROM $tabela WHERE $where  $order";
+      
         $rs = $this->conn->query($sql);        
  
         if ($tudo) {

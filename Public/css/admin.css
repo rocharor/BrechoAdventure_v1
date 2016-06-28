@@ -1,0 +1,32 @@
+/* HOME ADMIN */
+table {
+	text-align: center;
+}
+
+.titulo-adm {
+	background-color: #eee;
+	font-weight: bold;
+}
+
+.form-login{
+	text-align: center;
+}
+
+.msg-erro{
+	font-weight: bold;
+	color:#f00
+}
+
+/* VISUALIZAR ADMIN */
+.btn_chk span.glyphicon {
+	opacity: 0;
+}
+
+.btn_chk.active span.glyphicon {
+	opacity: 1;
+	color: #fff;
+}
+
+.btn_chk.active {
+	background-color: #0085b1;
+}

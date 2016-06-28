@@ -1,15 +1,14 @@
 <?php
-use Rocharor\MinhaConta\Controllers\MeusFavoritos;
-use Rocharor\MinhaConta\Controllers\MeusProdutos;
-use Rocharor\MinhaConta\Controllers\Perfil;
 use Rocharor\Site\Controllers\Cadastro;
 use Rocharor\Site\Controllers\CadastroProduto;
 use Rocharor\Site\Controllers\Contato;
 use Rocharor\Site\Controllers\Home;
 use Rocharor\Site\Controllers\Login;
 use Rocharor\Site\Controllers\Produto;
-use Rocharor\Admin\Controllers\HomeAdmin;
-use function Silex\value;
+use Rocharor\MinhaConta\Controllers\MeusFavoritos;
+use Rocharor\MinhaConta\Controllers\MeusProdutos;
+use Rocharor\MinhaConta\Controllers\Perfil;
+use Rocharor\Admin\Controllers\Admin;
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -181,24 +180,28 @@ $app->post('/cadastro/', function () {
 // ======================
 
 $app->get('/admin', function () {
-    $objHomeAdmin = new HomeAdmin();
-    $objHomeAdmin->indexAction();
+    $objAdmin = new Admin();
+    $objAdmin->indexAction();
     return false;
 });
 
 $app->post('/admin', function () {
-    $objHomeAdmin = new HomeAdmin();
-    $objHomeAdmin->indexAction();
+    $objAdmin = new Admin();
+    $objAdmin->indexAction();
     return false;
 });
 
 $app->get('/admin/{tipo}/{valor}/', function ($tipo,$valor) {
-    $objHomeAdmin = new HomeAdmin();
-    $objHomeAdmin->buscaDadosAction($tipo,$valor);
+    $objAdmin = new Admin();
+    $objAdmin->buscaDadosAction($tipo,$valor);
     return false;
 });
 
-
+$app->post('/admin/aprovar/', function () {
+    $objAdmin = new Admin();
+    $objAdmin->aprovarProdutoAction();
+    return false;
+});
 // ======================
 // ERRO
 // ======================

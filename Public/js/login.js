@@ -50,7 +50,7 @@ $('.act-deslogar').click(function(e){
     $.ajax({
         url: url+'/Login/deslogar/',
         type: 'POST',
-        success: function(retorno){
+        success: function(retorno){        	
         	window.open(url+'/','_self');
         },
         error: function(retorno){

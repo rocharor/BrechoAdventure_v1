@@ -195,6 +195,16 @@ ul.art-hmenu>li>a:hover,
 	background-color:#fedd7a;
 	text-align: center;	
 }
-.menu-mobile button{	
-	background-color:#F3BC55;		
+
+/*BOTÕES MENU*/
+.menu-mobile button, .btn-login, .btn-cadastro{	
+	background-color:#F3BC55;
+	color:#000;
+	border:	0px;	
 }
+.btn-login:hover, .btn-cadastro:hover{	
+	background-color:#fedd7a;
+	color:#000;		
+}
+
+

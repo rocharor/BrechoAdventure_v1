@@ -46,7 +46,7 @@
 
         public static function excluiSessao($sessao){
             unset($_SESSION[$sessao]);
-            self::setaSessao(['logado'=>0,'user_id'=>0]);
+            self::setaSessao(['logado'=>0,'user_id'=>0]);          
             return true;
         }
 

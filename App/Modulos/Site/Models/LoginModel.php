@@ -6,6 +6,11 @@ use Rocharor\Sistema\Model;
 class LoginModel extends Model
 {
 
+    /**
+     * Valida login USUARIO
+     * @param unknown $email
+     * @param unknown $senha
+     */
     public function validaLogin($email, $senha)
     {
         $email = trim($email);
@@ -23,5 +28,23 @@ class LoginModel extends Model
             }
         }
         return false;
+    }
+    
+    /**
+     * Valida o login da area do ADMIN
+     * @param unknown $login
+     * @param unknown $senha
+     * @return boolean
+     */
+    public function validaLoginAdmin($login, $senha)
+    {
+        $login = trim($login);
+        $senha = trim($senha);
+        
+        if($login == 'admin' && $senha == 'admin'){
+            return true;                
+        }else{
+            return false;
+        }
     }
 }

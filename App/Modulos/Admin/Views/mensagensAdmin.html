@@ -1,0 +1,45 @@
+<link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/css/admin.css" />
+
+<div class='row'>
+	<a href='{$smarty.const._PUBLIC_}/admin' class='btn btn-info'>Voltar</a>
+	<h1>Mensagens Cadastradas</h1>
+	<form action="" method="post" name="formProdutos">
+		 <div class="form-group">
+		 	<label style="border: solid 0px;">Tipo de produto:
+			 <select class="form-control" onchange="filtroAdmin('mensagem',this.value)" style="width:300px; display:inline;">
+				<option value="todos" {if $valor eq 'todos'} selected="selected" {/if}>Todas</option>
+				<option value="duvida" {if $valor eq 'duvida'} selected="selected" {/if}>Dúvida</option>
+				<option value="reclamacao" {if $valor eq 'reclamacao'} selected="selected" {/if}>Reclamação</option>
+				<option value="sugestao" {if $valor eq 'sugestao'} selected="selected" {/if}>Sugestão</option>
+				<option value="elogio" {if $valor eq 'elogio'} selected="selected" {/if}>Elogio</option>
+			</select>
+			</label> 
+		</div>
+	</form>
+	
+	<table class='table table-striped'>
+		<thead>
+			<tr>
+				<td>Id</td>
+				<td>Tipo</td>				
+				<td>Mensagem</td>
+				<td>Visualizar</td>
+				<td>Excluir</td>
+			</tr>
+		</thead>
+		<tbody>
+			{foreach from=$arrDados item=mensagem}			
+				<tr>
+					<td>{$mensagem.id}</td>
+					<td>{if $mensagem.tipo eq 1} Dúvida {elseif $mensagem.tipo eq 2} Reclamação {elseif $mensagem.tipo eq 3} Sugestão {else} Elogio{/if}</td>					
+					<td>{$mensagem.mensagem}</td>
+					<td><a href='' class='btn btn-primary'><span class='glyphicon glyphicon-eye-open'></span></a></td>
+					<td><a href='' class='btn btn-danger act-deletar-produto' ><span class='glyphicon glyphicon-remove'></span></a></td>
+				</tr>
+			{/foreach}
+		</tbody>
+	</table>
+	<button class="btn btn-primary act-aprovar-produto">Aprovar</button>
+</div>	
+
+<script type="text/javascript" language="javascript" src="{$smarty.const._PUBLIC_}/js/admin/admin.js"></script>

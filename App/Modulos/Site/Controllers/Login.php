@@ -32,7 +32,11 @@ class Login extends Controller {
     }
 
     public function deslogarAction() {
-        Sessao::setaSessao(array('logado'=> 0,'nome_imagem'=> ''));
+        Sessao::setaSessao(array('logado'=> 0,'nome_imagem'=> ''));        
+        $logadoAdmin = Sessao::pegaSessao('logadoAdmin');       
+        if($logadoAdmin){
+            Sessao::excluiSessao('brechoAdventure');            
+        }
         
         die();
     }

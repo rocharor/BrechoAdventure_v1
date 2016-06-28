@@ -1,0 +1,59 @@
+<link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/css/admin.css" />
+
+<div class='row'>
+	<a href='{$smarty.const._PUBLIC_}/admin' class='btn btn-info'>Voltar</a>
+	<h1>Produtos Cadastrados</h1>
+	<form action="" method="post" name="formProdutos">
+		 <div class="form-group">
+		 	<label style="border: solid 0px;">Tipo de produto:
+			 <select class="form-control" onchange="filtroAdmin('produto',this.value)" style="width:300px; display:inline;">
+				<option value="todos" {if $valor eq 'todos'} selected="selected" {/if}>Cadastrados</option>
+				<option value="ativo" {if $valor eq 'ativo'} selected="selected" {/if}>Ativos</option>
+				<option value="pendente" {if $valor eq 'pendente'} selected="selected" {/if}>Pendentes</option>
+				<option value="excluido" {if $valor eq 'excluido'} selected="selected" {/if}>Excluídos</option>
+			</select>
+			</label> 
+		</div>
+	</form>
+	{if $arrDados|count eq 0}
+		<div class="well" align="center"><b><i>N&atilde;o foi encontrado nenhum produto com este status.</i></b></div>
+	{else}
+		<table class='table table-striped'>
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Status</td>
+					<td>Titulo</td>				
+					<td>Aprovar</td>
+					<td>Visualizar</td>
+					<td>Excluir</td>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach from=$arrDados item=produto}			
+					<tr>
+						<td>{$produto.id}</td>
+						<td>{if $produto.status eq 0} Excluído {elseif $produto.status eq 1} Ativos {else} Pendente {/if}</td>
+						<td style="width: 100%">{$produto.titulo}</td>				
+						<td>
+							{if $produto.status eq 2}
+								<div class="btn-group" data-toggle="buttons">
+								  <label class="btn btn_chk btn-default">
+								    <input type="checkbox" class='chk_aprovar' value="{$produto.id}">
+								    <span class="glyphicon glyphicon-ok"></span>
+								  </label>
+								</div> 
+							{else} 
+							-- 
+							{/if}</td>
+						<td><a href='' class='btn btn-primary'><span class='glyphicon glyphicon-eye-open'></span></a></td>
+						<td><a href='' class='btn btn-danger act-deletar-produto'><span class='glyphicon glyphicon-remove'></span></a></td>
+					</tr>
+				{/foreach}				
+			</tbody>
+		</table>
+		<button class="btn btn-primary act-aprovar-produto">Aprovar</button>
+	{/if}
+</div>	
+
+<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/admin/admin.js"></script>

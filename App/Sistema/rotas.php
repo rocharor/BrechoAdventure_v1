@@ -180,7 +180,13 @@ $app->post('/cadastro/', function () {
 // ADMIN
 // ======================
 
-$app->get('/admin/', function () {
+$app->get('/admin', function () {
+    $objHomeAdmin = new HomeAdmin();
+    $objHomeAdmin->indexAction();
+    return false;
+});
+
+$app->post('/admin', function () {
     $objHomeAdmin = new HomeAdmin();
     $objHomeAdmin->indexAction();
     return false;
@@ -188,7 +194,7 @@ $app->get('/admin/', function () {
 
 $app->get('/admin/{tipo}/{valor}/', function ($tipo,$valor) {
     $objHomeAdmin = new HomeAdmin();
-    $objHomeAdmin->buscaDados($tipo,$valor);
+    $objHomeAdmin->buscaDadosAction($tipo,$valor);
     return false;
 });
 

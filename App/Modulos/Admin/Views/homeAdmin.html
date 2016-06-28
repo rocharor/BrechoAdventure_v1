@@ -1,77 +1,77 @@
-<style>
-table{
-	text-align: center;
-}
-.titulo-adm{
-	background-color: #eee;
-	font-weight: bold;
-}
-</style>
-<div class='row'>
-	<div class='col-md-6'>
-		<table class="table table-hover">
-			<thead>
-				<tr class='titulo-adm'>
-					<td colspan="3">Gerência dos Produtos</td>
-				</tr>
-				<tr>
-					<td><b>Conteúdo</b></td>
-					<td><b>QTD</b></td>
-					<td><b>Visualizar</b></td>
-				</tr>
-				
-			</thead>
-			<tbody>
-				<tr>
-					<td>Produtos Cadastrados</td>
-					<td>15</td>
-					<td><a href='' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
-				</tr>
-				<tr>
-					<td>Produtos Pendentes</td>
-					<td>0</td>
-					<td><a href='' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
-				</tr>
-				<tr>
-					<td>Produtos Excluídos</td>
-					<td>2</td>
-					<td><a href='' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
-				</tr>
-				
-			</tbody>
-		</table>
+{if $logadoAdmin eq false}
+	<h1>Login</h1>	
+	<form action="" method="post" name="formProdutos">
+		 <div class="form-group">
+		 	<label style="border: solid 0px;">Usuário
+			 <input type="text" name='login' class='form-control' />
+			</label> 
+		</div>
+		<div class="form-group">
+		 	<label style="border: solid 0px;">Senha
+			 <input type="password" name='senha' class='form-control' />
+			</label> 
+		</div>
+		<button class='btn btn-primary' type="submit">Login</button>
+	</form>
+{else}
+
+	<style>
+	table{
+		text-align: center;
+	}
+	.titulo-adm{
+		background-color: #eee;
+		font-weight: bold;
+	}
+	</style>
+	<div class='row'>	
+		<div class='col-md-6'>
+			<table class="table table-hover">
+				<thead>
+					<tr class='titulo-adm'>
+						<td colspan="3">Gerência dos Produtos</td>
+					</tr>
+					<tr>
+						<td><b>Conteúdo</b></td>
+						<td><b>QTD</b></td>
+						<td><b>Visualizar</b></td>
+					</tr>
+					
+				</thead>
+				<tbody>
+					{foreach from=$dados.produtos key=chave item=produto}
+						<tr>
+							<td>{$chave}</td>
+							<td>{$produto.qtd}</td>
+							<td><a href='{$smarty.const._PUBLIC_}/admin/produtos/{$produto.status_id}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
+						</tr>
+					{/foreach}	
+				</tbody>
+			</table>
+		</div>
+		<div class='col-md-6 adm'>
+			<table class="table table-hover">
+				<thead>
+					<tr class='titulo-adm'>
+						<td colspan="3">Gerência das Mensagens</td>
+					</tr>
+					<tr>
+						<td><b>Conteúdo</b></td>
+						<td><b>QTD</b></td>
+						<td><b>Visualizar</b></td>
+					</tr>
+					
+				</thead>
+				<tbody>
+					{foreach from=$dados.mensagens key=chave item=mensagem}
+						<tr>
+							<td>{$chave}</td>
+							<td>{$mensagem.qtd}</td>
+							<td><a href='{$smarty.const._PUBLIC_}/admin/mensagem/{$mensagem.tipo_id}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
+						</tr>
+					{/foreach}
+				</tbody>
+			</table>
+		</div>
 	</div>
-	<div class='col-md-6 adm'>
-		<table class="table table-hover">
-			<thead>
-				<tr class='titulo-adm'>
-					<td colspan="3">Gerência das Mensagens</td>
-				</tr>
-				<tr>
-					<td><b>Conteúdo</b></td>
-					<td><b>QTD</b></td>
-					<td><b>Visualizar</b></td>
-				</tr>
-				
-			</thead>
-			<tbody>
-				<tr>
-					<td>Mensagens Reclamações</td>
-					<td>15</td>
-					<td><a href='' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
-				</tr>
-				<tr>
-					<td>Mensagens Elogios</td>
-					<td>0</td>
-					<td><a href='' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
-				</tr>
-				<tr>
-					<td>Mensagens não lidas</td>
-					<td>2</td>
-					<td><a href='' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
-				</tr>
-				
-			</tbody>
-		</table>
-	</div>
-</div>
+{/if}

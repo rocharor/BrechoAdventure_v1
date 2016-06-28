@@ -15,7 +15,7 @@ abstract class Controller
         }elseif(file_exists(VIEWS_MC . $arquivo . '.html')){
             $view = VIEWS_MC . $arquivo . '.html';
         }elseif(file_exists(VIEWS_ADMIN . $arquivo . '.html')){
-            $view = VIEWS_ADMIN . $arquivo . '.html';
+            $view = VIEWS_ADMIN . $arquivo . '.html';           
         }else{
             $view = VIEWS . '404.html';
         }

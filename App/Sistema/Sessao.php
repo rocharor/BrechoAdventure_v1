@@ -31,7 +31,11 @@
 
             if(isset($_SESSION['brechoAdventure'])){
                 foreach($parametros as $value){
-                    $dados = $_SESSION['brechoAdventure'][$value];
+                    if(isset($_SESSION['brechoAdventure'][$value])){
+                        $dados = $_SESSION['brechoAdventure'][$value];
+                    }else{
+                        return false;
+                    }
                 }
             }
             if(count($dados) > 0 )

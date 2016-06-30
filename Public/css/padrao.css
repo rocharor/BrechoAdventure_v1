@@ -6,6 +6,8 @@
 html, body {
 	height: 100%;
 	font-family: arial;
+	margin: 0;
+	padding: 0;
 	/* font-family: Adventure;
      background-image: url("../imagens/background.jpg");
      background-size:100% 100%; */	
@@ -22,16 +24,4 @@ a {
 
 .modal-header, .modal-footer {
 	background-color: #fedd7a;
-}
-
-.form-control {
-	/* width: 400px; */
-}
-
-.img_perfil{
-    position: relative;
-    max-height: 100px;
-    min-height: 100px;
-    max-width: 100px;
-    min-width: 100px;
 }

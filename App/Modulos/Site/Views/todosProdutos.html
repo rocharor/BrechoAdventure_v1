@@ -17,6 +17,12 @@
 }
 </style>
 
+<ol class="breadcrumb">
+  <li><a href="{$smarty.const._PUBLIC_}/"><span class='glyphicon glyphicon-home'> Home</span></a></li>
+  <li><a href="{$smarty.const._PUBLIC_}/produto/">Produto</a></li>
+  <li class="active">Todos produtos</li>
+</ol>
+
 <div class="row">
 	{if $produtos|count eq 0}
  		<div class="well" align="center"><b><i>N&atilde;o foi poss&iacute;vel retornar nenhum produto</i></b></div>

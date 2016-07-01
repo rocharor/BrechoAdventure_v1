@@ -198,14 +198,17 @@ ul.art-hmenu>li>a:hover,
 }
 
 /*BOTÕES MENU*/
-.menu-mobile button, .btn-login, .btn-cadastro{	
+.menu-mobile button, .btn-login, .btn-cadastro, .btn-inserir-produto{	
 	background-color:#F3BC55;
 	color:#000;
 	border:	0px;	
 }
-.btn-login:hover, .btn-cadastro:hover{	
+.btn-login:hover, .btn-cadastro:hover, .btn-inserir-produto:hover{	
 	background-color:#fedd7a;
 	color:#000;		
+}
+.act-deslogar, .act-deslogar:hover{
+	color:#000;
 }
 
 

@@ -1,0 +1,5 @@
+1º - Baixar dependencias composer (composer install);
+2º - Baixar dependencias NPM executar na Public (npm install);
+3º - Ajustar configuração do banco, copiar arquivo "mysql.ini.sample" para "mysql.ini" e inserir os dados do banco;
+4º - Rodar arquivo "gerar_banco.php" para criar o database correto ou caso ja exista o banco apenas executar o o passo 3;
+5º - Apagar arquivos desnecessários que NPM baixa, deixar apenas os que serão incluidos;

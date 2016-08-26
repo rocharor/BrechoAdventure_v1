@@ -6,7 +6,7 @@ use Rocharor\Sistema\Sessao;
 
 abstract class Controller
 {
-    public function view($arquivo, $variaveis = [])
+    /* public function view($arquivo, $variaveis = [])
     {
         global $smarty;
 
@@ -27,35 +27,60 @@ abstract class Controller
         $smarty->assign('logado', Sessao::pegaSessao('logado'));
         $smarty->assign('nome_imagem', Sessao::pegaSessao('nome_imagem'));
         
-        $smarty->display('main.html');     
-        
-        /* 
-         //global $start, $smarty;
-         
-         if (is_null($arquivo)) {
-            $controller = strtolower(str_replace('Controller', '', $start->getController()));
-            $action = strtolower(str_replace('Action', '', $start->getAction()));
-            $view = VIEWS . $controller . '/' . $action . '.html';
-        } else {
-            $view = VIEWS . $arquivo . '.html';
-        }
-
-        if (file_exists($view)) {
-
-            foreach ( $variaveis as $nomeVar => $valorVar ) {
-                $smarty->assign($nomeVar, $valorVar);
-            }
-            $smarty->assign('logado', Sessao::pegaSessao('logado'));
-            $smarty->assign('nome_imagem', Sessao::pegaSessao('nome_imagem'));
-
-            if($arquivo == '404'){
-                $smarty->display('404.html');
-            }else{
-                $smarty->display('main.html');
-            }
-
-        } else {
-            $start->erro(404);
-        } */
-    }    
+        $smarty->display('main.html');
+    }   */
+	
+	/**
+	 * Método padrão para abrir as VIEWS 
+	 */
+    public function view($arquivo, $variaveis = [], $modulo = false)
+    {
+    	global $smarty;
+    
+    	switch ($modulo) {
+    		case 'minhaconta':
+    			{
+    				$view = VIEWS_MC . $arquivo . '.html';    				
+    				break;
+    			}
+			case 'admin':
+    			{
+    				$view = VIEWS_ADMIN . $arquivo . '.html';    				
+    				break;
+				}
+    		default:
+    			{
+    				$view = VIEWS . $arquivo . '.html';    			
+    				break;
+    			}
+    	}
+    
+    	if (! file_exists($view)) {
+    		$view = VIEWS . '404.html';
+    	}
+    
+    	foreach ($variaveis as $nomeVar => $valorVar) {
+    		$smarty->assign($nomeVar, $valorVar);
+    	}
+    
+    	$smarty->assign('pagina_main', $view);
+    	$smarty->assign('logado', Sessao::pegaSessao('logado'));
+    	$smarty->assign('nome_imagem', Sessao::pegaSessao('nome_imagem'));
+    	$main = 'main.html';
+    	$smarty->display($main);
+    }
+    
+    /**
+     * Valida paginas que dependem de login
+     */
+    public function validaLogado()
+    {
+    	$logadoAdmin = Sessao::pegaSessao('logado');
+    
+    	if($logadoAdmin){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
 }

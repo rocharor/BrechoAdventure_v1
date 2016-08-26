@@ -14,9 +14,9 @@
     $con = mysqli_connect($host, $user, $pass) or
     die('Não foi possível conectar');
 
-    $query_database = "CREATE DATABASE " . $db;
+    $query_database = "CREATE DATABASE " . $db . " DEFAULT CHARACTER SET utf8  DEFAULT COLLATE utf8_general_ci ";
     if(mysqli_query($con,$query_database)){
-        echo "Banco de dados criado \n\r";
+        echo "Banco de dados (" . $db . ") criado com sucesso\n\r";
     }
     else {
         die("Erro criando o banco de dados \n\r".mysqli_error($con));
@@ -100,21 +100,28 @@
       `frase` text,
       `autor` varchar(255) DEFAULT NULL,
       PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1",
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8",
     
         
     "Inserts Categorias"=>
-    "INSERT INTO categoria_produto (categoria) VALUES ('Aquatico'),('Camping'),('Ciclismo'),('Fitnes'),('Trilha & Trekking'),('Escalada');",
+    "INSERT INTO categoria_produto (categoria) VALUES ('Aquático'),('Camping'),('Ciclismo'),('Fitnes'),('Trilha & Trekking'),('Escalada');",
         
     "Inserts Frases"=>
-    "INSERT INTO `frases`(`id`,`frase`,`autor`) VALUES (1,'Prefiro carregar o peso de uma mochila nas costas do que o da consciência de não ter conhecido o mundo.','Autor desconhecido'),(2,'A vida começa quando acaba a sua zona de conforto.','Neale Donald Walsch'),(3,'Nós viajamos, não para fugir da vida, mas para a vida não fugir de nós.','Autor desconhecido'),(4,'Uma longa viagem começa com um único passo.','Lao Tsé'),(5,'É graça divina começar bem. Graça maior persistir na caminhada certa. Mas graça das graças é não desistir nunca.','Dom Hélder Câmara'),(6,'Toda grande caminhada começa com um simples passo.','Buda'),(7,'Quando a caminhada fica dura, só os duros continuam caminhando.','Mano Brown');"    
+    "INSERT INTO `frases`(`id`,`frase`,`autor`) VALUES 
+    		(1,'Prefiro carregar o peso de uma mochila nas costas do que o da consciência de não ter conhecido o mundo.','Autor desconhecido'),
+    		(2,'A vida começa quando acaba a sua zona de conforto.','Neale Donald Walsch'),
+    		(3,'Nós viajamos, não para fugir da vida, mas para a vida n�o fugir de nós.','Autor desconhecido'),
+    		(4,'Uma longa viagem começa com um único passo.','Lao Tsé'),
+    		(5,'É graça divina começar bem. Graça maior persistir na caminhada certa. Mas graça das graças é não desistir nunca.','Dom Hélder Câmara'),
+    		(6,'Toda grande caminhada começa com um simples passo.','Buda'),
+    		(7,'Quando a caminhada fica dura, só os duros continuam caminhando.','Mano Brown');"    
     ];
 
     mysqli_select_db($con, $db);
 
     foreach($query_tabelas as $nm_tabela=>$query){
         if(mysqli_query($con,$query)){
-            echo "Tabela " . $nm_tabela . " criada com sucesso. \n\r ";
+            echo "Tabela (" . $nm_tabela . ") criada com sucesso. \n\r ";
         }
         else {
             die('Erro ao criar tabela'. $nm_tabela . mysqli_error($con));

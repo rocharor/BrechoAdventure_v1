@@ -10,7 +10,7 @@
     }else{
         $caminho = '';
         error_reporting(E_ALL);
-        ini_set('display_errors', 0);
+        ini_set('display_errors', 1);
     }
 
     Sessao::abrirSessao();
@@ -28,9 +28,7 @@
     define('VIEWS_MC', INC_ROOT.'/App/Modulos/MinhaConta/Views/');
     define('MODELS_MC',  INC_ROOT.'/App/Modulos/MinhaConta/Models/');
 
-    //define('CONTROLLERS_ADMIN',  INC_ROOT.'/App/Modulos/MinhaConta/Controllers/');
     define('VIEWS_ADMIN', INC_ROOT.'/App/Modulos/Admin/Views/');
-    //define('MODELS_ADMIN',  INC_ROOT.'/App/Modulos/MinhaConta/Models/');
 
     $conn = new Conexao(_CONFIG_.'mysql.ini');
     $conn = $conn ->open();

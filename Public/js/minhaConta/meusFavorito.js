@@ -5,7 +5,7 @@ $('.act-favorito').click(function(){
    var produto_id = $(this).attr('data-produto-id');
    var usuario_id = $(this).parent().attr('data-usuario-id');
    $.ajax({
-        url: url+'/MeusFavoritos/setFavorito/',
+        url: url+'/minha-conta/meus-favoritos/setFavorito/',
         dataType: 'json',
         type: 'POST',
         data: {'usuario_id':usuario_id,
@@ -41,7 +41,7 @@ $('.act-excluir-favorito').click(function(e){
 		var produto_id = $(this).attr('data-produto-id');
 		
 		$.ajax({
-	        url: url+'/MeusFavoritos/setFavorito/',
+	        url: url+'/minha-conta/meus-favoritos/setFavorito/',
 	        dataType: 'json',
 	        type: 'POST',
 	        data: {'status': 0,
@@ -63,7 +63,7 @@ $('.act-ver-favorito').click(function(e){
     var produto_id = $(this).attr('data-produto-id');
 
     $.ajax({
-        url: url+'/Produto/getDescricaoProduto/',
+        url: url+'/minha-conta/produto/getDescricaoProduto/',
         dataType: 'json',
         type: 'POST',
         data: {'produto_id': produto_id},

@@ -30,7 +30,7 @@ class Admin extends Controller
                 'dados' => $arrQtdHome,
                 'escondeMenu' => true
             ];
-            $this->view('homeAdmin', $variaveis);
+            $this->view('homeAdmin', $variaveis,'admin');
         } else {
             if (! empty($_POST)) {
                 $loginModel = new LoginModel();
@@ -60,7 +60,7 @@ class Admin extends Controller
                     'escondeMenu' => true
                 ];
             }
-            $this->view('homeAdmin', $variaveis);
+            $this->view('homeAdmin', $variaveis,'admin');
         }
     }
 
@@ -110,7 +110,7 @@ class Admin extends Controller
             'arrDados' => $arrDados,
             'escondeMenu' => true
         ];
-        $this->view($view, $variaveis);
+        $this->view($view, $variaveis,'admin');
     }
     
     /**

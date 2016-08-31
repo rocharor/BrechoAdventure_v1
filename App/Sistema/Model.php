@@ -136,4 +136,35 @@ abstract class Model
             echo 'Error: ' . $e->getMessage();
         }
     }
+    
+    public function buscar2($tabela, $parametros=[],$tudo=true)
+    {
+    	$campos = [];
+    	$where = [];
+    	$order = [];
+    	$limit = [];
+    	 
+    	foreach ($parametros as $chave=>$valor) {
+    
+    		if($chave=='where'){
+    			 
+    		}
+    		if($chave=='order'){
+    
+    		}
+    		if($chave=='limit'){
+    
+    		}
+    	}
+    
+    	$sql = "SELECT $colunas FROM $tabela . $where . $order . $limit";
+    
+    	$rs = $this->conn->query($sql);
+    
+    	if ($tudo) {
+    		return $rs->fetchAll(\PDO::FETCH_ASSOC);
+    	} else {
+    		return $rs->fetch(\PDO::FETCH_ASSOC);
+    	}
+    }
 }

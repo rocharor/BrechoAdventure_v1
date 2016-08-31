@@ -31,7 +31,7 @@
                 'favoritos'=>$arrFavoritos
             ];
 
-            $this->view('meusFavoritos',$variaveis);
+            $this->view('meusFavoritos',$variaveis,'minhaconta');
         }
 
         public function setFavoritoAction()

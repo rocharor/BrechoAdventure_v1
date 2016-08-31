@@ -32,7 +32,7 @@
                 'meusProdutos'=>$meusProdutos
             ];
 
-            $this->view('meusProdutos',$variaveis);
+            $this->view('meusProdutos',$variaveis,'minhaconta');
         }
 
         public function meusProdutosEditarAction($produto_id,$msg='')
@@ -49,7 +49,7 @@
                 'msg' => $msg
             ];
 
-            $this->view('meusProdutosEditar',$variaveis);
+            $this->view('meusProdutosEditar',$variaveis,'minhaconta');
         }
         
         public function alterarProdutoAction($produto_id)

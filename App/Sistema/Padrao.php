@@ -68,4 +68,36 @@ class Padrao
         
         return $string;
     }
+    
+    
+    public static function validaServidor()
+    {
+    	error_reporting(E_ALL);
+    
+    	if($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1:8001'){
+    		ini_set('display_errors', 1);
+    		$servidor = false;
+    	}else{
+    		ini_set('display_errors', 0);
+    		$servidor = true;
+    	}
+    
+    	return $servidor;
+    }
+    
+    /**
+     * Verifica se a url existe
+     * @param $url
+     * @return bool
+     */
+    public static function url_exists($url)
+    {
+    	$ch = curl_init($url);
+    	curl_setopt($ch, CURLOPT_NOBODY, true);
+    	curl_exec($ch);
+    	$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    	curl_close($ch);
+    
+    	return ($code == 200);
+    }
 }

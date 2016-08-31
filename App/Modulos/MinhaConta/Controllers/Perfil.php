@@ -33,7 +33,7 @@ class Perfil extends Controller
             'dadosUsuario' => $dadosUsuario[0]
         ];
         
-        $this->view('perfil', $variaveis);
+        $this->view('perfil', $variaveis,'minhaconta');
     }
 
     public function updatePerfilAction()

@@ -72,19 +72,20 @@ $app->post('/contato/', function () {
 // ======================
 // PERFIL
 // ======================
-$app->get('/Perfil/', function () {
+$app->get('/minha-conta/perfil/', function () {
     $objLogin = new Perfil();
     $objLogin->indexAction();
     return false;
 });
 
-$app->post('/Perfil/updateFoto/', function () {
+$app->post('/minha-conta/perfil/updateFoto/', function () {
+	
     $objContato = new Perfil();
     $objContato->updateFotoAction();
     return false;
 });
 
-$app->post('/Perfil/updatePerfil/', function () {
+$app->post('/minha-conta/perfil/updatePerfil/', function () {	
     $objContato = new Perfil();
     $objContato->updatePerfilAction();
     return false;
@@ -93,46 +94,47 @@ $app->post('/Perfil/updatePerfil/', function () {
 // ======================
 // MEUS PRODUTOS
 // ======================
-$app->get('/MeusProdutos/', function () {
+$app->get('/minha-conta/meus-produtos/', function () {
+	
     $objLogin = new MeusProdutos();
     $objLogin->indexAction();
     return false;
 });
 
-$app->post('/MeusFavoritos/setFavorito/', function () {
-    $objMeusFavorito = new MeusFavoritos();
-    $objMeusFavorito->setFavoritoAction();
-    return false;
-});
-
-$app->post('/MeusProdutos/deletarProduto/', function () {
+$app->post('/minha-conta/meus-produtos/deletarProduto/', function () {
     $objMeusProdutos = new MeusProdutos();
     $objMeusProdutos->deletarProdutoAction();
     return false;
 });
 
-$app->post('/MeusProdutos/deletarFoto/', function () {
+$app->post('/minha-conta/meus-produtos/deletarFoto/', function () {
     $objMeusProdutos = new MeusProdutos();
     $objMeusProdutos->deletarFotoAction();
     return false;
 });
 
-$app->get('/MeusProdutos/meusProdutosEditar/produto/{produto_id}', function ($produto_id) {
+$app->get('/minha-conta/meus-produtos/meusProdutosEditar/produto/{produto_id}', function ($produto_id) {
     $objMeusProdutos = new MeusProdutos();
     $objMeusProdutos->meusProdutosEditarAction($produto_id);
     return false;
 });
 
-$app->post('/MeusProdutos/alterarProduto/produto/{produto_id}/', function ($produto_id) {
+$app->post('/minha-conta/meus-produtos/alterarProduto/produto/{produto_id}/', function ($produto_id) {
     $objMeusProdutos = new MeusProdutos();
     $objMeusProdutos->alterarProdutoAction($produto_id);
     return false;
 });
 
+$app->post('/minha-conta/meus-favoritos/setFavorito/', function () {
+	$objMeusFavorito = new MeusFavoritos();
+	$objMeusFavorito->setFavoritoAction();
+	return false;
+});
+
 // ======================
 // MEUS FAVORITOS
 // ======================
-$app->get('/MeusFavoritos/', function () {
+$app->get('/minha-conta/meus-favoritos/', function () {
     $objLogin = new MeusFavoritos();
     $objLogin->indexAction();
     return false;
@@ -141,13 +143,13 @@ $app->get('/MeusFavoritos/', function () {
 // ======================
 // CADASTRO DE PRODUTOS
 // ======================
-$app->get('/CadastroProduto/', function () {
+$app->get('/minha-conta/cadastro-produto/', function () {
     $objLogin = new CadastroProduto();
     $objLogin->indexAction();
     return false;
 });
 
-$app->post('/CadastroProduto/cadastrar/', function () {
+$app->post('/minha-conta/cadastro-produto/cadastrar/', function () {
     $objLogin = new CadastroProduto();
     $objLogin->cadastrarAction();
     return false;

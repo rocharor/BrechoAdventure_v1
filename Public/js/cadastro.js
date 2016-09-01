@@ -43,7 +43,7 @@ $('.act-cadastro').click(function(e){
     }
     
     $.ajax({
-        url: url+'/cadastro/',
+        url: '/cadastro/',
         dataType: 'json',
         type: 'POST',
         data: {	'nome':nome,

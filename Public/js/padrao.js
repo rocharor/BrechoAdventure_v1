@@ -1,6 +1,5 @@
 $('.act-buscar').click(function() {
-	/**/
-	console.dir('akii');	
+	
 	var valorBusca = $('.busca').val();
 	
 	if(valorBusca.length < 3){
@@ -8,7 +7,7 @@ $('.act-buscar').click(function() {
 		return false;
 	}	
 	
-	url_busca = url +'/busca/'+valorBusca+'/';
+	url_busca = '/busca/'+valorBusca+'/';
 	
 	window.open(url_busca,'_self');
 });

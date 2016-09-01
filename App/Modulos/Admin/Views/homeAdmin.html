@@ -1,4 +1,4 @@
-<link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/css/admin.css" />
+<link type="text/css" rel="stylesheet" href="/css/admin.css" />
 
 {if $logadoAdmin eq false}
 	<div class='form-login'>
@@ -43,7 +43,7 @@
 						<tr>
 							<td>{$chave}</td>
 							<td>{$produto.qtd}</td>
-							<td><a href='{$smarty.const._PUBLIC_}/admin/produto/{$produto.status}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
+							<td><a href='/admin/produto/{$produto.status}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
 						</tr>
 					{/foreach}	
 				</tbody>
@@ -67,7 +67,7 @@
 						<tr>
 							<td>{$chave}</td>
 							<td>{$mensagem.qtd}</td>
-							<td><a href='{$smarty.const._PUBLIC_}/admin/mensagem/{$mensagem.tipo}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
+							<td><a href='/admin/mensagem/{$mensagem.tipo}/' class='btn btn-primary glyphicon glyphicon-eye-open'></a></td>
 						</tr>
 					{/foreach}
 				</tbody>

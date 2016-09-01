@@ -2,7 +2,7 @@
     <div align="left" style="width: 500px;">
         <h1>Cadastro de Produtos</h1>
         {if $autorizado == false}
-        	<div class="well">VOCÊ NÃO ESTA AUTORIZADO A CADASTRAR PRODUTOS. FAVOR COMPLETAR SEU PERFIL <a href="{$smarty.const._PUBLIC_}/Perfil/">CLIQUE AQUI</a></div>
+        	<div class="well">VOCÊ NÃO ESTA AUTORIZADO A CADASTRAR PRODUTOS. FAVOR COMPLETAR SEU PERFIL <a href="{$smarty.const._PUBLIC_}/minha-conta/perfil/">CLIQUE AQUI</a></div>
         {else}
 	        {$msg}		
 	        <form action="{$smarty.const._PUBLIC_}/minha-conta/cadastro-produto/cadastrar/" method="post" name="form" enctype="multipart/form-data">

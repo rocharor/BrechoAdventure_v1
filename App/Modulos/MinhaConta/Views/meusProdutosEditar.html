@@ -1,7 +1,6 @@
 <h1 class="text-danger">EDITAR PRODUTO</h1>
 {$msg}
-<!-- <form action="{$smarty.const._PUBLIC_}/MeusProdutos/alterarProduto/produto/{$produto_id}/" method="post" name="formEditarProduto" enctype="multipart/form-data"> -->
-<form action="{$smarty.const._PUBLIC_}/MeusProdutos/alterarProduto/produto/{$produto_id}/" method="post" name="formEditarProduto" enctype="multipart/form-data">
+<form action="/minha-conta/meus-produtos/alterarProduto/produto/{$produto_id}/" method="post" name="formEditarProduto" enctype="multipart/form-data">
      <div>
          <label>Titulo:</label>
          <input type="text" class="form-control" name='titulo_produto_update' id='titulo_produto_update' value="{$descProduto.titulo}" style="width: 400px;" />
@@ -55,7 +54,7 @@
 				<div class="col-md-4">
 					<div style="width: 250px; height: 250px;">
 						<a class="btn btn-danger act-excluir-foto" data-foto="{$imagem}" data-produto-id="{$produto_id}"  style="position: absolute;">EXCLUIR</a>
-						<img class="img-thumbnail" src="{$smarty.const._PUBLIC_}/imagens/produtos/{$imagem}" alt="" style="width: 100%; height: 100%;">
+						<img class="img-thumbnail" src="/imagens/produtos/{$imagem}" alt="" style="width: 100%; height: 100%;">
 					</div>
 				</div>
 			{/foreach}
@@ -75,5 +74,5 @@
     <button type="button" class="btn btn-primary act-alterar-produto" data-produto-id="{$produto_id}"> Salvar alteração </button>
  </form>
 
-<script type="text/javascript" src="{$smarty.const._PUBLIC_}/libs/jquery/jquery.maskMoney.min.js"></script>
-<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/minhaConta/meusProdutos.js"></script>
+<script type="text/javascript" src="/libs/jquery/jquery.maskMoney.min.js"></script>
+<script type="text/javascript" src="/js/minhaConta/meusProdutos.js"></script>

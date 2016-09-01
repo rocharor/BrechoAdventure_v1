@@ -63,7 +63,7 @@
     "CREATE TABLE `produtos` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
       `usuario_id` int(11) DEFAULT NULL,
-      `categoria` varchar(100) DEFAULT NULL,
+      `categoria_id` int(11) DEFAULT NULL,
       `titulo` varchar(255) DEFAULT NULL,
       `descricao` text,
       `valor` decimal(10,2) DEFAULT '0.00',

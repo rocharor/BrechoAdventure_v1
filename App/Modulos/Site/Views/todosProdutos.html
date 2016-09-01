@@ -1,15 +1,15 @@
-<link type="text/css" rel="stylesheet" href="{$smarty.const._PUBLIC_}/css/produto.css" />
+<link type="text/css" rel="stylesheet" href="/css/produto.css" />
 
 <style type="text/css">
 .img-ativo  {
-    background-image: url({$smarty.const._PUBLIC_}/imagens/favorito_ativo.jpg);
+    background-image: url(/imagens/favorito_ativo.jpg);
     background-size: cover;
     width: 20px;
     height: 20px;
 
 }
 .img-inativo  {
-    background-image: url({$smarty.const._PUBLIC_}/imagens/favorito_inativo.jpg);
+    background-image: url(/imagens/favorito_inativo.jpg);
     background-size: cover;
     width: 20px;
     height: 20px;
@@ -18,8 +18,8 @@
 </style>
 
 <ol class="breadcrumb">
-  <li><a href="{$smarty.const._PUBLIC_}/"><span class='glyphicon glyphicon-home'> Home</span></a></li>
-  <li><a href="{$smarty.const._PUBLIC_}/produto/">Produto</a></li>
+  <li><a href="/"><span class='glyphicon glyphicon-home'> Home</span></a></li>
+  <li><a href="/produto/">Produto</a></li>
   <li class="active">Todos produtos</li>
 </ol>
 
@@ -51,7 +51,7 @@
 		        <div class="col-md-4 div-produto" align='center'>
 		            <div class="div-favorito-{$produto.id}" data-usuario-id="{$usuario_id}">
 		                {if $logado eq 0}
-		                    <a class="act-favorito-deslogado"><img src="{$smarty.const._PUBLIC_}/imagens/favorito_inativo.jpg" alt="" style="width: 20px;"></a>
+		                    <a class="act-favorito-deslogado"><img src="/imagens/favorito_inativo.jpg" alt="" style="width: 20px;"></a>
 		                {else}
 		                    {if $produto.favorito eq 1}
 		                        <a class="act-favorito favorito-ativo-{$produto.id}" data-produto-id='{$produto.id}' data-status='0'>
@@ -68,7 +68,7 @@
 		                <b>{$produto.titulo}</b>
 		            </div>
 		            <div style="width: 250px; height: 250px;">
-		                <img class="img-thumbnail" src="{$smarty.const._PUBLIC_}/imagens/produtos/{$produto.img_principal}" alt="" style="width: 100%; height: 100%;">
+		                <img class="img-thumbnail" src="/imagens/produtos/{$produto.img_principal}" alt="" style="width: 100%; height: 100%;">
 		            </div>
 		            <div><b>Pre&ccedil;o: R$ {$produto.valor}</b></div>
 		            <div><button style="width:100%;" class='btn btn-warning act-descricao' data-id="{$produto.id}"><b>Ver detalhes</b></button></div>
@@ -92,7 +92,7 @@
         <div class="col-md-4" style="border: solid 0px;" align='center'>
             <div class="div-favorito-{$produto.id}" data-usuario-id="{$usuario_id}">
                 {if $logado eq 0}
-                    <a class="act-favorito-deslogado"><img src="{$smarty.const._PUBLIC_}/imagens/favorito_inativo.jpg" alt="" style="width: 20px;"></a>
+                    <a class="act-favorito-deslogado"><img src="/imagens/favorito_inativo.jpg" alt="" style="width: 20px;"></a>
                 {else}
                     {if $produto.favorito eq 1}
                         <a class="act-favorito favorito-ativo-{$produto.id}" data-produto-id='{$produto.id}' data-status='0'>
@@ -109,7 +109,7 @@
                 <b>{$produto.titulo}</b>
             </div>
             <div style="width: 250px; height: 250px;">
-                <img class="img-thumbnail" src="{$smarty.const._PUBLIC_}/imagens/produtos/{$produto.img_principal}" alt="" style="width: 100%; height: 100%;">
+                <img class="img-thumbnail" src="/imagens/produtos/{$produto.img_principal}" alt="" style="width: 100%; height: 100%;">
             </div>
             <div><b>Pre&ccedil;o: R$ {$produto.valor}</b></div>
             <div><button style="width:100%;" class='btn btn-warning act-descricao' data-id="{$produto.id}"><b>Ver detalhes</b></button></div>
@@ -130,21 +130,21 @@
 		     {if $pg eq 1}
 		      	<span aria-label="Previous"><span aria-hidden="true">&laquo;</span></span>
 		     {else}
-		     	<a href="{$smarty.const._PUBLIC_}/produto/todosProdutos/pg/{$pg - 1}/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+		     	<a href="/produto/todosProdutos/pg/{$pg - 1}/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
 		     {/if}
 	    </li>
 	    {for $i=1 to $paginacao}
 			{if $i eq $pg}
 				<li class="active"><a>{$i}</a></li>
 			{else}
-				<li><a href="{$smarty.const._PUBLIC_}/produto/todosProdutos/pg/{$i}/">{$i}</a></li>
+				<li><a href="/produto/todosProdutos/pg/{$i}/">{$i}</a></li>
 			{/if}
 	    {/for}
 	     <li>
 		     {if $pg eq $paginacao}
 		      	<span aria-label="Previous"><span aria-hidden="true">&raquo;</span></span>
 		     {else}
-		     	<a href="{$smarty.const._PUBLIC_}/produto/todosProdutos/pg/{$pg + 1}/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+		     	<a href="/produto/todosProdutos/pg/{$pg + 1}/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 		     {/if}
 	    </li>
 	  </ul>
@@ -193,6 +193,6 @@
     </div>
 </div>
 
-<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/produto.js"></script>
-<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/filtro.js"></script>
-<script type="text/javascript" src="{$smarty.const._PUBLIC_}/js/minhaConta/meusFavorito.js"></script>
+<script type="text/javascript" src="/js/produto.js"></script>
+<script type="text/javascript" src="/js/filtro.js"></script>
+<script type="text/javascript" src="/js/minhaConta/meusFavorito.js"></script>

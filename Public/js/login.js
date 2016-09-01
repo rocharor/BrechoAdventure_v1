@@ -26,7 +26,7 @@ $('.act-login').click(function(e){
         return false;
     }
     $.ajax({
-        url: url+'/login/',
+        url: '/login/',
         dataType: 'json',
         type: 'POST',
         data: {'email': email,
@@ -48,7 +48,7 @@ $('.act-deslogar').click(function(e){
     e.preventDefault()
 
     $.ajax({
-        url: url+'/Login/deslogar/',
+        url: '/Login/deslogar/',
         type: 'POST',
         success: function(retorno){        	
         	window.open(url+'/','_self');

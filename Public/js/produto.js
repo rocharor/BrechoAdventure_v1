@@ -9,7 +9,7 @@ $('.act-descricao').click(function(e){
     var produto_id = $(this).data('id');
 
     $.ajax({
-        url: url+'/Produto/getDescricaoProduto/',
+        url: '/Produto/getDescricaoProduto/',
         dataType: 'json',
         type: 'POST',
         data: {'produto_id': produto_id},

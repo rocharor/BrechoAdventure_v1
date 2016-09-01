@@ -4,23 +4,13 @@
     use Rocharor\Sistema\Sessao;
     use Rocharor\Sistema\Padrao;
  
-    Padrao::validaServidor();
-    
-    /* if($_SERVER['HTTP_HOST'] == 'localhost'){
-        $caminho = '/BrechoAdventure/Public';        
-        error_reporting(E_ALL);
-        ini_set('display_errors', 1);        
-    }else{
-        $caminho = '';
-        error_reporting(E_ALL);
-        ini_set('display_errors', 1);
-    } */
+    Padrao::validaServidor();   
 
     Sessao::abrirSessao();
 
     define('INC_ROOT',str_replace('\\','/',dirname(__DIR__)));
-    //define('_PUBLIC_',$caminho);
-    define('_PUBLIC_','');
+    
+    //define('_PUBLIC_','');
     define('_CONFIG_',INC_ROOT.'/App/Sistema/config/');
     define('_IMAGENS_',INC_ROOT.'/Public/imagens/');
 

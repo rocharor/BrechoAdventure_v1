@@ -36,7 +36,7 @@ $('.act-enviar-imagem').click(function(e){
     form_data.append('arquivo',$foto);
     form_data.append('act','update_foto');
     $.ajax({
-        url: url+'/minha-conta/perfil/updateFoto/',
+        url: '/minha-conta/perfil/updateFoto/',
         type: 'post',
         dataType: 'json',
         processData: false,
@@ -125,7 +125,7 @@ $('.act-update').click(function(e){
                      'telefone_cel':tel_cel
                     };
         $.ajax({
-            url: url+'/minha-conta/perfil/updatePerfil/',
+            url:'/minha-conta/perfil/updatePerfil/',
             dataType: 'json',
             type: 'POST',
             data: {'dados': dados},

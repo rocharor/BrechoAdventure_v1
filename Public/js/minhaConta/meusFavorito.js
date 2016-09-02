@@ -5,7 +5,7 @@ $('.act-favorito').click(function(){
    var produto_id = $(this).attr('data-produto-id');
    var usuario_id = $(this).parent().attr('data-usuario-id');
    $.ajax({
-        url: url+'/minha-conta/meus-favoritos/setFavorito/',
+        url:'/minha-conta/meus-favoritos/setFavorito/',
         dataType: 'json',
         type: 'POST',
         data: {'usuario_id':usuario_id,
@@ -41,7 +41,7 @@ $('.act-excluir-favorito').click(function(e){
 		var produto_id = $(this).attr('data-produto-id');
 		
 		$.ajax({
-	        url: url+'/minha-conta/meus-favoritos/setFavorito/',
+	        url: '/minha-conta/meus-favoritos/setFavorito/',
 	        dataType: 'json',
 	        type: 'POST',
 	        data: {'status': 0,
@@ -63,7 +63,7 @@ $('.act-ver-favorito').click(function(e){
     var produto_id = $(this).attr('data-produto-id');
 
     $.ajax({
-        url: url+'/minha-conta/produto/getDescricaoProduto/',
+        url:'/minha-conta/produto/getDescricaoProduto/',
         dataType: 'json',
         type: 'POST',
         data: {'produto_id': produto_id},
@@ -73,10 +73,10 @@ $('.act-ver-favorito').click(function(e){
 			$('.indicadores').html('');
 			for(var i in fotos){
 				if(i == 0){
-					$('.produto_fotos').append("<div class='item active '><img src="+url+"/imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>")
+					$('.produto_fotos').append("<div class='item active '><img src=/imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>")
 					$('.indicadores').append("<li data-target='#carousel-example-generic' data-slide-to='"+i+"' class='active'></li>")
 				}else{
-					$('.produto_fotos').append("<div class='item'><img src="+url+"/imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>");
+					$('.produto_fotos').append("<div class='item'><img src=/imagens/produtos/"+fotos[i]+" alt='' style='width:100%; height:400px'></div>");
 					$('.indicadores').append("<li data-target='#carousel-example-generic' data-slide-to='"+i+"' class=''></li>")
 				}
 			}        	

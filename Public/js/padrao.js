@@ -11,3 +11,9 @@ $('.act-buscar').click(function() {
 	
 	window.open(url_busca,'_self');
 });
+
+$('.busca').keypress(function(e){	
+	if(e.keyCode == 13){
+		$('.act-buscar').click();
+	}
+})

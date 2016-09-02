@@ -4,7 +4,7 @@ $('.act-excluir-produto').click(function(e) {
 
 	if (confirm('Deseja realmente excluir este produto?')) {
 		$.ajax({
-			url : url + '/minha-conta/meus-produtos/deletarProduto/',
+			url : '/minha-conta/meus-produtos/deletarProduto/',
 			type : 'POST',
 			dataType : 'json',
 			data : {
@@ -31,7 +31,7 @@ $('.act-excluir-foto').click(function() {
 		var produto_id = $('.act-excluir-foto').attr('data-produto-id');
 		var nm_foto = $(this).attr('data-foto');
 		$.ajax({
-			url : url + '/minha-conta/meus-produtos/deletarFoto/',
+			url :'/minha-conta/meus-produtos/deletarFoto/',
 			type : 'POST',
 			dataType : 'json',
 			data : {
@@ -40,7 +40,7 @@ $('.act-excluir-foto').click(function() {
 			},
 			success : function(retorno) {
 				if (retorno.sucesso = true) {
-					window.open(url+'/minha-conta/meus-produtos/meusProdutosEditar/produto/'+produto_id,'_self');
+					window.open('/minha-conta/meus-produtos/meusProdutosEditar/produto/'+produto_id,'_self');
 				} else {
 					alert(retorno.msg);
 				}

@@ -51,7 +51,7 @@ $('.act-deslogar').click(function(e){
         url: '/Login/deslogar/',
         type: 'POST',
         success: function(retorno){        	
-        	window.open(url+'/','_self');
+        	window.open('/','_self');
         },
         error: function(retorno){
             alert('Erro no sistema! cod-02')
@@ -76,40 +76,5 @@ $('#esqueci_senha').on('shown.bs.modal', function (e) {
 $('.act-reenviar-senha').click(function(e){
     e.preventDefault()
     console.dir('aki')
-    /*var email = $('#email_login').val();
-    var senha = $('#senha_login').val();
-
-    if(email == ''){
-        $('#email_login').parent().addClass('has-error');
-        alert('Campo email é obrigatório');
-        return false;
-    }
-
-    if(senha == ''){
-        $('#senha_login').parent().addClass('has-error');
-        alert('Campo senha é obrigatório');
-        return false;
-    }
-
-    $.ajax({
-        url: url_login,
-        dataType: 'json',
-        type: 'POST',
-        data: {'email': email,
-               'senha':senha},
-        success: function(retorno){
-            if(retorno.sucesso == true){
-                alert(retorno.mensagem);
-                $('.form-control').val('');
-                $('#login').modal('hide');
-                window.location.reload();
-            }else{
-            	$('.msg_login').append('Usuário ou senha inválidos;')
-                alert(retorno.mensagem +' cod-01')
-            }
-        },
-        error: function(retorno){
-            alert('Erro no sistema! cod-02')
-        }
-    })*/
+    
 });

@@ -11,6 +11,7 @@
   "dependencies": {
     "animatejs": "^1.0.1",
     "bootstrap": "^3.3.7",
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "jquery-masked-input": "^1.4.1"
   }
 }

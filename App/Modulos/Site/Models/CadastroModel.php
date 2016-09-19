@@ -14,7 +14,7 @@ class CadastroModel extends Model
         $senha = trim($senha);
         $nome_imagem = 'padrao.jpg';
         
-        $sql = "INSERT INTO usuarios (nome,apelido,email,nome_imagem,senha_ext,senha_md5,data_cadastro) VALUES (:nome,:apelido,:email,:nome_imagem,:senha_ext,:senha_md5,NOW())";
+        $sql = "INSERT INTO usuarios (nome,apelido,email,nome_imagem,senha_ext,senha_md5) VALUES (:nome,:apelido,:email,:nome_imagem,:senha_ext,:senha_md5)";
         
         $param = [
             ':nome' => $nome,

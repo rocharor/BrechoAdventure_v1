@@ -1,6 +1,8 @@
 <?php
 namespace Rocharor\Sistema;
 
+use Rocharor\Sistema\Conexao;
+
 abstract class Model
 {
 
@@ -8,24 +10,33 @@ abstract class Model
 
     public function __construct()
     {
+        /* global $conn;
+        $this->conn = $conn; */
+        
         global $conn;
+        
+        if (!isset($conn)) {
+            $conn = new Conexao(_CONFIG_.'mysql.ini');
+            $conn = $conn ->open();
+        }
+        
         $this->conn = $conn;
     }
 
     /**
      * Método para fazer buscas padrão
-     * 
+     *
      * @param unknown $tabela
-     *            = Nome da tabela
+     *            Nome da tabela
      * @param array $arrWhere
-     *            = Array contendo os parametros EX:($arrWhere = ['id'=>5, 'status'=>1])
+     *            Array contendo os parametros EX:($arrWhere = ['id'=>5, 'status'=>1])
      * @param array $arrOrder
-     *            = Array contendo apenas 1 os parametros para ordenação EX:($arrOrder = ['id'=>DESC])
+     *            Array contendo apenas 1 os parametros para ordenação EX:($arrOrder = ['id'=>DESC])
      * @param string $tudo
-     *            = Caso TRUE traz tudo, Caso FALSE traz apenas 1
+     *            Caso TRUE traz tudo, Caso FALSE traz apenas 1
      * @return Retorna os dados
      */
-    public function buscar($tabela, $arrWhere = [], $arrOrder = [],$limit = false)
+    protected function buscar($tabela, $arrWhere = [], $arrOrder = [], $limit = false)
     {
         $where = ' 1 ';
         $order = '';
@@ -39,11 +50,11 @@ abstract class Model
         }
         
         if ($limit) {
-            $limit = " LIMIT ".$limit;
+            $limit = " LIMIT " . $limit;
         }
         
         $sql = "SELECT * FROM $tabela WHERE $where $order $limit";
-       
+        
         $rs = $this->conn->query($sql);
         
         $dados = [];
@@ -56,14 +67,14 @@ abstract class Model
 
     /**
      * Método para fazer inserções padrão
-     * 
+     *
      * @param unknown $tabela
-     *            = Nome da tabela
+     *            Nome da tabela
      * @param unknown $arrValores
-     *            = Array contendo campos e valores Ex: (['nome'=>'ricardo','idade'=>29])
+     *            Array contendo campos e valores Ex: (['nome'=>'ricardo','idade'=>29])
      * @return boolean
      */
-    public function inserir($tabela, $arrValores)
+    protected function inserir($tabela, $arrValores)
     {
         $colunas = array_keys($arrValores);
         $valores = array_values($arrValores);
@@ -90,21 +101,20 @@ abstract class Model
 
     /**
      * Método para fazer deleções padrão
-     * 
+     *
      * @param unknown $tabela
-     *            = Nome da tabela
+     *            Nome da tabela
      * @param unknown $arrValores
-     *            = Array contendo apenas 1 campo e valor Ex: (['id'=>3])
+     *            Array contendo apenas 1 campo e valor Ex: (['id'=>3])
      * @return boolean
      */
-    public function deletar($tabela, $arrWhere)
+    protected function deletar($tabela, $arrWhere)
     {
         $coluna = key($arrWhere);
         $coluna_prepare = ':' . $coluna;
         $parametro = [
             $coluna_prepare => $arrWhere['id']
-        ]
-        ;
+        ];
         
         $sql = "DELETE FROM $tabela WHERE $coluna = $coluna_prepare";
         
@@ -119,15 +129,15 @@ abstract class Model
 
     /**
      * Método para fazer edições padrão
-     * 
+     *
      * @param unknown $tabela
-     *            = Nome da tabela
+     *            Nome da tabela
      * @param unknown $arrValores
-     *            = Array contendo campos e valores Ex: (['nome'=>'ricardo','idade'=>29])
+     *            Array contendo campos e valores Ex: (['nome'=>'ricardo','idade'=>29])
      * @param unknown $arrWhere
-     *            = Array contendo campo e valor Ex: (['id'=>3,'id'=>4])
+     *            Array contendo campo e valor Ex: (['id'=>3,'id'=>4])
      */
-    public function editar($tabela, $arrValores, $arrWhere)
+    protected function editar($tabela, $arrValores, $arrWhere)
     {
         try {
             $campos = [];
@@ -155,31 +165,6 @@ abstract class Model
             }
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
-        }
-    }
-
-    public function buscar2($tabela, $parametros = [], $tudo = true)
-    {
-        $campos = [];
-        $where = [];
-        $order = [];
-        $limit = [];
-        
-        foreach ($parametros as $chave => $valor) {
-            
-            if ($chave == 'where') {}
-            if ($chave == 'order') {}
-            if ($chave == 'limit') {}
-        }
-        
-        $sql = "SELECT $colunas FROM $tabela . $where . $order . $limit";
-        
-        $rs = $this->conn->query($sql);
-        
-        if ($tudo) {
-            return $rs->fetchAll(\PDO::FETCH_ASSOC);
-        } else {
-            return $rs->fetch(\PDO::FETCH_ASSOC);
         }
     }
 }

@@ -66,7 +66,7 @@ class ProdutoModel extends Model
 
     public function setProduto($usuario_id, $titulo, $categoria_id, $descricao, $tipo, $valor, $nome_fotos)
     {
-        $sql = "INSERT INTO produtos (usuario_id,categoria_id,titulo,descricao,valor,estado,nm_imagem,data_cadastro,status) VALUES (:usuario_id,:categoria_id,:titulo,:descricao,:valor,:estado,:nm_imagem,NOW(),2)";
+        $sql = "INSERT INTO produtos (usuario_id,categoria_id,titulo,descricao,valor,estado,nm_imagem,status) VALUES (:usuario_id,:categoria_id,:titulo,:descricao,:valor,:estado,:nm_imagem,2)";
         
         $param = [
             ':usuario_id' => $usuario_id,

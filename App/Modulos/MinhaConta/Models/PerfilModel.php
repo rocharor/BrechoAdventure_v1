@@ -12,7 +12,7 @@ class PerfilModel extends Model
     public function updateUsuario($user_id, $dados, $foto = false)
     {
         if ($foto) {
-            $sql = "UPDATE usuarios SET nome_imagem = :nm_foto, data_alteracao = NOW() WHERE id = {$user_id}";
+            $sql = "UPDATE usuarios SET nome_imagem = :nm_foto WHERE id = {$user_id}";
             $param = [
                 ':nm_foto' => $foto
             ];
@@ -31,7 +31,7 @@ class PerfilModel extends Model
             }
             $valores = implode(',', $valores);
             
-            $sql = "UPDATE usuarios SET {$valores}, data_alteracao = NOW() WHERE id = {$user_id}";
+            $sql = "UPDATE usuarios SET {$valores} WHERE id = {$user_id}";
          
             $rs = $this->conn->prepare($sql);
         }

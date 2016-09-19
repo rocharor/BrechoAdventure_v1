@@ -13,7 +13,9 @@
     
     $con = mysqli_connect($host, $user, $pass) or
     die('Não foi possível conectar');
-
+    
+    mysqli_set_charset($con,"utf8");
+    
     $query_database = "CREATE DATABASE " . $db . " DEFAULT CHARACTER SET utf8  DEFAULT COLLATE utf8_general_ci ";
     if(mysqli_query($con,$query_database)){
         echo "Banco de dados (" . $db . ") criado com sucesso\n\r";
@@ -42,8 +44,8 @@
       `nome_imagem` varchar(255) DEFAULT NULL,
       `senha_ext` varchar(255) DEFAULT NULL,
       `senha_md5` varchar(255) DEFAULT NULL,
-      `data_cadastro` datetime DEFAULT NULL,
-      `data_alteracao` datetime DEFAULT NULL,
+      `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      `data_alteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,      
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8",
 
@@ -69,8 +71,8 @@
       `valor` decimal(10,2) DEFAULT '0.00',
       `estado` enum('Novo','Usado') DEFAULT NULL,
       `nm_imagem` varchar(255) DEFAULT NULL,
-      `data_cadastro` datetime DEFAULT NULL,
-      `data_alteracao` datetime DEFAULT NULL,
+      `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      `data_alteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,      
       `data_exclusao` datetime DEFAULT NULL,
       `status` int(11) DEFAULT NULL,
       PRIMARY KEY (`id`)
@@ -110,7 +112,7 @@
     "INSERT INTO `frases`(`id`,`frase`,`autor`) VALUES 
     		(1,'Prefiro carregar o peso de uma mochila nas costas do que o da consciência de não ter conhecido o mundo.','Autor desconhecido'),
     		(2,'A vida começa quando acaba a sua zona de conforto.','Neale Donald Walsch'),
-    		(3,'Nós viajamos, não para fugir da vida, mas para a vida n�o fugir de nós.','Autor desconhecido'),
+    		(3,'Nós viajamos, não para fugir da vida, mas para a vida não fugir de nós.','Autor desconhecido'),
     		(4,'Uma longa viagem começa com um único passo.','Lao Tsé'),
     		(5,'É graça divina começar bem. Graça maior persistir na caminhada certa. Mas graça das graças é não desistir nunca.','Dom Hélder Câmara'),
     		(6,'Toda grande caminhada começa com um simples passo.','Buda'),

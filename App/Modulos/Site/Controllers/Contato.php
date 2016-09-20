@@ -41,7 +41,7 @@ class Contato extends Controller
         if ($retorno) {
             $msg = '<div class="alert alert-success" align="center" style="width: 400px;">Mensagem enviada com sucesso</div>';
             $emailModel = new EmailModel();
-            $emailModel->respAutomaticaContato($dados['nome'], $dados['email']);
+            $emailModel->respAutomaticaContato($dados['nome'], $dados['email']);            
         } else {
             $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Erro ao enviar a mensagem</div>';
         }

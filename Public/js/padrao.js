@@ -42,7 +42,7 @@ var alertaPagina = function(texto,classe){
 	}
 
 	$.notify({
-        icon: "glyphicon " + icone,
+        //icon: "glyphicon " + icone,
         message: texto,
     }, {
         element: 'body',

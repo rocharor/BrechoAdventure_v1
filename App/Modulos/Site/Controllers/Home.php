@@ -16,7 +16,8 @@ class Home extends Controller
 
     public function indexAction()
     {
-        $arrFrases = $this->model->buscar('frases');        
+        //$arrFrases = $this->model->buscar('frases');        
+        $arrFrases = $this->model->buscarFrases();        
   
         $variaveis = [
             'active_1' => 'active',

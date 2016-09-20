@@ -8,6 +8,13 @@ use Rocharor\Site\Models\EmailModel;
 class Contato extends Controller
 {
 
+    private $model;
+    
+    public function __construct()
+    {
+        $this->model = new ContatoModel();        
+    }
+    
     public function indexAction()
     {
         if (! empty($_POST)) {
@@ -28,15 +35,13 @@ class Contato extends Controller
      * @param unknown $dados            
      */
     Public function salvaMensagemAction($dados)
-    {
-        $contatoModel = new ContatoModel();
-        $retorno = $contatoModel->setMensagem($dados);
+    {        
+        $retorno = $this->model->setMensagem($dados);
         
         if ($retorno) {
             $msg = '<div class="alert alert-success" align="center" style="width: 400px;">Mensagem enviada com sucesso</div>';
             $emailModel = new EmailModel();
-            $retorno = $emailModel->respAutomaticaContato($dados['nome'], $dados['email']);
-            // $this->respAutomaticaContato($dados['nome'], $dados['email']);
+            $emailModel->respAutomaticaContato($dados['nome'], $dados['email']);
         } else {
             $msg = '<div class="alert alert-danger" align="center" style="width: 400px;">Erro ao enviar a mensagem</div>';
         }

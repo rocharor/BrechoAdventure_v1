@@ -34,7 +34,7 @@ class Admin extends Controller
         } else {
             if (! empty($_POST)) {
                 $loginModel = new LoginModel();
-                $retorno = $loginModel->validaLogin($_POST['login'], $_POST['senha']);
+                $retorno = $loginModel->validaLoginAdmin($_POST['login'], $_POST['senha']);
                 if ($retorno) {
                     Sessao::setaSessao([
                         'logadoAdmin' => 1

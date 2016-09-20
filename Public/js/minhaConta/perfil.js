@@ -22,7 +22,7 @@ var altera_imagem = function(){
     $('.act-alter-foto').addClass('hide');
     $('.act-enviar-imagem').removeClass('hide');
 
-    $('.nm_imagem').append(nm_imagem)
+    $('.nm_imagem').append(nm_imagem);
 }
 
 /**
@@ -47,7 +47,10 @@ $('.act-enviar-imagem').click(function(e){
                 alert(retorno.mensagem);
                 window.location.reload();
             }else{
-                alert(retorno.mensagem)
+                alert(retorno.mensagem);
+                $('.act-alter-foto').removeClass('hide');
+                $('.act-enviar-imagem').addClass('hide');
+                $('.nm_imagem').html('');
             }
 
         },

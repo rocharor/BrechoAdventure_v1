@@ -1,5 +1,63 @@
 <?php
+/* $caminho = str_replace("App\Sistema", "Public\\node_modules", dirname(__DIR__));
 
+$libs = [
+    "animate"=>"animate.css",
+    "bootstrap"=>"bootstrap",
+    "notify"=>"bootstrap-notify",
+    "jquery"=>"jquery",
+    "masked"=>"jquery.maskedinput"
+];
+
+foreach($libs as $key=>$lib){
+    $caminho_certo = $caminho . "\\$lib";
+    $todosArquivos = scandir($caminho_certo);
+   
+    foreach($todosArquivos as $arquivos){
+        
+        if($arquivos == "." || $arquivos == ".."){
+           continue; 
+        }        
+        $excluir = true;
+        switch($key){
+            case 'animate':
+                if($arquivos == "animate.css" || $arquivos == "animate.min.css"){
+                    $excluir = false;                    
+                }
+            break;
+            case 'bootstrap':
+                if($arquivos == "dist"){
+                    $excluir = false;;
+                }
+            break;
+            case 'notify':
+                if($arquivos == "bootstrap-notify.js" || $arquivos == "bootstrap-notify.min.js"){
+                    $excluir = false;;
+                }
+            break;
+            case 'jquery':
+                if($arquivos == "dist"){
+                    $excluir = false;;
+                }
+            break;
+            case 'masked':
+                if($arquivos == "src"){
+                    $excluir = false;;
+                }
+            break;
+        }        
+        
+        if($excluir){
+            $deletar = $caminho_certo ."\\". $arquivos;
+            $comando = "rm -rf " . $deletar;
+            shell_exec($comando);
+            echo "Arquivo apagados [" . $key . "] -> " . $arquivos . "\n";
+        }        
+    }    
+}
+
+die();
+ */
     if(file_exists('mysql.ini')) {
         $dados = parse_ini_file('mysql.ini');
     }else{

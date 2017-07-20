@@ -8,7 +8,7 @@ class Home extends Controller
 {
 
     private $model;
-    
+
     public function __construct()
     {
         $this->model = new HomeModel;
@@ -16,21 +16,21 @@ class Home extends Controller
 
     public function indexAction()
     {
-        //$arrFrases = $this->model->buscar('frases');        
-        $arrFrases = $this->model->buscarFrases();        
-  
+        //$arrFrases = $this->model->buscar('frases');
+        $arrFrases = $this->model->buscarFrases();
+
         $variaveis = [
             'active_1' => 'active',
             'arrFrases' => $arrFrases[rand(0,(count($arrFrases)-1))]
         ];
-        
+
         $this->view('index', $variaveis);
     }
 
     public function erroAction()
     {
         $variaveis = [];
-        
+
         $this->view('404', $variaveis);
     }
 }

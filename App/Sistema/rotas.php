@@ -79,13 +79,13 @@ $app->get('/minha-conta/perfil/', function () {
 });
 
 $app->post('/minha-conta/perfil/updateFoto/', function () {
-	
+
     $objContato = new Perfil();
     $objContato->updateFotoAction();
     return false;
 });
 
-$app->post('/minha-conta/perfil/updatePerfil/', function () {	
+$app->post('/minha-conta/perfil/updatePerfil/', function () {
     $objContato = new Perfil();
     $objContato->updatePerfilAction();
     return false;
@@ -95,7 +95,7 @@ $app->post('/minha-conta/perfil/updatePerfil/', function () {
 // MEUS PRODUTOS
 // ======================
 $app->get('/minha-conta/meus-produtos/', function () {
-	
+
     $objLogin = new MeusProdutos();
     $objLogin->indexAction();
     return false;
@@ -207,10 +207,5 @@ $app->post('/admin/aprovar/', function () {
 // ======================
 // ERRO
 // ======================
-$app->error(function () {
-    $objHome = new Home();
-    $objHome->erroAction();
-    return false;
-});
 
 $app->run();

@@ -25,39 +25,36 @@
 {if $produtos|count eq 0}
 	<div class="well" align="center"><b><i>N&atilde;o existe nenhum produto cadastrado</i></b></div>
 {else}
-	<div class="row" >	
+	<div class="row" >
 		<h1 class="text-success" align="center">Ultimos produtos adicionados</h1>
-		{counter assign=i start=0 print=false}
 		{foreach from=$produtos item=produto}
-	        <div class="col-md-4 div-produto" align="center">
-	            <div class="div-favorito-{$produto.id}" data-usuario-id="{$usuario_id}">
-	                {if $logado eq 0}
-	                    <a class="act-favorito-deslogado"><img src="/imagens/favorito_inativo.jpg" alt="" style="width: 20px;"></a>
-	                {else}
-	                    {if $produto.favorito eq 1}
-	                        <a class="act-favorito favorito-ativo-{$produto.id}" data-produto-id='{$produto.id}' data-status='0'>
-	                            <span class="img-ativo"></span>
-	                        </a>
-	                    {else}
-	                        <a class="act-favorito favorito-inativo-{$produto.id}" data-produto-id='{$produto.id}' data-status='1'>
-	                            <span class="img-inativo"></span>
-	                        </a>
-	                    {/if}
-	                {/if}
-	            </div>
-	            <div style="width: 300px; height: 20px;" align="center">
-	                <b>{$produto.titulo}</b>
-	            </div>
-	            <div style="width: 250px; height: 250px;">
-	                <img class="img-thumbnail" src="/imagens/produtos/{$produto.img_principal}" alt="" style="width: 100%; height: 100%;">
-	            </div>
-	            <div><b>Pre&ccedil;o: R$ {$produto.valor}</b></div>
-	            <div><button style="width:100%;" class='btn btn-warning act-descricao' data-id="{$produto.id}"><b>Ver detalhes</b></button></div>
+	        <div class="col-md-4" align="center" style="border-bottom: solid 1px; padding: 20px 0">
+		        <div class="div-produto" align="center">
+		            <div class="div-favorito-{$produto.id}" data-usuario-id="{$usuario_id}">
+		                {if $logado eq 0}
+		                    <a class="act-favorito-deslogado"><img src="/imagens/favorito_inativo.jpg" alt="" style="width: 20px;"></a>
+		                {else}
+		                    {if $produto.favorito eq 1}
+		                        <a class="act-favorito favorito-ativo-{$produto.id}" data-produto-id='{$produto.id}' data-status='0'>
+		                            <span class="img-ativo"></span>
+		                        </a>
+		                    {else}
+		                        <a class="act-favorito favorito-inativo-{$produto.id}" data-produto-id='{$produto.id}' data-status='1'>
+		                            <span class="img-inativo"></span>
+		                        </a>
+		                    {/if}
+		                {/if}
+		            </div>
+		            <div style="width: 300px; height: 20px;" align="center">
+		                <b>{$produto.titulo}</b>
+		            </div>
+		            <div style="width: 250px; height: 250px;">
+		                <img class="img-thumbnail" src="/imagens/produtos/{$produto.img_principal}" alt="" style="width: 100%; height: 100%;">
+		            </div>
+		            <div><b>Pre&ccedil;o: R$ {$produto.valor}</b></div>
+		            <div><button style="width:100%;" class='btn btn-warning act-descricao' data-id="{$produto.id}"><b>Ver detalhes</b></button></div>
+		        </div>
 	        </div>
-		    {counter}
-		    {if $i is  div by 3}
-		         &nbsp;<hr>
-		    {/if}
 		{/foreach}
 	</div>
 	<br><br>
@@ -84,7 +81,7 @@
 				  	</ol>
                     <div class="carousel-inner produto_fotos" id='fotos' role="listbox">
                     	<div class='item active'></div>
-                        <!-- IMAGENS -->                        
+                        <!-- IMAGENS -->
                     </div>
 
                     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

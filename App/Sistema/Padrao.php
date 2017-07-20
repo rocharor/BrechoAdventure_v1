@@ -106,7 +106,7 @@ class Padrao
      * @param unknown $f            
      * @return string
      */
-    public static function baseImage($f)
+    public static function base64Image($f)
     {
         $image = file_get_contents($f);
         $encrypted = base64_encode($image);
@@ -172,4 +172,25 @@ class Padrao
         
         return $limit;
     }
+    
+    public function validaStringInt($valor)
+    {
+        if(is_numeric($valor)){
+            $retorno = filter_var ($valor,FILTER_VALIDATE_INT);
+            if(!$retorno){
+                $retorno = filter_var ($valor,FILTER_VALIDATE_FLOAT);
+            }
+        }elseif(is_bool($valor)){
+            $retorno = filter_var ($valor,FILTER_VALIDATE_BOOLEAN);
+        }elseif(is_string($valor)){
+            $retorno = filter_var ($valor,FILTER_SANITIZE_STRING);
+            $retorno = trim($retorno);
+        }else{
+            $retorno = null;
+        }
+    
+        return $retorno;
+
+    }
+    
 }
